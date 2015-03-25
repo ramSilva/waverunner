@@ -57,9 +57,9 @@
 	<key>publishResolution_ios_phonehd</key>
 	<true/>
 	<key>publishResolution_ios_tablet</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ios_tablethd</key>
-	<true/>
+	<false/>
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
@@ -80,9 +80,17 @@
 		</dict>
 		<key>Smart resources</key>
 		<dict>
+			<key>isDirty</key>
+			<true/>
 			<key>isSmartSpriteSheet</key>
 			<true/>
+			<key>trimSprites</key>
+			<true/>
 		</dict>
+		<key>Smart resources/building_white_outline.png</key>
+		<dict/>
+		<key>Smart resources/road.png</key>
+		<dict/>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>
