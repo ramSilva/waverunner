@@ -1794,8 +1794,6 @@
 										<string>Player.ccb</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2753,7 +2751,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>37</real>
+							<real>30</real>
 							<real>283</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3046,6 +3044,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
