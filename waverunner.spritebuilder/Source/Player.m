@@ -50,6 +50,19 @@
     }
 }
 
+- (void)hit{
+    [self changeRunSpeed:-5.0f];
+    
+    [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
+    CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:0.7f position:ccp(-7.0f, 0.0f)];
+    [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
+    [self runAction:action];
+}
+
+- (void)resetAnimation{
+    [self.animationManager runAnimationsForSequenceNamed:@"Run"];
+}
+
 - (void)changeRunSpeed:(CGFloat)changeAmount{
     _runSpeed += changeAmount;
     printf("speed: %f\n", _runSpeed);

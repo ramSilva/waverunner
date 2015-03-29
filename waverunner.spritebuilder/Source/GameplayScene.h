@@ -10,14 +10,14 @@
 #import "Player.h"
 #import "Ground.h"
 
-#define SCROLL_SPEED 10.0f
-#define BACKGROUND1_MULT 10.0f
+#define SCROLL_SPEED 180.0f
+#define BACKGROUND1_MULT 0.10f
 #define BACKGROUND2_MULT 0.03f
 #define BACKGROUND3_MULT 10.0f
 #define MOON_MULT 0.005f
 
 @interface GameplayScene : CCScene <CCPhysicsCollisionDelegate>{
-    CCNode *_contentNode;
+    CCNode *_contentNode, *_gameOverNode;
     CCPhysicsNode *_physicsNode;
     Player *_player;
     

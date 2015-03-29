@@ -10,7 +10,7 @@
 
 #define BASE_SPEED 100.0f
 #define BASE_JUMP 250.0f
-#define SPEED_TO_ANIMATION 0.005f
+#define SPEED_TO_ANIMATION 0.004f
 
 @interface Player : CCSprite{
     CGFloat _runSpeed;
@@ -22,6 +22,7 @@
 - (CGFloat)getSpeed;
 - (void)jump;
 - (void)land;
+- (void)hit;
 - (void)changeRunSpeed:(CGFloat)changeAmount;
 
 @end

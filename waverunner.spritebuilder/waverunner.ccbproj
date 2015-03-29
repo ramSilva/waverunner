@@ -79,9 +79,12 @@
 			<true/>
 		</dict>
 		<key>Resources</key>
-		<dict/>
-		<key>Resources/climbing01.png</key>
-		<dict/>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>isSmartSpriteSheet</key>
+			<true/>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>

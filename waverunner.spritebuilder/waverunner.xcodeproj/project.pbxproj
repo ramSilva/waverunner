@@ -10,6 +10,7 @@
 		5B121030197484FA004C1E1D /* waverunnerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* waverunnerActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		74418E441AC83BF300F4AB35 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 74418E431AC83BF300F4AB35 /* Player.m */; };
+		746ED5321AC86CF900828679 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 746ED5311AC86CF900828679 /* GameOver.m */; };
 		74AD37471AC8438F00C8B680 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD37461AC8438F00C8B680 /* Ground.m */; };
 		74DF54041AC810DF0016C99A /* GameplayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF54031AC810DF0016C99A /* GameplayScene.m */; };
 		7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
@@ -164,6 +165,8 @@
 		5BA4619E1974C88900785744 /* AndroidManifest.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AndroidManifest.xml; path = Platforms/Android/AndroidManifest.xml; sourceTree = "<group>"; };
 		74418E421AC83BF300F4AB35 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Source/Player.h; sourceTree = "<group>"; };
 		74418E431AC83BF300F4AB35 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Source/Player.m; sourceTree = "<group>"; };
+		746ED5301AC86CF900828679 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOver.h; path = Source/GameOver.h; sourceTree = "<group>"; };
+		746ED5311AC86CF900828679 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		74AD37451AC8438F00C8B680 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Source/Ground.h; sourceTree = "<group>"; };
 		74AD37461AC8438F00C8B680 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ground.m; path = Source/Ground.m; sourceTree = "<group>"; };
 		74DF54021AC810DF0016C99A /* GameplayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayScene.h; path = Source/GameplayScene.h; sourceTree = "<group>"; };
@@ -451,6 +454,8 @@
 				D352B48019EC608A00829775 /* MetalShaders */,
 				74DF54021AC810DF0016C99A /* GameplayScene.h */,
 				74DF54031AC810DF0016C99A /* GameplayScene.m */,
+				746ED5301AC86CF900828679 /* GameOver.h */,
+				746ED5311AC86CF900828679 /* GameOver.m */,
 				74418E421AC83BF300F4AB35 /* Player.h */,
 				74418E431AC83BF300F4AB35 /* Player.m */,
 				74AD37451AC8438F00C8B680 /* Ground.h */,
@@ -834,6 +839,7 @@
 				74AD37471AC8438F00C8B680 /* Ground.m in Sources */,
 				74DF54041AC810DF0016C99A /* GameplayScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				746ED5321AC86CF900828679 /* GameOver.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				74418E441AC83BF300F4AB35 /* Player.m in Sources */,
