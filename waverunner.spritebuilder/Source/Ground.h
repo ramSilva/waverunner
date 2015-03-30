@@ -8,7 +8,7 @@
 
 #import "CCSprite.h"
 
-static float const CHANCE_GAP = 1.0f;
+static float const CHANCE_GAP = 0.1f;
 static float const GROUND_BLOCKS_DISTANCE = 2.0f;
 static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
