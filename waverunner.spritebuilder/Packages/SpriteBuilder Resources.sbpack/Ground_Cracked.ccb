@@ -75,10 +75,26 @@
 			<array>
 				<array>
 					<real>0.0</real>
-					<real>0.0</real>
+					<real>-99.14453125</real>
 				</array>
 				<array>
 					<real>0.0</real>
+					<real>53.5703125</real>
+				</array>
+				<array>
+					<real>75.652374267578125</real>
+					<real>53.5703125</real>
+				</array>
+				<array>
+					<real>75.652374267578125</real>
+					<real>-88.5625</real>
+				</array>
+				<array>
+					<real>176.75396728515625</real>
+					<real>-88.5625</real>
+				</array>
+				<array>
+					<real>176.75396728515625</real>
 					<real>53.5703125</real>
 				</array>
 				<array>
@@ -87,7 +103,7 @@
 				</array>
 				<array>
 					<real>256</real>
-					<real>0.0</real>
+					<real>-99.14453125</real>
 				</array>
 			</array>
 			<key>polygons</key>
@@ -95,19 +111,55 @@
 				<array>
 					<array>
 						<real>256</real>
-						<real>0.0</real>
+						<real>-99.14453125</real>
 					</array>
 					<array>
 						<real>256</real>
 						<real>53.5703125</real>
 					</array>
 					<array>
+						<real>176.75396728515625</real>
+						<real>53.5703125</real>
+					</array>
+					<array>
+						<real>176.75396728515625</real>
+						<real>-88.5625</real>
+					</array>
+				</array>
+				<array>
+					<array>
+						<real>0.0</real>
+						<real>-99.14453125</real>
+					</array>
+					<array>
+						<real>256</real>
+						<real>-99.14453125</real>
+					</array>
+					<array>
+						<real>176.75396728515625</real>
+						<real>-88.5625</real>
+					</array>
+					<array>
+						<real>75.652374267578125</real>
+						<real>-88.5625</real>
+					</array>
+				</array>
+				<array>
+					<array>
+						<real>75.652374267578125</real>
+						<real>-88.5625</real>
+					</array>
+					<array>
+						<real>75.652374267578125</real>
+						<real>53.5703125</real>
+					</array>
+					<array>
 						<real>0.0</real>
 						<real>53.5703125</real>
 					</array>
 					<array>
 						<real>0.0</real>
-						<real>0.0</real>
+						<real>-99.14453125</real>
 					</array>
 				</array>
 			</array>
@@ -168,7 +220,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/road.png</string>
+					<string>Resources/road_crack copy.png</string>
 				</array>
 			</dict>
 			<dict>

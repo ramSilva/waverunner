@@ -85,6 +85,13 @@
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
+		<key>Resources/road_crack copy.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>4</integer>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>

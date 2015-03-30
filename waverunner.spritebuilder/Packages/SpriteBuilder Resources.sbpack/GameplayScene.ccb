@@ -1497,7 +1497,7 @@
 								<key>displayName</key>
 								<string>Ground</string>
 								<key>memberVarAssignmentName</key>
-								<string>_g2</string>
+								<string>_g1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1518,7 +1518,7 @@
 										<key>value</key>
 										<array>
 											<real>0.0</real>
-											<real>35</real>
+											<real>-10</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1559,7 +1559,7 @@
 								<key>displayName</key>
 								<string>Ground</string>
 								<key>memberVarAssignmentName</key>
-								<string>_g1</string>
+								<string>_g2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1580,7 +1580,7 @@
 										<key>value</key>
 										<array>
 											<real>255</real>
-											<real>35</real>
+											<real>-10</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1642,7 +1642,7 @@
 										<key>value</key>
 										<array>
 											<real>510</real>
-											<real>35</real>
+											<real>-10</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1704,7 +1704,7 @@
 										<key>value</key>
 										<array>
 											<real>765</real>
-											<real>35</real>
+											<real>-10</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1732,6 +1732,8 @@
 										<string>Ground.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>
@@ -3044,8 +3046,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
