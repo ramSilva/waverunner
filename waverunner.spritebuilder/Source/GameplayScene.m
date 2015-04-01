@@ -7,6 +7,7 @@
 //
 
 #import "GameplayScene.h"
+#import "Coin.h"
 
 @implementation GameplayScene
 
@@ -24,11 +25,11 @@
         [_physicsNode addChild:cracked];
     }
     
-    _physicsNode.collisionDelegate = self;
+    _physicsNode.collisionDelegate = _player;
     
     self.userInteractionEnabled = TRUE;
     
-    _physicsNode.debugDraw = TRUE;
+    //_physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     
@@ -39,7 +40,7 @@
 }
 
 - (void)update:(CCTime)delta{
-    CGFloat playerSpeed = [_player getSpeed];
+    CGFloat playerSpeed = [_player runSpeed];
     
     _player.position = ccp(_player.position.x + delta*playerSpeed, _player.position.y);
     _gameOverNode.position = ccp(_gameOverNode.position.x + delta*playerSpeed, _gameOverNode.position.y);
@@ -72,17 +73,12 @@
     }
 }
 
+- (void)menu{
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
+}
+
 - (void)hit{
     [_player hit];
-}
-
-- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
-    [_player land];
-    return TRUE;
-}
-
-- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
-    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
@@ -151,7 +147,7 @@
             
             if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
                 if(count_obstacles_added == [ground numberOfObstaclesInArray]) {
-                    obstacle = [CCBReader load:@"Obstacles"];
+                    obstacle = [CCBReader load:@"Obstacle"];
                     
                     if(pos_x == first_x) {
                        pos_x = pos_x + (obstacle.boundingBox.size.width / 2);
@@ -205,7 +201,7 @@
     
     if(drand48() < CHANCE_COINS) {
         for(float x = first_x; x < last_x; ) {
-            CCNode* coin;
+            Coin* coin;
             float pos_x = x;
             
             if(count_coins < number_coins_together) {
@@ -255,7 +251,7 @@
                 }
                 
                 if(count_coins_added == [g numberOfCoinsInArray]) {
-                    coin = [CCBReader load:@"Coins"];
+                    coin = (Coin*)[CCBReader load:@"Coin"];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (coin.boundingBox.size.width / 2);
@@ -266,7 +262,7 @@
                     [_physicsNode addChild:coin];
                     [g addCoin:coin];
                 } else {
-                    coin = [g getFirstCoin];
+                    coin = (Coin*)[g getFirstCoin];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (coin.boundingBox.size.width / 2);

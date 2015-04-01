@@ -40,7 +40,7 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>Ground</string>
+		<string>Obstacle</string>
 		<key>displayName</key>
 		<string>CCSprite</string>
 		<key>memberVarAssignmentName</key>
@@ -70,96 +70,44 @@
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
-			<real>0.0</real>
+			<real>0.30000001192092896</real>
 			<key>points</key>
 			<array>
 				<array>
 					<real>0.0</real>
-					<real>-99.14453125</real>
+					<real>0.0</real>
 				</array>
 				<array>
 					<real>0.0</real>
-					<real>53.5703125</real>
+					<real>12</real>
 				</array>
 				<array>
-					<real>75.652374267578125</real>
-					<real>53.5703125</real>
+					<real>13</real>
+					<real>12</real>
 				</array>
 				<array>
-					<real>75.652374267578125</real>
-					<real>-88.5625</real>
-				</array>
-				<array>
-					<real>176.75396728515625</real>
-					<real>-88.5625</real>
-				</array>
-				<array>
-					<real>176.75396728515625</real>
-					<real>53.5703125</real>
-				</array>
-				<array>
-					<real>256</real>
-					<real>53.5703125</real>
-				</array>
-				<array>
-					<real>256</real>
-					<real>-99.14453125</real>
+					<real>13</real>
+					<real>0.0</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>256</real>
-						<real>-99.14453125</real>
-					</array>
-					<array>
-						<real>256</real>
-						<real>53.5703125</real>
-					</array>
-					<array>
-						<real>176.75396728515625</real>
-						<real>53.5703125</real>
-					</array>
-					<array>
-						<real>176.75396728515625</real>
-						<real>-88.5625</real>
-					</array>
-				</array>
-				<array>
-					<array>
+						<real>13</real>
 						<real>0.0</real>
-						<real>-99.14453125</real>
 					</array>
 					<array>
-						<real>256</real>
-						<real>-99.14453125</real>
-					</array>
-					<array>
-						<real>176.75396728515625</real>
-						<real>-88.5625</real>
-					</array>
-					<array>
-						<real>75.652374267578125</real>
-						<real>-88.5625</real>
-					</array>
-				</array>
-				<array>
-					<array>
-						<real>75.652374267578125</real>
-						<real>-88.5625</real>
-					</array>
-					<array>
-						<real>75.652374267578125</real>
-						<real>53.5703125</real>
+						<real>13</real>
+						<real>12</real>
 					</array>
 					<array>
 						<real>0.0</real>
-						<real>53.5703125</real>
+						<real>12</real>
 					</array>
 					<array>
 						<real>0.0</real>
-						<real>-99.14453125</real>
+						<real>0.0</real>
 					</array>
 				</array>
 			</array>
@@ -195,8 +143,8 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.0</real>
-					<real>0.0</real>
+					<real>0.5</real>
+					<real>0.5</real>
 				</array>
 			</dict>
 			<dict>
@@ -220,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/road_crack.png</string>
+					<string>Resources/seal.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -241,10 +189,10 @@
 				<string>Color3</string>
 				<key>value</key>
 				<array>
-					<real>0.47993385791778564</real>
-					<real>0.47993385791778564</real>
-					<real>0.47993385791778564</real>
-					<real>0.47993385791778564</real>
+					<real>1</real>
+					<real>1</real>
+					<real>1</real>
+					<real>1</real>
 				</array>
 			</dict>
 			<dict>

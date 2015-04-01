@@ -9,6 +9,7 @@
 #import "CCScene.h"
 #import "Player.h"
 #import "Ground.h"
+#import "GameOver.h"
 
 #define SCROLL_SPEED 180.0f
 #define BACKGROUND1_MULT 0.10f
@@ -22,13 +23,16 @@ static float const DISTANCE_BETWEEN_COINS = 50.0f;
 static float const MIN_DISTANCE_COIN_FROM_OBSTACLE = 5.0f;
 static float const MAX_HEIGHT_COINS = 150.0f;
 static float const MIN_HEIGHT_COINS = 50.0f;
-static int const MAX_OBSTACLES_TOGETHER = 3;
+static int const MAX_OBSTACLES_TOGETHER = 1;
 static int const MAX_COINS_TOGETHER = 3;
-static float const CHANCE_OBSTACLES = 0.5f;
-static float const CHANCE_COINS = 0.5f;
+static float const CHANCE_OBSTACLES = 1.0f;
+static float const CHANCE_COINS = 1.0f;
 
-@interface GameplayScene : CCScene <CCPhysicsCollisionDelegate>{
-    CCNode *_contentNode, *_gameOverNode;
+@class Coin;
+
+@interface GameplayScene : CCScene{
+    CCNode *_contentNode;
+    GameOver *_gameOverNode;
     CCPhysicsNode *_physicsNode;
     Player *_player;
     

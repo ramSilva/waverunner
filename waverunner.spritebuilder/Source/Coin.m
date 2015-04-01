@@ -1,18 +1,18 @@
 //
-//  GameOver.m
+//  Coin.m
 //  waverunner
 //
-//  Created by Waverunner on 29/03/15.
+//  Created by Waverunner on 01/04/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "GameOver.h"
+#import "Coin.h"
 
-@implementation GameOver
+@implementation Coin
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionMask = @[@"player"];
-    self.physicsBody.collisionType = @"gameOver";
+    self.physicsBody.collisionType = @"coin";
     self.physicsBody.sensor = TRUE;
 }
 

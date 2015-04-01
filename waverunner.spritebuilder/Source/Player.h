@@ -8,18 +8,19 @@
 
 #import "CCSprite.h"
 
-#define BASE_SPEED 101.0f
+#define BASE_SPEED 200.0f
 #define BASE_JUMP 250.0f
 #define SPEED_TO_ANIMATION 0.004f
 
-@interface Player : CCSprite{
+@interface Player : CCSprite<CCPhysicsCollisionDelegate>{
     CGFloat _runSpeed;
     CGFloat _jumpHeight;
     BOOL _airborne;
     BOOL _doubleJump;
 }
 
-- (CGFloat)getSpeed;
+@property (nonatomic, readonly) CGFloat runSpeed;
+
 - (void)jump;
 - (void)land;
 - (void)hit;

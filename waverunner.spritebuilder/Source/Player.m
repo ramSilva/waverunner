@@ -9,6 +9,7 @@
 #import "Player.h"
 
 @implementation Player
+@synthesize runSpeed = _runSpeed;
 
 - (void)didLoadFromCCB{
     _runSpeed = BASE_SPEED;//*[[GameManager sharedGameManager] speedLevel];
@@ -70,8 +71,25 @@
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed];
 }
 
-- (CGFloat)getSpeed{
-    return _runSpeed;
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [self land];
+    return TRUE;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
+    return TRUE;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [nodeA.parent removeChild:nodeA];
+    return TRUE;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair obstacle:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [self hit];
+    //[nodeA.parent removeChild:nodeA];
+    return TRUE;
 }
 
 @end

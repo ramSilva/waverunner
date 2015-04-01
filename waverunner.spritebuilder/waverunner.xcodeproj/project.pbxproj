@@ -12,6 +12,9 @@
 		74418E441AC83BF300F4AB35 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 74418E431AC83BF300F4AB35 /* Player.m */; };
 		746ED5321AC86CF900828679 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 746ED5311AC86CF900828679 /* GameOver.m */; };
 		74AD37471AC8438F00C8B680 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD37461AC8438F00C8B680 /* Ground.m */; };
+		74B1BE221ACC5ED900DBDD79 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B1BE211ACC5ED900DBDD79 /* GameManager.m */; };
+		74B1BE2B1ACC614400DBDD79 /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B1BE2A1ACC614400DBDD79 /* Coin.m */; };
+		74B1BE2E1ACC615400DBDD79 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B1BE2D1ACC615400DBDD79 /* Obstacle.m */; };
 		74DF54041AC810DF0016C99A /* GameplayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DF54031AC810DF0016C99A /* GameplayScene.m */; };
 		7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B7378993180767190076A88C /* MainScene.m */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
@@ -169,6 +172,12 @@
 		746ED5311AC86CF900828679 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		74AD37451AC8438F00C8B680 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Source/Ground.h; sourceTree = "<group>"; };
 		74AD37461AC8438F00C8B680 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ground.m; path = Source/Ground.m; sourceTree = "<group>"; };
+		74B1BE201ACC5ED900DBDD79 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = Source/GameManager.h; sourceTree = "<group>"; };
+		74B1BE211ACC5ED900DBDD79 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = Source/GameManager.m; sourceTree = "<group>"; };
+		74B1BE291ACC614400DBDD79 /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Coin.h; path = Source/Coin.h; sourceTree = "<group>"; };
+		74B1BE2A1ACC614400DBDD79 /* Coin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Coin.m; path = Source/Coin.m; sourceTree = "<group>"; };
+		74B1BE2C1ACC615400DBDD79 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Source/Obstacle.h; sourceTree = "<group>"; };
+		74B1BE2D1ACC615400DBDD79 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Source/Obstacle.m; sourceTree = "<group>"; };
 		74DF54021AC810DF0016C99A /* GameplayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameplayScene.h; path = Source/GameplayScene.h; sourceTree = "<group>"; };
 		74DF54031AC810DF0016C99A /* GameplayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameplayScene.m; path = Source/GameplayScene.m; sourceTree = "<group>"; };
 		7A4035FF19DDEE84007B6E8F /* waverunner Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "waverunner Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,17 +458,23 @@
 			isa = PBXGroup;
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
+				74B1BE201ACC5ED900DBDD79 /* GameManager.h */,
+				74B1BE211ACC5ED900DBDD79 /* GameManager.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				74DF54021AC810DF0016C99A /* GameplayScene.h */,
 				74DF54031AC810DF0016C99A /* GameplayScene.m */,
-				746ED5301AC86CF900828679 /* GameOver.h */,
-				746ED5311AC86CF900828679 /* GameOver.m */,
 				74418E421AC83BF300F4AB35 /* Player.h */,
 				74418E431AC83BF300F4AB35 /* Player.m */,
 				74AD37451AC8438F00C8B680 /* Ground.h */,
 				74AD37461AC8438F00C8B680 /* Ground.m */,
+				746ED5301AC86CF900828679 /* GameOver.h */,
+				746ED5311AC86CF900828679 /* GameOver.m */,
+				74B1BE291ACC614400DBDD79 /* Coin.h */,
+				74B1BE2A1ACC614400DBDD79 /* Coin.m */,
+				74B1BE2C1ACC615400DBDD79 /* Obstacle.h */,
+				74B1BE2D1ACC615400DBDD79 /* Obstacle.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -632,6 +647,7 @@
 						CreatedOnToolsVersion = 6.0.1;
 					};
 					B77F1B2D17B978D7009739AE = {
+						DevelopmentTeam = 5P6657CR5M;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 0;
@@ -838,9 +854,12 @@
 			files = (
 				74AD37471AC8438F00C8B680 /* Ground.m in Sources */,
 				74DF54041AC810DF0016C99A /* GameplayScene.m in Sources */,
+				74B1BE2E1ACC615400DBDD79 /* Obstacle.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				746ED5321AC86CF900828679 /* GameOver.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
+				74B1BE2B1ACC614400DBDD79 /* Coin.m in Sources */,
+				74B1BE221ACC5ED900DBDD79 /* GameManager.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				74418E441AC83BF300F4AB35 /* Player.m in Sources */,
 			);
