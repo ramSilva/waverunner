@@ -1,109 +1,27 @@
 //
-//  GameplayScene.m
+//  LevelGeneratorSideScroll.m
 //  waverunner
 //
-//  Created by Waverunner on 29/03/15.
+//  Created by Alexandre Freitas on 01/04/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "GameplayScene.h"
-<<<<<<< Updated upstream
-#import "Coin.h"
-=======
-#import "CCScene.h"
-#import "Player.h"
-#import "Ground.h"
-#import "LevelGenerator.h"
 #import "LevelGeneratorSideScroll.h"
->>>>>>> Stashed changes
+#import "Ground.h"
+#import "Player.h"
 
-@implementation GameplayScene
+@implementation LevelGeneratorSideScroll
 
-- (void)didLoadFromCCB{
-    _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
-    _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
-    _grounds = @[_g1, _g2, _g3, _g4];
+-(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn {
+    _grounds = [g copy];
+    _grounds_cracked = [gc copy];
+    _player = p;
+    _physicsNode = pn;
     
-    NSMutableArray *_g_cracked = [[NSMutableArray alloc] init];
+    //Initialize seed
+    srand48(arc4random());
     
-    for(int i = 0; i < _grounds.count; i++) {
-        Ground* cracked = (Ground*)[CCBReader load:@"Ground_Cracked"];
-        cracked.position = ccp(0.0f, -100.0f);
-        [_g_cracked insertObject:cracked atIndex:i];
-        [_physicsNode addChild:cracked];
-    }
-    
-<<<<<<< Updated upstream
-    _physicsNode.collisionDelegate = _player;
-=======
-    _grounds_cracked = [_g_cracked copy];
-    
-    _physicsNode.collisionDelegate = self;
->>>>>>> Stashed changes
-    
-    self.userInteractionEnabled = TRUE;
-    
-    //_physicsNode.debugDraw = TRUE;
-    
-    _player.zOrder = 1;
-    
-    _lg = [[LevelGeneratorSideScroll alloc] init];
-    
-    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode];
-}
-
-- (void)update:(CCTime)delta{
-    CGFloat playerSpeed = [_player runSpeed];
-    
-    _player.position = ccp(_player.position.x + delta*playerSpeed, _player.position.y);
-    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*playerSpeed, _gameOverNode.position.y);
-    _physicsNode.position = ccp(_physicsNode.position.x - delta*playerSpeed, _physicsNode.position.y);
-    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*playerSpeed*BACKGROUND1_MULT, _backgrounds1node.position.y);
-    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*playerSpeed*BACKGROUND2_MULT, _backgrounds2node.position.y);
-    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*playerSpeed*BACKGROUND3_MULT, _backgrounds3node.position.y);
-    _moon.position = ccp(_moon.position.x - delta*playerSpeed*MOON_MULT, _moon.position.y);
-
-    [self loopSprites:_backgrounds1];
-    [self loopSprites:_backgrounds2];
-    
-    [_lg updateLevel];
-}
-
--(void) loopSprites:(NSArray*)array{
-    // loop the ground
-    for (CCNode *currentSprite in array) {
-        // get the world position of the ground
-        CGPoint groundWorldPosition = [currentSprite.parent convertToWorldSpace:currentSprite.position];
-        // get the screen position of the ground
-        CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
-        // if the left corner is one complete width off the screen, move it to the right
-        if (groundScreenPosition.x <= (-1 * currentSprite.contentSize.width)) {
-            currentSprite.position = ccp((currentSprite.position.x + [array count] * currentSprite.contentSize.width)-4, currentSprite.position.y);//minus array count needed to adjust a black pixel on the sprites
-        }
-    }
-}
-
-- (void)menu{
-    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
-}
-
-- (void)hit{
-    [_player hit];
-}
-
-- (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
-    [_player jump];
-}
-
-<<<<<<< Updated upstream
-- (void) updateGround {
-    for(int i = 0; i < _grounds.count; i++) {
-        Ground *g = [_grounds objectAtIndex:i];
-        Ground *g2 = [_grounds objectAtIndex:(i + 3) % _grounds.count];
-        Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
-        
-        [g updatePosition :_player :g2 :g_cracked];
-    }
+    [self initContent];
 }
 
 - (void) initContent {
@@ -112,20 +30,8 @@
         
         [self insertObstacles :ground];
         [self insertCoins :ground :i];
-        [ground setReadyForContent :false];
+        ground.ready_for_content = false;
         
-    }
-}
-
-- (void) updateContent {
-    for(int i = 0; i < _grounds.count; i++) {
-        Ground* ground = [_grounds objectAtIndex:i];
-        
-        if([ground isReadyForContent]) {
-            [self insertObstacles :ground];
-            [self insertCoins :ground :i];
-            [ground setReadyForContent :false];
-        }
     }
 }
 
@@ -136,7 +42,7 @@
     int count_obstacles_added = 0;
     int number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
     bool space_between_obstacles = false;
-    bool gap = [ground hasGap];
+    bool gap = ground.ground_gap;
     
     if(drand48() < CHANCE_OBSTACLES && !gap) {
         for(float x = first_x; x < last_x; ) {
@@ -158,13 +64,13 @@
             
             if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
                 if(count_obstacles_added == [ground numberOfObstaclesInArray]) {
-                    obstacle = [CCBReader load:@"Obstacle"];
+                    obstacle = [CCBReader load:@"Obstacles"];
                     
                     if(pos_x == first_x) {
-                       pos_x = pos_x + (obstacle.boundingBox.size.width / 2);
+                        pos_x = pos_x + (obstacle.boundingBox.size.width / 2);
                     }
                     
-                    obstacle.position = ccp(pos_x, ground.boundingBox.size.height + 1.0f);
+                    obstacle.position = ccp(pos_x, 80.0f);
                     
                     [_physicsNode addChild:obstacle];
                     [ground addObstacle:obstacle];
@@ -175,7 +81,7 @@
                         pos_x = pos_x + (obstacle.boundingBox.size.width / 2);
                     }
                     
-                    obstacle.position = ccp(pos_x, ground.boundingBox.size.height + 1.0f);
+                    obstacle.position = ccp(pos_x, 80.0f);
                     
                     [ground updateObstaclePosition :obstacle];
                 }
@@ -187,32 +93,32 @@
         }
     }
     
-    [ground setNumberOfObstacles :count_obstacles_added];
+    ground.number_obstacles = count_obstacles_added;
 }
 
 
-- (void) insertCoins:(Ground*)ground :(int)index{
+- (void) insertCoins:(Ground*)ground :(int)index {
     Ground* g = ground;
     float first_x = ground.position.x;
-    int ground_number_obstacles = [ground numberOfObstacles];
+    int ground_number_obstacles = ground.number_obstacles;
     float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_NEXT_GROUND_COINS;
     int count_coins = 0;
     int count_coins_added = 0;
     int number_coins_together = (arc4random() % MAX_COINS_TOGETHER) + 1;
     bool space_between_coins = false;
     float pos_y = 0.0f;
-    bool gap = [ground hasGap];
+    bool gap = ground.ground_gap;
     
     if(gap) {
         g = [_grounds_cracked objectAtIndex:index];
         first_x = g.position.x;
-        ground_number_obstacles = [g numberOfObstacles];
+        ground_number_obstacles = g.number_obstacles;
         last_x = first_x + g.boundingBox.size.width - DISTANCE_FROM_NEXT_GROUND_COINS;
     }
     
     if(drand48() < CHANCE_COINS) {
         for(float x = first_x; x < last_x; ) {
-            Coin* coin;
+            CCNode* coin;
             float pos_x = x;
             
             if(count_coins < number_coins_together) {
@@ -233,9 +139,9 @@
                 //If there is a gap, coins must be above of the gap
                 if(ground_number_obstacles == 0) {
                     if(gap) {
-                        pos_y = (g.boundingBox.size.height + 1.0f + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
+                        pos_y = (80.0f + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
                     } else {
-                        pos_y = g.boundingBox.size.height + 1.0f + (drand48() * MAX_HEIGHT_COINS);
+                        pos_y = 80.0f + (drand48() * MAX_HEIGHT_COINS);
                     }
                     //If number of coins added is greater or equal than number of obstacles,
                     //next coin can be on top of the ground, having an obstacle on its left, or above the ground
@@ -243,7 +149,7 @@
                     NSMutableArray *obstacles = [g getObstacles];
                     CCNode* last_obs = [obstacles objectAtIndex:(obstacles.count - 1)];
                     
-                    pos_y = g.boundingBox.size.height + 1.0f + (drand48() * MAX_HEIGHT_COINS);
+                    pos_y = _player.position.y + (drand48() * MAX_HEIGHT_COINS);
                     pos_x = pos_x + (last_obs.boundingBox.size.width / 2) + MIN_DISTANCE_COIN_FROM_OBSTACLE;
                     //Else get the minimum y position available for the coin
                 } else {
@@ -262,7 +168,7 @@
                 }
                 
                 if(count_coins_added == [g numberOfCoinsInArray]) {
-                    coin = (Coin*)[CCBReader load:@"Coin"];
+                    coin = [CCBReader load:@"Coins"];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (coin.boundingBox.size.width / 2);
@@ -273,7 +179,7 @@
                     [_physicsNode addChild:coin];
                     [g addCoin:coin];
                 } else {
-                    coin = (Coin*)[g getFirstCoin];
+                    coin = [g getFirstCoin];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (coin.boundingBox.size.width / 2);
@@ -291,9 +197,34 @@
         }
     }
     
-    [g setNumberOfCoins :count_coins_added];
+    g.number_coins = count_coins_added;
 }
 
-=======
->>>>>>> Stashed changes
+- (void) updateGround {
+    for(int i = 0; i < _grounds.count; i++) {
+        Ground *g = [_grounds objectAtIndex:i];
+        Ground *g2 = [_grounds objectAtIndex:(i + 3) % _grounds.count];
+        Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
+        
+        [g updatePosition :_player :g2 :g_cracked];
+    }
+}
+
+- (void) updateContent {
+    for(int i = 0; i < _grounds.count; i++) {
+        Ground* ground = [_grounds objectAtIndex:i];
+        
+        if(ground.ready_for_content) {
+            [self insertObstacles :ground];
+            [self insertCoins :ground :i];
+            ground.ready_for_content = false;
+        }
+    }
+}
+
+- (void) updateLevel {
+    [self updateGround];
+    [self updateContent];
+}
+
 @end

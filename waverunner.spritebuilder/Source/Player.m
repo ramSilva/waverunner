@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "CCSprite.h"
 
 @implementation Player
 @synthesize runSpeed = _runSpeed;

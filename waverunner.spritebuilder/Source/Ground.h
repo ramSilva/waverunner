@@ -6,31 +6,25 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "CCSprite.h"
+@class CCSprite;
 
 static float const CHANCE_GAP = 0.1f;
-static float const GROUND_BLOCKS_DISTANCE = 2.0f;
+static float const GROUND_BLOCKS_DISTANCE = 1.0f;
 static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
 @interface Ground : CCSprite {
-    bool ground_gap;
-    int number_obstacles;
-    int number_coins;
     int original_y;
-    bool ready_for_content;
     NSMutableArray *obstacles;
     NSMutableArray *coins;
 }
 
-- (bool)hasGap;
-- (bool)isReadyForContent;
-- (void)setReadyForContent:(bool)state;
+@property(nonatomic,readonly) bool ground_gap;
+@property(nonatomic,readwrite) bool ready_for_content;
+@property(nonatomic,readwrite) int number_obstacles;
+@property(nonatomic,readwrite) int number_coins;
+
 - (int)numberOfObstaclesInArray;
 - (int)numberOfCoinsInArray;
-- (void)setNumberOfObstacles:(int)number;
-- (void)setNumberOfCoins:(int)number;
-- (int)numberOfObstacles;
-- (int)numberOfCoins;
 - (void)addObstacle:(CCNode*)obs;
 - (CCNode*)getFirstObstacle;
 - (void)updateObstaclePosition:(CCNode*)obs;

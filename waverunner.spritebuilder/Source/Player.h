@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "CCSprite.h"
+@class CCSprite;
 
 #define BASE_SPEED 200.0f
 #define BASE_JUMP 250.0f

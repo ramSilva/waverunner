@@ -7,6 +7,7 @@
 //
 
 #import "GameOver.h"
+#import "CCNode.h"
 
 @implementation GameOver
 

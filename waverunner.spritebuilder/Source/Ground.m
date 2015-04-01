@@ -6,9 +6,19 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
+//Converter nsarray para ns mutable e vice versa - se possivel usar CCARRAY - melhor performance
+//@class em vez de import "class.h"
+//#pragma mark para dividir metodos por grupos
+//properties para criar gets e sets
 #import "Ground.h"
+#import "CCSprite.h"
 
 @implementation Ground
+
+@synthesize ground_gap;
+@synthesize ready_for_content;
+@synthesize number_coins;
+@synthesize number_obstacles;
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionType = @"ground";
@@ -21,40 +31,12 @@
     coins = [[NSMutableArray alloc] init];
 }
 
-- (bool) hasGap {
-    return ground_gap;
-}
-
-- (bool) isReadyForContent {
-    return ready_for_content;
-}
-
-- (void) setReadyForContent:(bool)state {
-    ready_for_content = state;
-}
-
 - (int) numberOfObstaclesInArray {
     return (int)obstacles.count;
 }
 
 - (int) numberOfCoinsInArray {
     return (int)coins.count;
-}
-
-- (void) setNumberOfObstacles:(int)number {
-    number_obstacles = number;
-}
-
-- (void) setNumberOfCoins:(int)number {
-    number_coins = number;
-}
-
-- (int) numberOfObstacles {
-    return number_obstacles;
-}
-
-- (int) numberOfCoins {
-    return number_coins;
 }
 
 - (void) addObstacle:(CCNode*)obs {
@@ -104,7 +86,7 @@
     float node2_x = node2.position.x;
     float node2_width = node2.boundingBox.size.width;
     
-    if(player_x > (x + (GROUND_BLOCKS_DISTANCE * width))) {
+    if(player_x > (x + width) + (GROUND_BLOCKS_DISTANCE * width)) {
         self.position = ccp(node2_x + node2_width - 1, original_y);
         [self insertGap :cracked];
         ready_for_content = true;
