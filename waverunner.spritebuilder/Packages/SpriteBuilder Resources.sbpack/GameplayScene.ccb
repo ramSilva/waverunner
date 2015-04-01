@@ -1685,7 +1685,7 @@
 										<key>value</key>
 										<array>
 											<real>128</real>
-											<real>56</real>
+											<real>80</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1713,6 +1713,8 @@
 										<string>Player.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2874,8 +2876,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

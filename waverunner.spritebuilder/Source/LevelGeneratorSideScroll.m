@@ -64,7 +64,7 @@
             
             if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
                 if(count_obstacles_added == [ground numberOfObstaclesInArray]) {
-                    obstacle = [CCBReader load:@"Obstacles"];
+                    obstacle = [CCBReader load:@"Obstacle"];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (obstacle.boundingBox.size.width / 2);
@@ -168,7 +168,7 @@
                 }
                 
                 if(count_coins_added == [g numberOfCoinsInArray]) {
-                    coin = [CCBReader load:@"Coins"];
+                    coin = [CCBReader load:@"Coin"];
                     
                     if(pos_x == first_x) {
                         pos_x = pos_x + (coin.boundingBox.size.width / 2);

@@ -471,15 +471,12 @@
 				D352B48019EC608A00829775 /* MetalShaders */,
 				74DF54021AC810DF0016C99A /* GameplayScene.h */,
 				74DF54031AC810DF0016C99A /* GameplayScene.m */,
-<<<<<<< Updated upstream
-=======
 				7B2BCED51ACC4C260061F8A0 /* LevelGenerator.h */,
 				7B2BCED61ACC4C260061F8A0 /* LevelGenerator.m */,
 				7B2BCEDA1ACC60100061F8A0 /* LevelGeneratorSideScroll.h */,
 				7B2BCEDB1ACC60100061F8A0 /* LevelGeneratorSideScroll.m */,
 				746ED5301AC86CF900828679 /* GameOver.h */,
 				746ED5311AC86CF900828679 /* GameOver.m */,
->>>>>>> Stashed changes
 				74418E421AC83BF300F4AB35 /* Player.h */,
 				74418E431AC83BF300F4AB35 /* Player.m */,
 				74AD37451AC8438F00C8B680 /* Ground.h */,
@@ -869,12 +866,9 @@
 			files = (
 				74AD37471AC8438F00C8B680 /* Ground.m in Sources */,
 				74DF54041AC810DF0016C99A /* GameplayScene.m in Sources */,
-<<<<<<< Updated upstream
 				74B1BE2E1ACC615400DBDD79 /* Obstacle.m in Sources */,
-=======
 				7B2BCEDC1ACC60100061F8A0 /* LevelGeneratorSideScroll.m in Sources */,
 				7B2BCED71ACC4C260061F8A0 /* LevelGenerator.m in Sources */,
->>>>>>> Stashed changes
 				B73789871807631A0076A88C /* main.m in Sources */,
 				746ED5321AC86CF900828679 /* GameOver.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
