@@ -61,7 +61,11 @@
 }
 
 - (CCNode*) getFirstCoin {
-    return [coins objectAtIndex:0];
+    CCNode* c = [coins objectAtIndex:0];
+    
+    c.visible = YES;
+    
+    return c;
 }
 
 - (void) updateCoinPosition:(CCNode*)coin {
