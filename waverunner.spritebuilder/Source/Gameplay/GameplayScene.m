@@ -49,15 +49,15 @@
 }
 
 - (void)update:(CCTime)delta{
-    CGFloat playerSpeed = [_player runSpeed];
+    CGPoint playerSpeed = [_player runSpeed];
     
-    _player.position = ccp(_player.position.x + delta*playerSpeed, _player.position.y);
-    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*playerSpeed, _gameOverNode.position.y);
-    _physicsNode.position = ccp(_physicsNode.position.x - delta*playerSpeed, _physicsNode.position.y);
-    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*playerSpeed*BACKGROUND1_MULT, _backgrounds1node.position.y);
-    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*playerSpeed*BACKGROUND2_MULT, _backgrounds2node.position.y);
-    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*playerSpeed*BACKGROUND3_MULT, _backgrounds3node.position.y);
-    _moon.position = ccp(_moon.position.x - delta*playerSpeed*MOON_MULT, _moon.position.y);
+    _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
+    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*playerSpeed.x, _gameOverNode.position.y);
+    _physicsNode.position = ccp(_physicsNode.position.x - delta*playerSpeed.x, _physicsNode.position.y);
+    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*playerSpeed.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*playerSpeed.y*BACKGROUND1_MULT);
+    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*playerSpeed.x*BACKGROUND2_MULT, _backgrounds2node.position.y- delta*playerSpeed.y*BACKGROUND2_MULT);
+    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*playerSpeed.x*BACKGROUND3_MULT, _backgrounds3node.position.y- delta*playerSpeed.y*BACKGROUND3_MULT);
+    _moon.position = ccp(_moon.position.x - delta*playerSpeed.x*MOON_MULT, _moon.position.y - delta*playerSpeed.y*MOON_MULT);
 
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];

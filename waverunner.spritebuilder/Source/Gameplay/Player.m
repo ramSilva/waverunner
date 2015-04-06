@@ -13,7 +13,7 @@
 @synthesize runSpeed = _runSpeed;
 
 - (void)didLoadFromCCB{
-    _runSpeed = BASE_SPEED;//*[[GameManager sharedGameManager] speedLevel];
+    _runSpeed = ccp(BASE_SPEED, 0);//*[[GameManager sharedGameManager] speedLevel];
     _jumpHeight = BASE_JUMP;//*[[GameManager sharedGameManager] jumpLevel];
     self.physicsBody.collisionType = @"player";
     
@@ -21,7 +21,7 @@
     _doubleJump = FALSE;
     
     CCAnimationManager *animationManager = self.animationManager;
-    [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed];
+    [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
 }
 
 - (void)update:(CCTime)delta{
@@ -31,7 +31,7 @@
 - (void)jump{
     if(!_airborne){
         [self.animationManager runAnimationsForSequenceNamed:@"Jump"];
-        [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed];
+        [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
         [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
         _airborne = TRUE;
     }
@@ -46,14 +46,14 @@
 - (void)land{
     if(_airborne){
         [self.animationManager runAnimationsForSequenceNamed:@"Run"];
-        [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed];
+        [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
         _airborne = FALSE;
         _doubleJump = FALSE;
     }
 }
 
 - (void)hit{
-    [self changeRunSpeed:-5.0f];
+    [self changeRunSpeed:ccp(-5.0f, 0)];
     
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
     CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:0.7f position:ccp(-7.0f, 0.0f)];
@@ -65,11 +65,11 @@
     [self.animationManager runAnimationsForSequenceNamed:@"Run"];
 }
 
-- (void)changeRunSpeed:(CGFloat)changeAmount{
-    _runSpeed += changeAmount;
-    printf("speed: %f\n", _runSpeed);
+- (void)changeRunSpeed:(CGPoint)changeAmount{
+    _runSpeed.x += changeAmount.x;
+    _runSpeed.y += changeAmount.y;
     CCAnimationManager *animationManager = self.animationManager;
-    [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed];
+    [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{

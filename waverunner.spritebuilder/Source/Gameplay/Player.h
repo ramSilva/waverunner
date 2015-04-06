@@ -13,17 +13,17 @@
 #define SPEED_TO_ANIMATION 0.004f
 
 @interface Player : CCSprite<CCPhysicsCollisionDelegate>{
-    CGFloat _runSpeed;
+    CGPoint _runSpeed;
     CGFloat _jumpHeight;
     BOOL _airborne;
     BOOL _doubleJump;
 }
 
-@property (nonatomic, readonly) CGFloat runSpeed;
+@property (nonatomic, readonly) CGPoint runSpeed;
 
 - (void)jump;
 - (void)land;
 - (void)hit;
-- (void)changeRunSpeed:(CGFloat)changeAmount;
+- (void)changeRunSpeed:(CGPoint)changeAmount;
 
 @end
