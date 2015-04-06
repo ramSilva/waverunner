@@ -14,7 +14,8 @@
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
 - (void)initContent;
-- (void)insertObstacles:(Ground*)ground;
+- (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
+- (void)insertObstacles:(Ground*)ground :(int)index;
 - (void)insertCoins:(Ground*)ground :(int)index;
 - (void)updateGround;
 - (void)updateContent;

@@ -26,6 +26,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 - (int)numberOfObstaclesInArray;
 - (int)numberOfCoinsInArray;
 - (void)addObstacle:(CCNode*)obs;
+- (CCNode*)getLastObstacle;
 - (CCNode*)getFirstObstacle;
 - (void)updateObstaclePosition:(CCNode*)obs;
 - (void)addCoin:(CCNode*)coin;

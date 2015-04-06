@@ -47,6 +47,10 @@
     return [obstacles objectAtIndex:0];
 }
 
+- (CCNode*) getLastObstacle {
+    return [obstacles objectAtIndex:(obstacles.count - 1)];
+}
+
 - (void) updateObstaclePosition:(CCNode*)obs {
     [obstacles removeObjectAtIndex:0];
     [self addObstacle :obs];

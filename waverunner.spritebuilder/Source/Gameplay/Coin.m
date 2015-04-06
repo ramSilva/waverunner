@@ -12,6 +12,7 @@
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionMask = @[@"player"];
+    //BUG: When player collides with a coin, the coin gets deleted and what we want is to make the coin disappear!
     self.physicsBody.collisionType = @"coin";
     self.physicsBody.sensor = TRUE;
 }
