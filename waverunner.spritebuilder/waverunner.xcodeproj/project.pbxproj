@@ -387,6 +387,7 @@
 		740A3ECB1AD2CC8300C96970 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				740EFF1C1AD2E94D000791BE /* Player */,
 				740A3ECC1AD2CC8300C96970 /* Coin.h */,
 				740A3ECD1AD2CC8300C96970 /* Coin.m */,
 				740A3ECE1AD2CC8300C96970 /* GameOver.h */,
@@ -397,11 +398,18 @@
 				740A3ED31AD2CC8300C96970 /* Ground.m */,
 				740A3ED41AD2CC8300C96970 /* Obstacle.h */,
 				740A3ED51AD2CC8300C96970 /* Obstacle.m */,
-				740A3ED61AD2CC8300C96970 /* Player.h */,
-				740A3ED71AD2CC8300C96970 /* Player.m */,
 			);
 			name = Gameplay;
 			path = Source/Gameplay;
+			sourceTree = "<group>";
+		};
+		740EFF1C1AD2E94D000791BE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				740A3ED61AD2CC8300C96970 /* Player.h */,
+				740A3ED71AD2CC8300C96970 /* Player.m */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		7A40362019DDEF0D007B6E8F /* Platforms */ = {

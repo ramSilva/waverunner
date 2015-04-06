@@ -17,6 +17,7 @@
     CGFloat _jumpHeight;
     BOOL _airborne;
     BOOL _doubleJump;
+    BOOL _hit;
 }
 
 @property (nonatomic, readonly) CGPoint runSpeed;
