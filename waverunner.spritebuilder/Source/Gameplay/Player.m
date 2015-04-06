@@ -83,7 +83,8 @@
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)nodeA player:(CCNode *)nodeB{
-    [nodeA.parent removeChild:nodeA];
+    nodeA.visible = NO;
+    //[nodeA.parent removeChild:nodeA];
     return TRUE;
 }
 
