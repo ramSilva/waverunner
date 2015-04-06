@@ -13,6 +13,7 @@
 #import "Ground.h"
 #import "LevelGenerator.h"
 #import "LevelGeneratorSideScroll.h"
+#import "RunIH.h"
 
 @implementation GameplayScene
 
@@ -42,6 +43,9 @@
     _lg = [[LevelGeneratorSideScroll alloc] init];
     
     [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode];
+    
+     _inputHandler = [[RunIH alloc] init];
+     [_inputHandler initialize:_player];
 }
 
 - (void)update:(CCTime)delta{
@@ -84,7 +88,7 @@
 }
 
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
-    [_player jump];
+    [_inputHandler touchBegan:touch withEvent:event];
 }
 
 @end

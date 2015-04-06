@@ -18,8 +18,11 @@
 @class Ground;
 @class LevelGenerator;
 @class Coin;
+@class InputHandler;
 
 @interface GameplayScene : CCScene{
+    InputHandler * _inputHandler;
+    
     CCNode *_contentNode;
     CCNode *_gameOverNode;
     CCPhysicsNode *_physicsNode;

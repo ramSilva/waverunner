@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FC80B9E1AD2D2BD00866542 /* InputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80B9B1AD2D2BD00866542 /* InputHandler.m */; };
+		3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80B9D1AD2D2BD00866542 /* RunIH.m */; };
+		3FC80BA21AD2D2F000866542 /* ClimbIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA11AD2D2F000866542 /* ClimbIH.m */; };
+		3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA41AD2D34C00866542 /* WallJumpIH.m */; };
 		5B121030197484FA004C1E1D /* waverunnerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* waverunnerActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		740A3EC91AD2CBF000C96970 /* LevelGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3EC61AD2CBF000C96970 /* LevelGenerator.m */; };
@@ -158,6 +162,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FC80B9A1AD2D2BD00866542 /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputHandler.h; path = Source/Managers/Input/InputHandler.h; sourceTree = "<group>"; };
+		3FC80B9B1AD2D2BD00866542 /* InputHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputHandler.m; path = Source/Managers/Input/InputHandler.m; sourceTree = "<group>"; };
+		3FC80B9C1AD2D2BD00866542 /* RunIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunIH.h; path = Source/Managers/Input/RunIH.h; sourceTree = "<group>"; };
+		3FC80B9D1AD2D2BD00866542 /* RunIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RunIH.m; path = Source/Managers/Input/RunIH.m; sourceTree = "<group>"; };
+		3FC80BA01AD2D2F000866542 /* ClimbIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClimbIH.h; path = Source/Managers/Input/ClimbIH.h; sourceTree = "<group>"; };
+		3FC80BA11AD2D2F000866542 /* ClimbIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClimbIH.m; path = Source/Managers/Input/ClimbIH.m; sourceTree = "<group>"; };
+		3FC80BA31AD2D34C00866542 /* WallJumpIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WallJumpIH.h; path = Source/Managers/Input/WallJumpIH.h; sourceTree = "<group>"; };
+		3FC80BA41AD2D34C00866542 /* WallJumpIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WallJumpIH.m; path = Source/Managers/Input/WallJumpIH.m; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -300,6 +312,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FC80B961AD2D1DD00866542 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				3FC80B9A1AD2D2BD00866542 /* InputHandler.h */,
+				3FC80B9B1AD2D2BD00866542 /* InputHandler.m */,
+				3FC80B9C1AD2D2BD00866542 /* RunIH.h */,
+				3FC80B9D1AD2D2BD00866542 /* RunIH.m */,
+				3FC80BA01AD2D2F000866542 /* ClimbIH.h */,
+				3FC80BA11AD2D2F000866542 /* ClimbIH.m */,
+				3FC80BA31AD2D34C00866542 /* WallJumpIH.h */,
+				3FC80BA41AD2D34C00866542 /* WallJumpIH.m */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
 		5B12100D197483EE004C1E1D /* res */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +379,7 @@
 				740A3EC61AD2CBF000C96970 /* LevelGenerator.m */,
 				740A3EC71AD2CBF000C96970 /* LevelGeneratorSideScroll.h */,
 				740A3EC81AD2CBF000C96970 /* LevelGeneratorSideScroll.m */,
+				3FC80B961AD2D1DD00866542 /* Input */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -882,14 +910,18 @@
 				740A3EC91AD2CBF000C96970 /* LevelGenerator.m in Sources */,
 				740A3EE01AD2CCB500C96970 /* GameManager.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				3FC80B9E1AD2D2BD00866542 /* InputHandler.m in Sources */,
+				3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */,
 				7A046D8C19E8A20E004C4763 /* MainScene.m in Sources */,
 				740A3ED91AD2CC8300C96970 /* GameOver.m in Sources */,
 				740A3EDD1AD2CC8300C96970 /* Player.m in Sources */,
+				3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */,
 				740A3ECA1AD2CBF000C96970 /* LevelGeneratorSideScroll.m in Sources */,
 				740A3EDC1AD2CC8300C96970 /* Obstacle.m in Sources */,
 				740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */,
 				740A3ED81AD2CC8300C96970 /* Coin.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
+				3FC80BA21AD2D2F000866542 /* ClimbIH.m in Sources */,
 				740A3EDA1AD2CC8300C96970 /* GameplayScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
