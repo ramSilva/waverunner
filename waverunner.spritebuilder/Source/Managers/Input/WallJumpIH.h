@@ -8,6 +8,8 @@
 
 #import "InputHandler.h"
 
-@interface WallJumpIH : InputHandler
+@interface WallJumpIH : InputHandler{
+    CGPoint touchLocationBegan, touchLocationEnded;
+}
 
 @end

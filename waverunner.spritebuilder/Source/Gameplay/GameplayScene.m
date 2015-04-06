@@ -14,6 +14,7 @@
 #import "LevelGenerator.h"
 #import "LevelGeneratorSideScroll.h"
 #import "RunIH.h"
+#import "WallJumpIH.h"
 
 @implementation GameplayScene
 
@@ -44,8 +45,7 @@
     
     [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode];
     
-     _inputHandler = [[RunIH alloc] init];
-     [_inputHandler initialize:_player];
+    [self runMode];
 }
 
 - (void)update:(CCTime)delta{
@@ -87,8 +87,26 @@
     [_player hit];
 }
 
+-(void) runMode{
+    _inputHandler = [[RunIH alloc] init];
+    [_inputHandler initialize:_player];
+}
+
+-(void) climbMode{
+    
+}
+
+-(void) wallMode{
+    _inputHandler = [[WallJumpIH alloc] init];
+    [_inputHandler initialize:_player];
+}
+
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     [_inputHandler touchBegan:touch withEvent:event];
+}
+
+-(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
+    [_inputHandler touchEnded:touch withEvent:event];
 }
 
 @end
