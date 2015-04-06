@@ -99,6 +99,9 @@
 -(void) wallMode{
     _inputHandler = [[WallJumpIH alloc] init];
     [_inputHandler initialize:_player];
+    
+    CCNode *walltransition =[CCBReader load:@"WallJump/WallJumpTransition"];
+    
 }
 
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
