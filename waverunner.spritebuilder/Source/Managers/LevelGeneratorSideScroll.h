@@ -20,5 +20,6 @@
 - (void)updateGround;
 - (void)updateContent;
 - (void)updateLevel;
+- (Ground*)getNextGround;
 
 @end

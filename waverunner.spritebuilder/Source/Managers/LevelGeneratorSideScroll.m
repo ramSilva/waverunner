@@ -17,11 +17,15 @@
     _grounds_cracked = [gc copy];
     _player = p;
     _physicsNode = pn;
+    _nextGroundIndex = 3;
     
     //Initialize seed
     srand48(arc4random());
     
     [self initContent];
+    _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
+    _wallNode.position = ccp(MAXFLOAT, MAXFLOAT);
+    [pn addChild:_wallNode];
 }
 
 - (void) initContent {
@@ -223,6 +227,10 @@
         Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
         
         [g updatePosition :_player :g2 :g_cracked];
+        if (g.next_ground) {
+            _nextGroundIndex = i;
+            g.next_ground = false;
+        }
     }
 }
 
@@ -239,8 +247,26 @@
 }
 
 - (void) updateLevel {
-    [self updateGround];
-    [self updateContent];
+    if (!transitionIncoming) {
+        [self updateGround];
+        [self updateContent];
+    }
+    
+}
+
+-(void)setWallMode{
+    transitionIncoming = true;
+    Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
+    _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
+}
+
+-(Ground *)getNextGround{
+    for (Ground *_itemG in _grounds) {
+        if (_itemG.next_ground) {
+            return _itemG;
+        }
+    }
+    return nil;
 }
 
 @end

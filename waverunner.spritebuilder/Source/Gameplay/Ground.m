@@ -19,6 +19,8 @@
 @synthesize ready_for_content;
 @synthesize number_coins;
 @synthesize number_obstacles;
+@synthesize next_ground;
+
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionType = @"ground";
@@ -29,6 +31,7 @@
     ready_for_content = false;
     obstacles = [[NSMutableArray alloc] init];
     coins = [[NSMutableArray alloc] init];
+    next_ground = false;
 }
 
 - (int) numberOfObstaclesInArray {
@@ -93,11 +96,12 @@
     float width = self.boundingBox.size.width;
     float node2_x = node2.position.x;
     float node2_width = node2.boundingBox.size.width;
-    
+    //next_ground = false;
     if(player_x > (x + width) + (GROUND_BLOCKS_DISTANCE * width)) {
         self.position = ccp(node2_x + node2_width - 1, original_y);
         [self insertGap :cracked];
         ready_for_content = true;
+        next_ground = true;
     }
 }
 

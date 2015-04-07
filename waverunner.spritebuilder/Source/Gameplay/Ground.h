@@ -22,6 +22,8 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 @property(nonatomic,readwrite) bool ready_for_content;
 @property(nonatomic,readwrite) int number_obstacles;
 @property(nonatomic,readwrite) int number_coins;
+@property(nonatomic,readwrite) bool next_ground;
+
 
 - (int)numberOfObstaclesInArray;
 - (int)numberOfCoinsInArray;

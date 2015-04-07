@@ -25,6 +25,9 @@ static float const CHANCE_COINS = 0.5f;
     NSArray *_grounds, *_grounds_cracked;
     Player *_player;
     CCPhysicsNode *_physicsNode;
+    bool transitionIncoming;
+    CCNode *_wallNode;
+    int _nextGroundIndex;
 }
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
@@ -34,5 +37,7 @@ static float const CHANCE_COINS = 0.5f;
 - (void)updateGround;
 - (void)updateContent;
 - (void)updateLevel;
+- (void)setWallMode;
+
 
 @end
