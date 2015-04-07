@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "CCSprite.h"
+#import "GameManager.h"
 
 @implementation Player
 @synthesize runSpeed = _runSpeed;
@@ -98,6 +99,32 @@
     [self hit];
     //[nodeA.parent removeChild:nodeA];
     return TRUE;
+}
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltrigger:(CCNode *)nodeA player:(CCNode *)nodeB{
+    _runSpeed = ccp(0, 0);
+    //CCActionFollow *follow = [CCActionFollow actionWithTarget:self];
+    //[self.parent runAction:follow];
+    GameManager *_gm = [GameManager sharedGameManager];
+    
+    _gm.scrollSpeed = ccp(0, 40);
+    return true;
+}
+
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA wall:(CCNode *)nodeB{
+    CCLOG(@"colision detected");
+    
+    //_wallJoint = [CCPhysicsJoint connectedDistanceJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints anchorB:nodeB.anchorPointInPoints minDistance:10 maxDistance:10];
+    if(_wallJoint == nil)
+        _wallJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints];
+    
+    return true;
+}
+
+-(void)wallJump:(CGPoint)jumpForce{
+    [_wallJoint invalidate];
+    _wallJoint = nil;
+    [self.physicsBody applyForce:jumpForce];
 }
 
 @end

@@ -15,10 +15,12 @@
 #import "LevelGeneratorSideScroll.h"
 #import "RunIH.h"
 #import "WallJumpIH.h"
+#import "GameManager.h"
 
 @implementation GameplayScene
 
 - (void)didLoadFromCCB{
+    _gameManager = [GameManager sharedGameManager];
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
     _grounds = @[_g1, _g2, _g3, _g4];
@@ -50,14 +52,14 @@
 
 - (void)update:(CCTime)delta{
     CGPoint playerSpeed = [_player runSpeed];
-    
+    CGPoint scrollSpeed = [_gameManager scrollSpeed];
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
-    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*playerSpeed.x, _gameOverNode.position.y);
-    _physicsNode.position = ccp(_physicsNode.position.x - delta*playerSpeed.x, _physicsNode.position.y);
-    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*playerSpeed.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*playerSpeed.y*BACKGROUND1_MULT);
-    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*playerSpeed.x*BACKGROUND2_MULT, _backgrounds2node.position.y- delta*playerSpeed.y*BACKGROUND2_MULT);
-    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*playerSpeed.x*BACKGROUND3_MULT, _backgrounds3node.position.y- delta*playerSpeed.y*BACKGROUND3_MULT);
-    _moon.position = ccp(_moon.position.x - delta*playerSpeed.x*MOON_MULT, _moon.position.y - delta*playerSpeed.y*MOON_MULT);
+    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y);
+    _physicsNode.position = ccp(_physicsNode.position.x - delta*scrollSpeed.x, _physicsNode.position.y - delta*scrollSpeed.y);
+    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*scrollSpeed.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*scrollSpeed.y*BACKGROUND1_MULT);
+    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*scrollSpeed.x*BACKGROUND2_MULT, _backgrounds2node.position.y- delta*scrollSpeed.y*BACKGROUND2_MULT);
+    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*scrollSpeed.x*BACKGROUND3_MULT, _backgrounds3node.position.y- delta*scrollSpeed.y*BACKGROUND3_MULT);
+    _moon.position = ccp(_moon.position.x - delta*scrollSpeed.x*MOON_MULT, _moon.position.y - delta*scrollSpeed.y*MOON_MULT);
 
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];
@@ -90,6 +92,7 @@
 -(void) runMode{
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
+    _gameManager.scrollSpeed = _player.runSpeed;
 }
 
 -(void) climbMode{
@@ -101,6 +104,8 @@
     [_inputHandler initialize:_player];
     
     [_lg setWallMode];
+   
+    
 }
 
 - (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{

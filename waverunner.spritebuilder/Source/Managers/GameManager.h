@@ -12,6 +12,8 @@
     NSInteger _jumpLevelMax;
     NSInteger _speedLevelMax;
     NSInteger _coins;
+    CGPoint _scrollSpeed;
+
 }
 
 @property (readonly, nonatomic) NSInteger jumpLevel;
@@ -19,6 +21,7 @@
 @property (readonly, nonatomic) NSInteger speedLevel;
 @property (readonly, nonatomic) NSInteger speedLevelMax;
 @property (readonly, nonatomic) NSInteger coins;
+@property (readwrite,nonatomic) CGPoint scrollSpeed;
 
 
 + (GameManager*) sharedGameManager;

@@ -19,8 +19,10 @@
 @class LevelGenerator;
 @class Coin;
 @class InputHandler;
+@class GameManager;
 
 @interface GameplayScene : CCScene{
+    GameManager *_gameManager;
     InputHandler * _inputHandler;
     
     CCNode *_contentNode;
@@ -28,6 +30,7 @@
     CCPhysicsNode *_physicsNode;
     Player *_player;
     LevelGenerator *_lg;
+    //CCNode *_wallJumpTrigger;
     
     CCNode *_wave;
     

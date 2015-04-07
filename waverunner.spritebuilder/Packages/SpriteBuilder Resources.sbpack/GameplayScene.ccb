@@ -3150,6 +3150,24 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
+									<real>0.73333334922790527</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>-8.125</real>
+										<real>84</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>position</string>
+									<key>time</key>
 									<real>1.0666667222976685</real>
 									<key>type</key>
 									<integer>3</integer>
@@ -4652,8 +4670,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -5052,6 +5068,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

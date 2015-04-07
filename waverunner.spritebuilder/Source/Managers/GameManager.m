@@ -20,6 +20,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize speedLevel = _speedLevel;
 @synthesize speedLevelMax = _speedLevelMax;
 @synthesize coins = _coins;
+@synthesize scrollSpeed;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:_coins forKey:GameManagerCoinsKey];

@@ -7,6 +7,7 @@
 //
 
 @class CCSprite;
+@class GameManager;
 
 #define BASE_SPEED 200.0f
 #define BASE_JUMP 250.0f
@@ -18,6 +19,7 @@
     BOOL _airborne;
     BOOL _doubleJump;
     BOOL _hit;
+    CCPhysicsJoint *_wallJoint;
 }
 
 @property (nonatomic, readonly) CGPoint runSpeed;
@@ -26,5 +28,6 @@
 - (void)land;
 - (void)hit;
 - (void)changeRunSpeed:(CGPoint)changeAmount;
+-(void)wallJump:(CGPoint)jumpForce;
 
 @end

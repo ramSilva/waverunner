@@ -21,7 +21,13 @@
 -(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     touchLocationEnded = [touch locationInWorld];
     CGPoint diff = ccpSub(touchLocationEnded, touchLocationBegan);
-    printf("LOL: %f, %f\n", diff.x, diff.y);
+    
+    CGPoint launchDirection = ccpNormalize(diff);
+    CGPoint force = ccpMult(launchDirection, 20000);
+
+    [_player wallJump:force];
+    
+    //printf("LOL: %f, %f\n", diff.x, diff.y);
 }
 
 
