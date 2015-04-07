@@ -115,8 +115,10 @@
     CCLOG(@"colision detected");
     
     //_wallJoint = [CCPhysicsJoint connectedDistanceJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints anchorB:nodeB.anchorPointInPoints minDistance:10 maxDistance:10];
-    if(_wallJoint == nil)
+    if(_wallJoint == nil){
         _wallJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints];
+        [self.animationManager runAnimationsForSequenceNamed:@"Wall"];
+    }
     
     return true;
 }
@@ -125,6 +127,16 @@
     [_wallJoint invalidate];
     _wallJoint = nil;
     [self.physicsBody applyForce:jumpForce];
+    if (jumpForce.x>0) {
+        _jumpingRight = true;
+        self.flipX = false;
+
+    } else {
+        _jumpingRight = false;
+        self.flipX = true;
+    }
+    [self.animationManager runAnimationsForSequenceNamed:@"Jump"];
+
 }
 
 @end

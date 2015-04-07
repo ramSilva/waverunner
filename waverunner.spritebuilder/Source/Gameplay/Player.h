@@ -20,6 +20,7 @@
     BOOL _doubleJump;
     BOOL _hit;
     CCPhysicsJoint *_wallJoint;
+    BOOL _jumpingRight;
 }
 
 @property (nonatomic, readonly) CGPoint runSpeed;

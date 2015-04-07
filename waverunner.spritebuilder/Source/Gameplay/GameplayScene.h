@@ -44,6 +44,8 @@
     CCNode *_moon;
     Ground *_g1, *_g2, *_g3, *_g4;
     /*******************************/
+    
+    CCNode *_wavesNode;
 }
 
 @end

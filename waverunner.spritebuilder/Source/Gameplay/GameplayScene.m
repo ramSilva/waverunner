@@ -105,6 +105,8 @@
     
     [_lg setWallMode];
    
+    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-200, -200)];
+    [_wavesNode runAction:_moveWaves];
     
 }
 
