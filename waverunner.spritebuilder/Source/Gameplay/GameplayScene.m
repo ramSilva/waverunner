@@ -21,6 +21,11 @@
 
 - (void)didLoadFromCCB{
     _gameManager = [GameManager sharedGameManager];
+    [_gameManager updateCoinLabel];
+    CCNode* p = _coinLabel.parent;
+    _coinLabel = [_gameManager coinLabel];
+    [_coinLabel removeFromParent];
+    [p addChild:_coinLabel];
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
     _grounds = @[_g1, _g2, _g3, _g4];
@@ -82,6 +87,7 @@
 }
 
 - (void)menu{
+    [[GameManager sharedGameManager] save];
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 

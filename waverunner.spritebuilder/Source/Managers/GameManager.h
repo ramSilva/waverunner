@@ -13,7 +13,7 @@
     NSInteger _speedLevelMax;
     NSInteger _coins;
     CGPoint _scrollSpeed;
-
+    CCLabelTTF *_coinLabel;
 }
 
 @property (readonly, nonatomic) NSInteger jumpLevel;
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSInteger speedLevel;
 @property (readonly, nonatomic) NSInteger speedLevelMax;
 @property (readonly, nonatomic) NSInteger coins;
+@property (readonly, nonatomic) CCLabelTTF *coinLabel;
 @property (readwrite,nonatomic) CGPoint scrollSpeed;
 
 
@@ -29,8 +30,8 @@
 - (NSInteger)changeCoins:(NSInteger)ammount;
 - (NSInteger)upgradeSpeedLevel;
 - (NSInteger)upgradeJumpLevel;
-- (void)updateCoinLabel:(CCLabelTTF*)coinLabel;
 - (void)save;
+- (void)updateCoinLabel;
 - (void)deleteDocument;
 
 @end

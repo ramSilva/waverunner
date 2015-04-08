@@ -15,9 +15,9 @@
 @synthesize previousSpeed = _previousSpeed;
 
 - (void)didLoadFromCCB{
-    _runSpeed = ccp(BASE_SPEED, 0);//*[[GameManager sharedGameManager] speedLevel];
+    _runSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
     _previousSpeed = _runSpeed;
-    _jumpHeight = BASE_JUMP;//*[[GameManager sharedGameManager] jumpLevel];
+    _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] jumpLevel];
     self.physicsBody.collisionType = @"player";
     
     _airborne = FALSE;
@@ -42,7 +42,7 @@
         }
         else if(!_doubleJump){
             [self.animationManager runAnimationsForSequenceNamed:@"DoubleJump"];
-//            [self.animationManager setPlaybackSpeed:0.5f];
+            [self.animationManager setPlaybackSpeed:0.9f];
             [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
             _doubleJump = TRUE;
         }
@@ -93,6 +93,8 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)nodeA player:(CCNode *)nodeB{
     nodeA.visible = NO;
+    [[GameManager sharedGameManager] changeCoins:1];
+    [[GameManager sharedGameManager] updateCoinLabel];
     //[nodeA.parent removeChild:nodeA];
     return TRUE;
 }

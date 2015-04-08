@@ -24,6 +24,8 @@
 @interface GameplayScene : CCScene{
     GameManager *_gameManager;
     InputHandler * _inputHandler;
+
+    CCLabelTTF* _coinLabel;
     
     CCNode *_contentNode;
     CCNode *_gameOverNode;

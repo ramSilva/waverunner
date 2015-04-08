@@ -20,6 +20,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize speedLevel = _speedLevel;
 @synthesize speedLevelMax = _speedLevelMax;
 @synthesize coins = _coins;
+@synthesize coinLabel = _coinLabel;
 @synthesize scrollSpeed;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
@@ -65,6 +66,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         NSLog(@"Error removing document path: %@", error.localizedDescription);
     }
     [self resetData];
+    [self updateCoinLabel];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -72,6 +74,10 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     if(self){
         _jumpLevelMax = 10;
         _speedLevelMax = 10;
+        _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
+        [_coinLabel setPositionType:CCPositionTypeNormalized];
+        _coinLabel.position = ccp(0.5f, 0.90f);
+        [_coinLabel setFontColor: [CCColor whiteColor]];
         _coins = [aDecoder decodeIntegerForKey:GameManagerCoinsKey];
         _speedLevel = [aDecoder decodeIntegerForKey:GameManagerSpeedLevelKey];
         _jumpLevel = [aDecoder decodeIntegerForKey:GameManagerJumpLevelKey];
@@ -87,6 +93,10 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _jumpLevelMax = 10;
         _speedLevelMax = 10;
         _coins = 0;
+        _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
+        [_coinLabel setPositionType:CCPositionTypeNormalized];
+        _coinLabel.position = ccp(0.5f, 0.90f);
+        [_coinLabel setFontColor: [CCColor whiteColor]];
         //sharedInstance = self;
     }
     return self;
@@ -120,8 +130,8 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     return _speedLevel;
 }
 
-- (void)updateCoinLabel:(CCLabelTTF *)coinLabel{
-    coinLabel.string = [NSString stringWithFormat:@"Coins: %ld", _coins];
+- (void)updateCoinLabel{
+    _coinLabel.string = [NSString stringWithFormat:@"Coins: %ld", (long)_coins];
 }
 
 @end
