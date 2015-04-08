@@ -14,27 +14,35 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
 @interface Ground : CCSprite {
     int original_y;
-    NSMutableArray *obstacles;
+    NSMutableArray *static_obstacles;
+    NSMutableArray *moving_obstacles;
     NSMutableArray *coins;
 }
 
 @property(nonatomic,readonly) bool ground_gap;
+@property(nonatomic,readwrite) bool any_moving_obstacles;
 @property(nonatomic,readwrite) bool ready_for_content;
 @property(nonatomic,readwrite) int number_obstacles;
 @property(nonatomic,readwrite) int number_coins;
 @property(nonatomic,readwrite) bool next_ground;
 
 
-- (int)numberOfObstaclesInArray;
+- (int)numberOfStaticObstaclesInArray;
+- (int)numberOfMovingObstaclesInArray;
 - (int)numberOfCoinsInArray;
-- (void)addObstacle:(CCNode*)obs;
-- (CCNode*)getLastObstacle;
-- (CCNode*)getFirstObstacle;
-- (void)updateObstaclePosition:(CCNode*)obs;
+- (void)addStaticObstacle:(CCNode*)obs;
+- (CCNode*)getLastStaticObstacle;
+- (CCNode*)getFirstStaticObstacle;
+- (void)updateStaticObstaclePosition:(CCNode*)obs;
+- (void)addMovingObstacle:(CCNode*)obs;
+- (CCNode*)getLastMovingObstacle;
+- (CCNode*)getFirstMovingObstacle;
+- (void)updateMovingObstaclePosition:(CCNode*)obs;
 - (void)addCoin:(CCNode*)coin;
 - (CCNode*)getFirstCoin;
 - (void)updateCoinPosition:(CCNode*)coin;
-- (NSMutableArray*)getObstacles;
+- (NSMutableArray*)getStaticObstacles;
+- (NSMutableArray*)getMovingObstacles;
 - (void)insertGap:(Ground*)cracked;
 - (void)updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked;
 

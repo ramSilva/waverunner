@@ -16,10 +16,12 @@
 - (void)initContent;
 - (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
 - (void)insertObstacles:(Ground*)ground :(int)index;
+- (void)insertStaticObstacles:(Ground*)ground :(int)index;
+- (void)insertMovingObstacles:(Ground*)ground :(int)index;
 - (void)insertCoins:(Ground*)ground :(int)index;
 - (void)updateGround;
 - (void)updateContent;
 - (void)updateLevel;
-- (Ground*)getNextGround;
+//- (Ground*)getNextGround;
 
 @end

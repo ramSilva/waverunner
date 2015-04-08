@@ -9,6 +9,7 @@
 #import "LevelGeneratorSideScroll.h"
 #import "Ground.h"
 #import "Player.h"
+#import "Obstacle.h"
 
 @implementation LevelGeneratorSideScroll
 
@@ -44,8 +45,8 @@
     Ground* prev_ground = [_grounds objectAtIndex:(index + 3) % _grounds.count];
     
     //If previous ground has obstacles then the first obstacle must be placed at least DISTANCE_BETWEEN_OBSTACLES away from the last object
-    if(prev_ground.number_obstacles > 0 && pos_x == first_x) {
-        CCNode* last_obs_g_before = [prev_ground getLastObstacle];
+    if(prev_ground.number_obstacles > 0 && pos_x == first_x && !prev_ground.any_moving_obstacles) {
+        CCNode* last_obs_g_before = [prev_ground getLastStaticObstacle];
         float distance = (posx + (obstacle.boundingBox.size.width / 2)) - (last_obs_g_before.position.x + (last_obs_g_before.boundingBox.size.width / 2));
         
         if(distance > DISTANCE_BETWEEN_OBSTACLES) {
@@ -67,55 +68,116 @@
 }
 
 - (void) insertObstacles:(Ground*)ground :(int)index {
+    bool gap = ground.ground_gap;
+    
+    if(drand48() < CHANCE_OBSTACLES && !gap) {
+        if(drand48() < CHANCE_MOVING) {
+            [self insertMovingObstacles:ground :index];
+        } else {
+            [self insertStaticObstacles :ground :index];
+        }
+    }
+}
+
+- (void) insertStaticObstacles:(Ground*)ground :(int)index {
     float first_x = ground.position.x;
     float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_GROUND_OBSTACLES;
     int count_obstacles = 0;
     int count_obstacles_added = 0;
     int number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
     bool space_between_obstacles = false;
-    bool gap = ground.ground_gap;
     
-    if(drand48() < CHANCE_OBSTACLES && !gap) {
-        for(float x = first_x; x < last_x; ) {
-            CCNode* obstacle = [CCBReader load:@"Obstacle"];
-            float pos_x = x;
-            
-            if(count_obstacles < number_obstacles_together) {
-                count_obstacles++;
-                space_between_obstacles = false;
-            } else {
-                number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
-                count_obstacles = 1;
-                space_between_obstacles = true;
-            }
-            
-            if(space_between_obstacles) {
-                pos_x = pos_x + DISTANCE_BETWEEN_OBSTACLES;
-            }
-            
-            if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
-                if(count_obstacles_added == [ground numberOfObstaclesInArray]) {
-                    pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
-                    
-                    obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-                    
-                    [_physicsNode addChild:obstacle];
-                    [ground addObstacle:obstacle];
-                } else {
-                    obstacle = [ground getFirstObstacle];
-                    
-                    pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
-                    
-                    obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-                    
-                    [ground updateObstaclePosition :obstacle];
-                }
-                
-                count_obstacles_added++;
-            }
-            
-            x = pos_x + (obstacle.boundingBox.size.width / 2) + 1.0f;
+    for(float x = first_x; x < last_x; ) {
+        Obstacle* obstacle = (Obstacle*)[CCBReader load:@"Obstacle"];
+        float pos_x = x;
+        
+        if(count_obstacles < number_obstacles_together) {
+            count_obstacles++;
+            space_between_obstacles = false;
+        } else {
+            number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
+            count_obstacles = 1;
+            space_between_obstacles = true;
         }
+        
+        if(space_between_obstacles) {
+            pos_x = pos_x + DISTANCE_BETWEEN_OBSTACLES;
+        }
+        
+        if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
+            if(count_obstacles_added == [ground numberOfStaticObstaclesInArray]) {
+                pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
+                
+                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+                obstacle.moving = false;
+                
+                [_physicsNode addChild:obstacle];
+                [ground addStaticObstacle:obstacle];
+            } else {
+                obstacle = (Obstacle*)[ground getFirstStaticObstacle];
+                
+                pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
+                
+                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+                obstacle.moving = false;
+                
+                [ground updateStaticObstaclePosition :obstacle];
+            }
+            
+            count_obstacles_added++;
+        }
+        
+        x = pos_x + (obstacle.boundingBox.size.width / 2) + 1.0f;
+    }
+    
+    ground.number_obstacles = count_obstacles_added;
+}
+
+- (void)insertMovingObstacles:(Ground*)ground :(int)index {
+    float first_x = ground.position.x;
+    float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_GROUND_OBSTACLES;
+    //int count_obstacles = 0;
+    int count_obstacles_added = 0;
+    //int number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
+    //bool space_between_obstacles = false;
+    Obstacle* obstacle = (Obstacle*)[CCBReader load:@"Moving_Obstacle"];
+    float pos_x = last_x - (obstacle.boundingBox.size.width);
+    
+    /*if(count_obstacles < number_obstacles_together) {
+     count_obstacles++;
+     space_between_obstacles = false;
+     } else {
+     number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
+     count_obstacles = 1;
+     space_between_obstacles = true;
+     }
+     
+     if(space_between_obstacles) {
+     pos_x = pos_x + DISTANCE_BETWEEN_OBSTACLES;
+     }*/
+    
+    if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
+        if(count_obstacles_added == [ground numberOfMovingObstaclesInArray]) {
+            //pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
+            
+            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+            obstacle.moving = true;
+            [obstacle.physicsBody applyTorque:5000.0f];
+            
+            [_physicsNode addChild:obstacle];
+            [ground addMovingObstacle:obstacle];
+        } else {
+            obstacle = (Obstacle*)[ground getFirstMovingObstacle];
+            
+            //pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
+            
+            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+            obstacle.moving = true;
+            
+            [ground updateMovingObstaclePosition :obstacle];
+        }
+        
+        count_obstacles_added++;
     }
     
     ground.number_obstacles = count_obstacles_added;
@@ -171,26 +233,31 @@
                     }
                     //If number of coins added is greater or equal than number of obstacles,
                     //next coin can be on top of the ground, having an obstacle on its left, or above the ground
-                } else if(count_coins_added >= ground_number_obstacles && ground_number_obstacles > 0) {
-                    NSMutableArray *obstacles = [g getObstacles];
-                    CCNode* last_obs = [obstacles objectAtIndex:(obstacles.count - 1)];
-                    
-                    pos_y = ground_height + (drand48() * MAX_HEIGHT_COINS);
-                    pos_x = pos_x + (last_obs.boundingBox.size.width / 2) + MIN_DISTANCE_COIN_FROM_OBSTACLE;
-                    //Else get the minimum y position available for the coin
+                } else if(ground_number_obstacles == 1 && ground.any_moving_obstacles) {
+                    pos_y = (ground_height + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
                 } else {
-                    NSMutableArray *obstacles = [g getObstacles];
+                    NSMutableArray *obstacles = [g getStaticObstacles];
+                    pos_y = ground_height + (drand48() * MAX_HEIGHT_COINS);
                     float min_y = 0.0f;
                     
                     for(int i = 0; i < ground_number_obstacles; i++) {
-                        CCNode* obs = [obstacles objectAtIndex:i];
+                        CCNode* obs = [obstacles objectAtIndex:(obstacles.count - 1 - i)];
+                        float obs_pos_x_min = obs.position.x - (obs.boundingBox.size.width / 2);
+                        float obs_pos_x_max = obs.position.x + (obs.boundingBox.size.width / 2);
+                        float coin_pos_x_min = pos_x - (coin.boundingBox.size.width / 2);
+                        float coin_pos_x_max = pos_x + (coin.boundingBox.size.width / 2);
                         
-                        if(obs.position.y + (obs.boundingBox.size.height / 2) > min_y) {
-                            min_y = obs.position.y + (obs.boundingBox.size.height / 2);
+                        //If coin collides with obstacle
+                        if((coin_pos_x_max >= obs_pos_x_min && coin_pos_x_max <= obs_pos_x_max)
+                           || (coin_pos_x_min <= obs_pos_x_max && coin_pos_x_min >= obs_pos_x_min)) {
+                            
+                            if(obs.position.y + (obs.boundingBox.size.height / 2) + 1.0f > min_y) {
+                                min_y = obs.position.y + (obs.boundingBox.size.height / 2);
+                            }
+                            
+                            pos_y = (min_y + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
                         }
                     }
-                    
-                    pos_y = (min_y + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
                 }
                 
                 if(count_coins_added == [g numberOfCoinsInArray]) {

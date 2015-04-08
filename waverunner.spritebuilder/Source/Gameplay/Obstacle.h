@@ -10,4 +10,6 @@
 
 @interface Obstacle : CCSprite
 
+@property(nonatomic,readwrite) bool moving;
+
 @end
