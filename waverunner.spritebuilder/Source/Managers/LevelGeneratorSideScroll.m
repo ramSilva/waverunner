@@ -260,13 +260,10 @@
     _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
 }
 
--(Ground *)getNextGround{
-    for (Ground *_itemG in _grounds) {
-        if (_itemG.next_ground) {
-            return _itemG;
-        }
-    }
-    return nil;
+-(void)setScrollMode{
+    
+    transitionIncoming = false;
+    
 }
 
 @end

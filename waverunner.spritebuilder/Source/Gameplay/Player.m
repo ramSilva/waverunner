@@ -12,9 +12,11 @@
 
 @implementation Player
 @synthesize runSpeed = _runSpeed;
+@synthesize previousSpeed = _previousSpeed;
 
 - (void)didLoadFromCCB{
     _runSpeed = ccp(BASE_SPEED, 0);//*[[GameManager sharedGameManager] speedLevel];
+    _previousSpeed = _runSpeed;
     _jumpHeight = BASE_JUMP;//*[[GameManager sharedGameManager] jumpLevel];
     self.physicsBody.collisionType = @"player";
     
@@ -117,15 +119,20 @@
     if(_wallJoint == nil){
         _wallJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints];
         [self.animationManager runAnimationsForSequenceNamed:@"Wall"];
+        _airborne = false;
     }
     
     return true;
 }
 
 -(void)wallJump:(CGPoint)jumpForce{
+    
+    if (_airborne) return;
+    
     [_wallJoint invalidate];
     _wallJoint = nil;
     [self.physicsBody applyForce:jumpForce];
+    _airborne = true;
     if (jumpForce.x>0) {
         _jumpingRight = true;
         self.flipX = false;

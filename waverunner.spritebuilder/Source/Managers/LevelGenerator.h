@@ -38,6 +38,9 @@ static float const CHANCE_COINS = 0.5f;
 - (void)updateContent;
 - (void)updateLevel;
 - (void)setWallMode;
+- (void)setScrollMode;
+- (void)setClimbMode;
+
 
 
 @end

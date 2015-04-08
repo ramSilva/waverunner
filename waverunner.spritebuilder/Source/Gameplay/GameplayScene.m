@@ -92,7 +92,9 @@
 -(void) runMode{
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
+    _player.runSpeed = _player.previousSpeed;
     _gameManager.scrollSpeed = _player.runSpeed;
+    [_lg setScrollMode];
 }
 
 -(void) climbMode{
@@ -100,12 +102,13 @@
 }
 
 -(void) wallMode{
+    _player.previousSpeed = _player.runSpeed;
     _inputHandler = [[WallJumpIH alloc] init];
     [_inputHandler initialize:_player];
     
     [_lg setWallMode];
    
-    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-200, -200)];
+    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0, -200)];
     [_wavesNode runAction:_moveWaves];
     
 }

@@ -21,9 +21,11 @@
     BOOL _hit;
     CCPhysicsJoint *_wallJoint;
     BOOL _jumpingRight;
+    CGPoint _previousSpeed;
 }
 
-@property (nonatomic, readonly) CGPoint runSpeed;
+@property (nonatomic, readwrite) CGPoint runSpeed;
+@property (nonatomic, readwrite) CGPoint previousSpeed;
 
 - (void)jump;
 - (void)land;
