@@ -24,7 +24,7 @@
     
     [self initContent];
     _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
-    _wallNode.position = ccp(MAXFLOAT, MAXFLOAT);
+    _wallNode.position = ccp(-500, -500);
     [pn addChild:_wallNode];
 }
 

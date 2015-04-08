@@ -21,7 +21,9 @@
 -(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     touchLocationEnded = [touch locationInWorld];
     CGPoint diff = ccpSub(touchLocationEnded, touchLocationBegan);
-    
+    if (CGPointEqualToPoint(diff, ccp(0, 0))) {
+        return;
+    }
     CGPoint launchDirection = ccpNormalize(diff);
     CGPoint force = ccpMult(launchDirection, 20000);
 
