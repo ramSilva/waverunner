@@ -17,6 +17,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
     NSMutableArray *static_obstacles;
     NSMutableArray *moving_obstacles;
     NSMutableArray *coins;
+    int matching_obs_index;
 }
 
 @property(nonatomic,readonly) bool ground_gap;
@@ -32,7 +33,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 - (int)numberOfCoinsInArray;
 - (void)addStaticObstacle:(CCNode*)obs;
 - (CCNode*)getLastStaticObstacle;
-- (CCNode*)getFirstStaticObstacle;
+- (CCNode*)getFirstStaticObstacle:(NSString*)type :(NSString*)color;
 - (void)updateStaticObstaclePosition:(CCNode*)obs;
 - (void)addMovingObstacle:(CCNode*)obs;
 - (CCNode*)getLastMovingObstacle;

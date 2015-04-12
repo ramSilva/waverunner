@@ -20,7 +20,6 @@
 		740A3ED91AD2CC8300C96970 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ECF1AD2CC8300C96970 /* GameOver.m */; };
 		740A3EDA1AD2CC8300C96970 /* GameplayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED11AD2CC8300C96970 /* GameplayScene.m */; };
 		740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED31AD2CC8300C96970 /* Ground.m */; };
-		740A3EDC1AD2CC8300C96970 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED51AD2CC8300C96970 /* Obstacle.m */; };
 		740A3EDD1AD2CC8300C96970 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED71AD2CC8300C96970 /* Player.m */; };
 		740A3EE01AD2CCB500C96970 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3EDF1AD2CCB500C96970 /* GameManager.m */; };
 		74A70F1A1AD57BC300671EC9 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A70F171AD57BC300671EC9 /* MainScene.m */; };
@@ -57,6 +56,7 @@
 		7A97910819E62F84001FFC4D /* libcocos2dAndroid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910019E62E40001FFC4D /* libcocos2dAndroid.a */; };
 		7A97911719E631C6001FFC4D /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910419E62E40001FFC4D /* libcocos2d-mac.a */; };
 		7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9790FE19E62E40001FFC4D /* libcocos2d.a */; };
+		7B60B3BF1ADABCF200BA39DC /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B60B3BE1ADABCF200BA39DC /* Obstacle.m */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		927F61A5196C771E000F43EF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
 		927F61A9196C771E000F43EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
@@ -194,8 +194,6 @@
 		740A3ED11AD2CC8300C96970 /* GameplayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameplayScene.m; sourceTree = "<group>"; };
 		740A3ED21AD2CC8300C96970 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
 		740A3ED31AD2CC8300C96970 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ground.m; sourceTree = "<group>"; };
-		740A3ED41AD2CC8300C96970 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
-		740A3ED51AD2CC8300C96970 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obstacle.m; sourceTree = "<group>"; };
 		740A3ED61AD2CC8300C96970 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		740A3ED71AD2CC8300C96970 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		740A3EDE1AD2CCB500C96970 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = Source/Managers/GameManager.h; sourceTree = SOURCE_ROOT; };
@@ -215,6 +213,8 @@
 		7A59498A19E38E4A00F65F90 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Platforms/Mac/MainMenu.xib; sourceTree = "<group>"; };
 		7AFCD5DB19E9BD9F00BCCCDA /* cocos2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocos2d.h; path = "Source/libs/cocos2d-iphone/cocos2d/cocos2d.h"; sourceTree = "<group>"; };
 		7AFCD5DD19E9BDC200BCCCDA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Source/Bridging-Header.h"; sourceTree = "<group>"; };
+		7B60B3BD1ADABCF200BA39DC /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		7B60B3BE1ADABCF200BA39DC /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obstacle.m; sourceTree = "<group>"; };
 		7BF6AF9F1A425F9800FFF9BA /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../../../../Library/SBAndroid/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		927F61BF196C771E000F43EF /* waverunner Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "waverunner Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,10 +398,10 @@
 				740A3ECF1AD2CC8300C96970 /* GameOver.m */,
 				740A3ED01AD2CC8300C96970 /* GameplayScene.h */,
 				740A3ED11AD2CC8300C96970 /* GameplayScene.m */,
+				7B60B3BD1ADABCF200BA39DC /* Obstacle.h */,
+				7B60B3BE1ADABCF200BA39DC /* Obstacle.m */,
 				740A3ED21AD2CC8300C96970 /* Ground.h */,
 				740A3ED31AD2CC8300C96970 /* Ground.m */,
-				740A3ED41AD2CC8300C96970 /* Obstacle.h */,
-				740A3ED51AD2CC8300C96970 /* Obstacle.m */,
 				55B0814F1AD42E2F009A6E00 /* WallTrigger.h */,
 				55B081501AD42E2F009A6E00 /* WallTrigger.m */,
 			);
@@ -932,6 +932,7 @@
 			files = (
 				74A70F1A1AD57BC300671EC9 /* MainScene.m in Sources */,
 				740A3EC91AD2CBF000C96970 /* LevelGenerator.m in Sources */,
+				7B60B3BF1ADABCF200BA39DC /* Obstacle.m in Sources */,
 				740A3EE01AD2CCB500C96970 /* GameManager.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				3FC80B9E1AD2D2BD00866542 /* InputHandler.m in Sources */,
@@ -940,7 +941,6 @@
 				740A3EDD1AD2CC8300C96970 /* Player.m in Sources */,
 				3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */,
 				740A3ECA1AD2CBF000C96970 /* LevelGeneratorSideScroll.m in Sources */,
-				740A3EDC1AD2CC8300C96970 /* Obstacle.m in Sources */,
 				74A70F1B1AD57BC300671EC9 /* Shop.m in Sources */,
 				55B081511AD42E2F009A6E00 /* WallTrigger.m in Sources */,
 				740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */,

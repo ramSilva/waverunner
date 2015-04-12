@@ -50,11 +50,11 @@
 		<key>physicsBody</key>
 		<dict>
 			<key>affectedByGravity</key>
-			<false/>
+			<true/>
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>collisionCategories</key>
 			<array/>
 			<key>collisionMask</key>
@@ -62,11 +62,11 @@
 			<key>collisionType</key>
 			<string></string>
 			<key>cornerRadius</key>
-			<real>7</real>
+			<real>0.0</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
-			<true/>
+			<false/>
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
@@ -74,12 +74,43 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>6.6269049644470215</real>
-					<real>5.6925740242004395</real>
+					<real>0.0</real>
+					<real>0.0</real>
+				</array>
+				<array>
+					<real>0.0</real>
+					<real>12</real>
+				</array>
+				<array>
+					<real>13</real>
+					<real>12</real>
+				</array>
+				<array>
+					<real>13</real>
+					<real>0.0</real>
 				</array>
 			</array>
 			<key>polygons</key>
-			<array/>
+			<array>
+				<array>
+					<array>
+						<real>13</real>
+						<real>0.0</real>
+					</array>
+					<array>
+						<real>13</real>
+						<real>12</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>12</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>0.0</real>
+					</array>
+				</array>
+			</array>
 		</dict>
 		<key>properties</key>
 		<array>
@@ -137,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/seal.png</string>
+					<string>Resources/blue garbage.png</string>
 				</array>
 			</dict>
 			<dict>

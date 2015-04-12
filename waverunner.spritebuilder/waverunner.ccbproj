@@ -80,6 +80,8 @@
 		</dict>
 		<key>Resources</key>
 		<dict>
+			<key>isDirty</key>
+			<true/>
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
@@ -94,6 +96,11 @@
 		<dict/>
 		<key>Resources/squareblock.png</key>
 		<dict/>
+		<key>Resources2</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>

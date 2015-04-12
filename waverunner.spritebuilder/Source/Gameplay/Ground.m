@@ -35,6 +35,7 @@
     moving_obstacles = [[NSMutableArray alloc] init];
     coins = [[NSMutableArray alloc] init];
     next_ground = false;
+    matching_obs_index = -1;
 }
 
 - (int) numberOfStaticObstaclesInArray {
@@ -54,8 +55,18 @@
     [static_obstacles insertObject:obs atIndex:static_obstacles.count];
 }
 
-- (CCNode*) getFirstStaticObstacle {
-    return [static_obstacles objectAtIndex:0];
+- (CCNode*) getFirstStaticObstacle:(NSString*)type :(NSString*)color {
+    matching_obs_index = -1;
+    for(int i = 0; i < static_obstacles.count - 1; i++) {
+        Obstacle* obs = [static_obstacles objectAtIndex:i];
+        
+        if([obs.type isEqualToString:type] && [obs.color isEqualToString:color]) {
+            matching_obs_index = i;
+            return obs;
+        }
+    }
+    
+    return nil;
 }
 
 - (CCNode*) getLastStaticObstacle {
@@ -63,7 +74,7 @@
 }
 
 - (void) updateStaticObstaclePosition:(CCNode*)obs {
-    [static_obstacles removeObjectAtIndex:0];
+    [static_obstacles removeObjectAtIndex:matching_obs_index];
     [self addStaticObstacle :obs];
 }
 
@@ -138,9 +149,12 @@
 
 - (void)update:(CCTime)delta {
     for(int i = 0; i < moving_obstacles.count; i++) {
-        Obstacle* obs = (Obstacle*)[moving_obstacles objectAtIndex:i];
+        Obstacle* obs = [moving_obstacles objectAtIndex:i];
         
-        obs.position = ccp(obs.position.x - 5.0f, obs.position.y);
+        //Condition that prevents moving obstacle to keep moving infinitely
+        if(obs.position.x > self.position.x - self.boundingBox.size.width) {
+            [obs move];
+        }
     }
 }
 

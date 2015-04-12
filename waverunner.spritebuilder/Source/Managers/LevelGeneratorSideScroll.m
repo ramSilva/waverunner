@@ -79,6 +79,26 @@
     }
 }
 
+- (Obstacle*) selectStaticObstacle {
+    Obstacle *obs;
+    int obs_type = (arc4random() % 2);
+    
+    switch(obs_type) {
+        case 0:
+            obs = (Obstacle*)[CCBReader load:@"Obstacle_Garbage_G"];
+            obs.type = @"garbage";
+            obs.color = @"green";
+            break;
+        case 1:
+            obs = (Obstacle*)[CCBReader load:@"Obstacle_Garbage_B"];
+            obs.type = @"garbage";
+            obs.color = @"blue";
+            break;
+    }
+    
+    return obs;
+}
+
 - (void) insertStaticObstacles:(Ground*)ground :(int)index {
     float first_x = ground.position.x;
     float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_GROUND_OBSTACLES;
@@ -88,7 +108,7 @@
     bool space_between_obstacles = false;
     
     for(float x = first_x; x < last_x; ) {
-        Obstacle* obstacle = (Obstacle*)[CCBReader load:@"Obstacle"];
+        Obstacle* obstacle = [self selectStaticObstacle];//(Obstacle*)[CCBReader load:@"Obstacle_Garbage_B"];
         float pos_x = x;
         
         if(count_obstacles < number_obstacles_together) {
@@ -109,19 +129,27 @@
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
                 obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-                obstacle.moving = false;
                 
                 [_physicsNode addChild:obstacle];
                 [ground addStaticObstacle:obstacle];
             } else {
-                obstacle = (Obstacle*)[ground getFirstStaticObstacle];
+                Obstacle* temp_obstacle = (Obstacle*)[ground getFirstStaticObstacle :obstacle.type :obstacle.color];
+                
+                if(temp_obstacle != nil) {
+                    obstacle = temp_obstacle;
+                }
                 
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
                 obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-                obstacle.moving = false;
                 
-                [ground updateStaticObstaclePosition :obstacle];
+                if(temp_obstacle != nil) {
+                    [ground updateStaticObstaclePosition :obstacle];
+                } else {
+                    [_physicsNode addChild:obstacle];
+                    [ground addStaticObstacle:obstacle];	
+                }
+                
             }
             
             count_obstacles_added++;
@@ -135,13 +163,13 @@
 
 - (void)insertMovingObstacles:(Ground*)ground :(int)index {
     float first_x = ground.position.x;
-    float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_GROUND_OBSTACLES;
+    float last_x = first_x + ground.boundingBox.size.width;
     //int count_obstacles = 0;
     int count_obstacles_added = 0;
     //int number_obstacles_together = (arc4random() % MAX_OBSTACLES_TOGETHER) + 1;
     //bool space_between_obstacles = false;
     Obstacle* obstacle = (Obstacle*)[CCBReader load:@"Moving_Obstacle"];
-    float pos_x = last_x - (obstacle.boundingBox.size.width);
+    float pos_x = first_x + ground.boundingBox.size.width - 1.0f;
     
     /*if(count_obstacles < number_obstacles_together) {
      count_obstacles++;
@@ -156,13 +184,11 @@
      pos_x = pos_x + DISTANCE_BETWEEN_OBSTACLES;
      }*/
     
-    if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
+    if(pos_x < last_x) {
         if(count_obstacles_added == [ground numberOfMovingObstaclesInArray]) {
             //pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
             
             obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-            obstacle.moving = true;
-            [obstacle.physicsBody applyTorque:5000.0f];
             
             [_physicsNode addChild:obstacle];
             [ground addMovingObstacle:obstacle];
@@ -172,7 +198,6 @@
             //pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
             
             obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
-            obstacle.moving = true;
             
             [ground updateMovingObstaclePosition :obstacle];
         }

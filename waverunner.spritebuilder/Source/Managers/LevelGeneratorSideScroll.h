@@ -9,6 +9,7 @@
 #import "LevelGenerator.h"
 @class Ground;
 @class Player;
+@class Obstacle;
 
 @interface LevelGeneratorSideScroll : LevelGenerator
 
@@ -16,6 +17,7 @@
 - (void)initContent;
 - (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
 - (void)insertObstacles:(Ground*)ground :(int)index;
+- (Obstacle*)selectStaticObstacle;
 - (void)insertStaticObstacles:(Ground*)ground :(int)index;
 - (void)insertMovingObstacles:(Ground*)ground :(int)index;
 - (void)insertCoins:(Ground*)ground :(int)index;
