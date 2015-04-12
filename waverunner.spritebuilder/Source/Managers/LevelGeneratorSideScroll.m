@@ -81,7 +81,7 @@
 
 - (Obstacle*) selectStaticObstacle {
     Obstacle *obs;
-    int obs_type = (arc4random() % 2);
+    int obs_type = (arc4random() % 4);
     
     switch(obs_type) {
         case 0:
@@ -92,6 +92,16 @@
         case 1:
             obs = (Obstacle*)[CCBReader load:@"Obstacle_Garbage_B"];
             obs.type = @"garbage";
+            obs.color = @"blue";
+            break;
+        case 2:
+            obs = (Obstacle*)[CCBReader load:@"Obstacle_Car_R"];
+            obs.type = @"car";
+            obs.color = @"red";
+            break;
+        case 3:
+            obs = (Obstacle*)[CCBReader load:@"Obstacle_Car_B"];
+            obs.type = @"car";
             obs.color = @"blue";
             break;
     }
