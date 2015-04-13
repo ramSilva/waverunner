@@ -13,13 +13,17 @@ static float const DISTANCE_FROM_GROUND_OBSTACLES = 20.0f;
 static float const DISTANCE_FROM_NEXT_GROUND_COINS = 50.0f;
 static float const DISTANCE_BETWEEN_OBSTACLES = 170.0f;
 static float const DISTANCE_BETWEEN_COINS = 100.0f;
+static float const SPACE_NEXT_COIN = 10.0f;
 static float const MIN_DISTANCE_COIN_FROM_OBSTACLE = 5.0f;
 static float const MAX_HEIGHT_COINS = 150.0f;
 static float const MIN_HEIGHT_COINS = 50.0f;
+static float const MIN_HEIGHT_MOVING_COINS = 100.0f;
 static int const MAX_OBSTACLES_TOGETHER = 1;
 static int const MAX_COINS_TOGETHER = 3;
+static int const MAX_MOVING_COINS = 3;
 static float const CHANCE_OBSTACLES = 0.5f;
-static float const CHANCE_MOVING = 0.3f;
+static float const CHANCE_MOVING_OBSTACLES = 0.3f;
+static float const CHANCE_MOVING_COINS = 0.3f;
 static float const CHANCE_COINS = 0.5f;
 
 @interface LevelGenerator : NSObject {

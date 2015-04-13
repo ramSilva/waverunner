@@ -13,6 +13,7 @@
 #import "Ground.h"
 #import "CCSprite.h"
 #import "Obstacle.h"
+#import "Coin.h"
 
 @implementation Ground
 
@@ -33,9 +34,11 @@
     ready_for_content = false;
     static_obstacles = [[NSMutableArray alloc] init];
     moving_obstacles = [[NSMutableArray alloc] init];
-    coins = [[NSMutableArray alloc] init];
+    static_coins = [[NSMutableArray alloc] init];
+    moving_coins = [[NSMutableArray alloc] init];
     next_ground = false;
     matching_obs_index = -1;
+    coin_pattern = (arc4random() % 2);
 }
 
 - (int) numberOfStaticObstaclesInArray {
@@ -46,8 +49,12 @@
     return (int)moving_obstacles.count;
 }
 
-- (int) numberOfCoinsInArray {
-    return (int)coins.count;
+- (int) numberOfStaticCoinsInArray {
+    return (int)static_coins.count;
+}
+
+- (int) numberOfMovingCoinsInArray {
+    return (int)moving_coins.count;
 }
 
 - (void) addStaticObstacle:(CCNode*)obs {
@@ -96,21 +103,39 @@
     [self addMovingObstacle :obs];
 }
 
-- (void) addCoin:(CCNode*)coin {
-    [coins insertObject:coin atIndex:coins.count];
+- (void) addStaticCoin:(CCNode*)coin {
+    [static_coins insertObject:coin atIndex:static_coins.count];
 }
 
-- (CCNode*) getFirstCoin {
-    CCNode* c = [coins objectAtIndex:0];
+- (CCNode*) getFirstStaticCoin {
+    CCNode* c = [static_coins objectAtIndex:0];
     
     c.visible = YES;
     
     return c;
 }
 
-- (void) updateCoinPosition:(CCNode*)coin {
-    [coins removeObjectAtIndex:0];
-    [self addCoin :coin];
+- (void) updateStaticCoinPosition:(CCNode*)coin {
+    [static_coins removeObjectAtIndex:0];
+    [self addStaticCoin :coin];
+}
+
+- (void) addMovingCoin:(Coin*)coin {
+    [coin setMaxX :coin.position.x];
+    [moving_coins insertObject:coin atIndex:moving_coins.count];
+}
+
+- (CCNode*) getFirstMovingCoin {
+    CCNode* c = [moving_coins objectAtIndex:0];
+    
+    c.visible = YES;
+    
+    return c;
+}
+
+- (void) updateMovingCoinPosition:(CCNode*)coin {
+    [moving_coins removeObjectAtIndex:0];
+    [self addMovingCoin :coin];
 }
 
 - (NSMutableArray*) getStaticObstacles {
@@ -132,7 +157,7 @@
     }
 }
 
-- (void) updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked{
+- (void) updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked {
     float player_x = player.position.x;
     float x = self.position.x;
     float width = self.boundingBox.size.width;
@@ -143,11 +168,12 @@
         self.position = ccp(node2_x + node2_width - 1, original_y);
         [self insertGap :cracked];
         ready_for_content = true;
+        coin_pattern = (arc4random() % 2);
         next_ground = true;
     }
 }
 
-- (void)update:(CCTime)delta {
+- (void) moveAllObstacles {
     for(int i = 0; i < moving_obstacles.count; i++) {
         Obstacle* obs = [moving_obstacles objectAtIndex:i];
         
@@ -156,6 +182,22 @@
             [obs move];
         }
     }
+}
+
+- (void) moveAllCoins {
+    for(int i = 0; i < moving_coins.count; i++) {
+        Coin* coin = [moving_coins objectAtIndex:i];
+        
+        //Condition that prevents moving obstacle to keep moving infinitely
+        if(/*coin.visible == YES && */coin.position.x > self.position.x - self.boundingBox.size.width) {
+            [coin move :coin_pattern];
+        }
+    }
+}
+
+- (void)update:(CCTime)delta {
+    [self moveAllObstacles];
+    [self moveAllCoins];
 }
 
 @end

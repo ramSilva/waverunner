@@ -21,6 +21,7 @@
 - (void)insertStaticObstacles:(Ground*)ground :(int)index;
 - (void)insertMovingObstacles:(Ground*)ground :(int)index;
 - (void)insertCoins:(Ground*)ground :(int)index;
+- (void)insertStaticCoins:(Ground*)ground :(int)index;
 - (void)updateGround;
 - (void)updateContent;
 - (void)updateLevel;

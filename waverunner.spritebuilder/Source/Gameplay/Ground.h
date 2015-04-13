@@ -16,8 +16,10 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
     int original_y;
     NSMutableArray *static_obstacles;
     NSMutableArray *moving_obstacles;
-    NSMutableArray *coins;
+    NSMutableArray *static_coins;
+    NSMutableArray *moving_coins;
     int matching_obs_index;
+    int coin_pattern;
 }
 
 @property(nonatomic,readonly) bool ground_gap;
@@ -27,10 +29,10 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 @property(nonatomic,readwrite) int number_coins;
 @property(nonatomic,readwrite) bool next_ground;
 
-
 - (int)numberOfStaticObstaclesInArray;
 - (int)numberOfMovingObstaclesInArray;
-- (int)numberOfCoinsInArray;
+- (int)numberOfStaticCoinsInArray;
+- (int)numberOfMovingCoinsInArray;
 - (void)addStaticObstacle:(CCNode*)obs;
 - (CCNode*)getLastStaticObstacle;
 - (CCNode*)getFirstStaticObstacle:(NSString*)type :(NSString*)color;
@@ -39,12 +41,17 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 - (CCNode*)getLastMovingObstacle;
 - (CCNode*)getFirstMovingObstacle;
 - (void)updateMovingObstaclePosition:(CCNode*)obs;
-- (void)addCoin:(CCNode*)coin;
-- (CCNode*)getFirstCoin;
-- (void)updateCoinPosition:(CCNode*)coin;
+- (void)addStaticCoin:(CCNode*)coin;
+- (CCNode*)getFirstStaticCoin;
+- (void)updateStaticCoinPosition:(CCNode*)coin;
+- (void)addMovingCoin:(CCNode*)coin;
+- (CCNode*)getFirstMovingCoin;
+- (void)updateMovingCoinPosition:(CCNode*)coin;
 - (NSMutableArray*)getStaticObstacles;
 - (NSMutableArray*)getMovingObstacles;
 - (void)insertGap:(Ground*)cracked;
 - (void)updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked;
+- (void)moveAllObstacles;
+- (void)moveAllCoins;
 
 @end

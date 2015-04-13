@@ -13,7 +13,6 @@
 @property(nonatomic,readwrite) NSString* type;
 @property(nonatomic,readwrite) NSString* color;
 
--(void)didLoadFromCCB;
 -(void)move;
 
 @end
