@@ -1,13 +1,13 @@
 //
-//  WallTrigger.h
+//  WallTriggerExit.h
 //  waverunner
 //
-//  Created by vieira on 07/04/15.
+//  Created by vieira on 13/04/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
 #import "CCNode.h"
 
-@interface WallTrigger : CCNode
+@interface WallTriggerExit : CCNode
 
 @end

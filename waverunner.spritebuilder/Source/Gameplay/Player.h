@@ -8,6 +8,7 @@
 
 @class CCSprite;
 @class GameManager;
+@class GameplayScene;
 
 #define BASE_SPEED 100.0f
 #define BASE_JUMP 250.0f
@@ -22,10 +23,12 @@
     CCPhysicsJoint *_wallJoint;
     BOOL _jumpingRight;
     CGPoint _previousSpeed;
+    GameplayScene *_GS;
 }
 
 @property (nonatomic, readwrite) CGPoint runSpeed;
 @property (nonatomic, readwrite) CGPoint previousSpeed;
+@property (nonatomic, readwrite) GameplayScene *GS;
 
 - (void)jump;
 - (void)land;

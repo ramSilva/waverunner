@@ -9,10 +9,12 @@
 #import "Player.h"
 #import "CCSprite.h"
 #import "GameManager.h"
+#import "GameplayScene.h"
 
 @implementation Player
 @synthesize runSpeed = _runSpeed;
 @synthesize previousSpeed = _previousSpeed;
+@synthesize GS = _GS;
 
 - (void)didLoadFromCCB{
     _runSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
@@ -105,7 +107,7 @@
     return TRUE;
 }
 
--(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltrigger:(CCNode *)nodeA player:(CCNode *)nodeB{
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerenter:(CCNode *)nodeA player:(CCNode *)nodeB{
     _runSpeed = ccp(0, 0);
 
     GameManager *_gm = [GameManager sharedGameManager];
@@ -113,6 +115,8 @@
     _gm.scrollSpeed = ccp(0, 40);
     return true;
 }
+
+
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA wall:(CCNode *)nodeB{
     CCLOG(@"colision detected");
@@ -124,6 +128,11 @@
         _airborne = false;
     }
     
+    return true;
+}
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerexit:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [_GS runMode];
     return true;
 }
 

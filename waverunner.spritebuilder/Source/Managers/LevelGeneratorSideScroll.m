@@ -11,6 +11,7 @@
 #import "Player.h"
 #import "Obstacle.h"
 
+
 @implementation LevelGeneratorSideScroll
 
 -(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn {
@@ -420,7 +421,7 @@
         Ground *g = [_grounds objectAtIndex:i];
         Ground *g2 = [_grounds objectAtIndex:(i + 3) % _grounds.count];
         Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
-        
+      
         [g updatePosition :_player :g2 :g_cracked];
         if (g.next_ground) {
             _nextGroundIndex = i;
@@ -442,6 +443,7 @@
 }
 
 - (void) updateLevel {
+    
     if (!transitionIncoming) {
         [self updateGround];
         [self updateContent];
@@ -456,9 +458,27 @@
 }
 
 -(void)setScrollMode{
-    
     transitionIncoming = false;
+    //Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
+    _player.physicsBody.velocity = ccp(0, 0);
+    /*CCActionFollow *_follow = [CCActionFollow actionWithTarget:_player];
+    [_physicsNode runAction:_follow];*/
     
+    CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:.5 position:ccp(-800, 0)];
+    
+    [_wallNode runAction:_moveby];
+    
+    CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.5 position:ccp(_physicsNode.position.x, 0)];
+    
+    [_physicsNode runAction:_movet];
+    
+    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(218,70)];
+    
+    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
+    [_player runAction:_move2];
+    
+    
+    //_player.position = [_physicsNode convertToNodeSpace:ccp(218,70)];
 }
 
 @end

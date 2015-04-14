@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#import "WallTrigger.h"
+#import "WallTriggerEnter.h"
 
-@implementation WallTrigger
+@implementation WallTriggerEnter
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionMask = @[@"player"];
-    self.physicsBody.collisionType = @"walltrigger";
+    self.physicsBody.collisionType = @"walltriggerenter";
     self.physicsBody.sensor = TRUE;
 }
 

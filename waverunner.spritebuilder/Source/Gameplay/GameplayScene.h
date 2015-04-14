@@ -7,10 +7,10 @@
 //
 
 #define SCROLL_SPEED 180.0f
-#define BACKGROUND1_MULT 0.10f
-#define BACKGROUND2_MULT 0.03f
+#define BACKGROUND1_MULT 0.50f
+#define BACKGROUND2_MULT 0.2f
 #define BACKGROUND3_MULT 10.0f
-#define MOON_MULT 0.005f
+#define MOON_MULT 0.1f
 
 
 @class CCScene;
@@ -21,7 +21,7 @@
 @class InputHandler;
 @class GameManager;
 
-@interface GameplayScene : CCScene{
+@interface GameplayScene : CCScene<CCPhysicsCollisionDelegate>{
     GameManager *_gameManager;
     InputHandler * _inputHandler;
 
@@ -48,6 +48,9 @@
     /*******************************/
     
     CCNode *_wavesNode;
+    
+    CGPoint _previousPlayerPosition;
 }
 
+-(void) runMode;
 @end

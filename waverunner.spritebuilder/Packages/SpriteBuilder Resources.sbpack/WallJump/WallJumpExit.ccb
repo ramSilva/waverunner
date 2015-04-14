@@ -40,7 +40,7 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>WallTriggerEnter</string>
+		<string>WallTriggerExit</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -75,19 +75,19 @@
 			<array>
 				<array>
 					<real>0.0</real>
-					<real>-117.07418823242188</real>
+					<real>-167.89453125</real>
 				</array>
 				<array>
 					<real>0.0</real>
-					<real>153.87506103515625</real>
+					<real>250.66015625</real>
 				</array>
 				<array>
 					<real>32</real>
-					<real>153.87506103515625</real>
+					<real>250.66015625</real>
 				</array>
 				<array>
 					<real>32</real>
-					<real>-117.07418823242188</real>
+					<real>-167.89453125</real>
 				</array>
 			</array>
 			<key>polygons</key>
@@ -95,19 +95,19 @@
 				<array>
 					<array>
 						<real>32</real>
-						<real>-117.07418823242188</real>
+						<real>-167.89453125</real>
 					</array>
 					<array>
 						<real>32</real>
-						<real>153.87506103515625</real>
+						<real>250.66015625</real>
 					</array>
 					<array>
 						<real>0.0</real>
-						<real>153.87506103515625</real>
+						<real>250.66015625</real>
 					</array>
 					<array>
 						<real>0.0</real>
-						<real>-117.07418823242188</real>
+						<real>-167.89453125</real>
 					</array>
 				</array>
 			</array>

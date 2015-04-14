@@ -11,7 +11,8 @@
 		3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80B9D1AD2D2BD00866542 /* RunIH.m */; };
 		3FC80BA21AD2D2F000866542 /* ClimbIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA11AD2D2F000866542 /* ClimbIH.m */; };
 		3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA41AD2D34C00866542 /* WallJumpIH.m */; };
-		55B081511AD42E2F009A6E00 /* WallTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B081501AD42E2F009A6E00 /* WallTrigger.m */; };
+		55E8641F1ADD7D0E007D0175 /* WallTriggerEnter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E8641C1ADD7D0E007D0175 /* WallTriggerEnter.m */; };
+		55E864201ADD7D0E007D0175 /* WallTriggerExit.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E8641E1ADD7D0E007D0175 /* WallTriggerExit.m */; };
 		5B121030197484FA004C1E1D /* waverunnerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* waverunnerActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		740A3EC91AD2CBF000C96970 /* LevelGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3EC61AD2CBF000C96970 /* LevelGenerator.m */; };
@@ -170,8 +171,10 @@
 		3FC80BA11AD2D2F000866542 /* ClimbIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClimbIH.m; path = Source/Managers/Input/ClimbIH.m; sourceTree = "<group>"; };
 		3FC80BA31AD2D34C00866542 /* WallJumpIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WallJumpIH.h; path = Source/Managers/Input/WallJumpIH.h; sourceTree = "<group>"; };
 		3FC80BA41AD2D34C00866542 /* WallJumpIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WallJumpIH.m; path = Source/Managers/Input/WallJumpIH.m; sourceTree = "<group>"; };
-		55B0814F1AD42E2F009A6E00 /* WallTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTrigger.h; sourceTree = "<group>"; };
-		55B081501AD42E2F009A6E00 /* WallTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTrigger.m; sourceTree = "<group>"; };
+		55E8641B1ADD7D0E007D0175 /* WallTriggerEnter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTriggerEnter.h; sourceTree = "<group>"; };
+		55E8641C1ADD7D0E007D0175 /* WallTriggerEnter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTriggerEnter.m; sourceTree = "<group>"; };
+		55E8641D1ADD7D0E007D0175 /* WallTriggerExit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTriggerExit.h; sourceTree = "<group>"; };
+		55E8641E1ADD7D0E007D0175 /* WallTriggerExit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallTriggerExit.m; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -391,6 +394,10 @@
 		740A3ECB1AD2CC8300C96970 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				55E8641B1ADD7D0E007D0175 /* WallTriggerEnter.h */,
+				55E8641C1ADD7D0E007D0175 /* WallTriggerEnter.m */,
+				55E8641D1ADD7D0E007D0175 /* WallTriggerExit.h */,
+				55E8641E1ADD7D0E007D0175 /* WallTriggerExit.m */,
 				740EFF1C1AD2E94D000791BE /* Player */,
 				740A3ECC1AD2CC8300C96970 /* Coin.h */,
 				740A3ECD1AD2CC8300C96970 /* Coin.m */,
@@ -402,8 +409,6 @@
 				7B60B3BE1ADABCF200BA39DC /* Obstacle.m */,
 				740A3ED21AD2CC8300C96970 /* Ground.h */,
 				740A3ED31AD2CC8300C96970 /* Ground.m */,
-				55B0814F1AD42E2F009A6E00 /* WallTrigger.h */,
-				55B081501AD42E2F009A6E00 /* WallTrigger.m */,
 			);
 			name = Gameplay;
 			path = Source/Gameplay;
@@ -941,10 +946,11 @@
 				740A3EDD1AD2CC8300C96970 /* Player.m in Sources */,
 				3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */,
 				740A3ECA1AD2CBF000C96970 /* LevelGeneratorSideScroll.m in Sources */,
+				55E8641F1ADD7D0E007D0175 /* WallTriggerEnter.m in Sources */,
 				74A70F1B1AD57BC300671EC9 /* Shop.m in Sources */,
-				55B081511AD42E2F009A6E00 /* WallTrigger.m in Sources */,
 				740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */,
 				740A3ED81AD2CC8300C96970 /* Coin.m in Sources */,
+				55E864201ADD7D0E007D0175 /* WallTriggerExit.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				3FC80BA21AD2D2F000866542 /* ClimbIH.m in Sources */,
 				740A3EDA1AD2CC8300C96970 /* GameplayScene.m in Sources */,
