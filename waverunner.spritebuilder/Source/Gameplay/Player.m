@@ -113,9 +113,7 @@
     
     _gm.scrollSpeed = ccp(0, 100);
     
-    [_GS wallModeIH];
-    _airborne = false;
-    _doubleJump = false;
+    
     
     return true;
 }
@@ -125,8 +123,17 @@
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA wall:(CCNode *)nodeB{
     CCLOG(@"colision detected");
     
+    
+    
+    
     //_wallJoint = [CCPhysicsJoint connectedDistanceJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints anchorB:nodeB.anchorPointInPoints minDistance:10 maxDistance:10];
     if(_wallJoint == nil){
+        
+        [_GS wallModeIH];
+        _airborne = false;
+        _doubleJump = false;
+        
+        
         _wallJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints];
         [self.animationManager runAnimationsForSequenceNamed:@"Wall"];
         _airborne = false;
