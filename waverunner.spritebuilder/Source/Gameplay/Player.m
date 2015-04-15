@@ -108,11 +108,14 @@
 }
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerenter:(CCNode *)nodeA player:(CCNode *)nodeB{
-    _runSpeed = ccp(0, 0);
 
     GameManager *_gm = [GameManager sharedGameManager];
     
     _gm.scrollSpeed = ccp(0, 100);
+    
+    [_GS wallModeIH];
+    _airborne = false;
+    
     return true;
 }
 
@@ -137,6 +140,8 @@
 }
 
 -(void)wallJump:(CGPoint)jumpForce{
+    
+    _runSpeed = ccp(0,0);
     
     if (_airborne) return;
     

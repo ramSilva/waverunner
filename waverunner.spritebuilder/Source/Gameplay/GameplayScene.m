@@ -76,8 +76,8 @@
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];
     
-    printf("Player: %f  :  %f \nNodeSpace: %f  :  %f \n", _player.position.x, _player.position.y, [self convertToNodeSpace:_player.position].x, [self convertToNodeSpace:_player.position].y);
-    printf("pn: %f   :   %f\n", [_physicsNode convertToWorldSpace:_player.position].x, [_physicsNode convertToWorldSpace:_player.position].y);
+    //printf("Player: %f  :  %f \nNodeSpace: %f  :  %f \n", _player.position.x, _player.position.y, [self convertToNodeSpace:_player.position].x, [self convertToNodeSpace:_player.position].y);
+    //printf("pn: %f   :   %f\n", [_physicsNode convertToWorldSpace:_player.position].x, [_physicsNode convertToWorldSpace:_player.position].y);
     
     
     [_lg updateLevel];
@@ -122,8 +122,7 @@
 -(void) wallMode{
     CCLOG(@"WALLMODE");
     _player.previousSpeed = _player.runSpeed;
-    _inputHandler = [[WallJumpIH alloc] init];
-    [_inputHandler initialize:_player];
+    
     
     [_lg setWallMode];
    
@@ -149,6 +148,9 @@
 
 }
 
-
+-(void) wallModeIH{
+    _inputHandler = [[WallJumpIH alloc] init];
+    [_inputHandler initialize:_player];
+}
 
 @end

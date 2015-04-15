@@ -53,4 +53,5 @@
 }
 
 -(void) runMode;
+-(void) wallModeIH;
 @end
