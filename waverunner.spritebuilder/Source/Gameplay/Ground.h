@@ -8,7 +8,6 @@
 
 @class CCSprite;
 
-static float const CHANCE_GAP = 0.1f;
 static float const GROUND_BLOCKS_DISTANCE = 1.0f;
 static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
@@ -22,6 +21,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
     int coin_pattern;
 }
 
+@property(nonatomic, readwrite) float chance_gap;
 @property(nonatomic,readonly) bool ground_gap;
 @property(nonatomic,readwrite) bool any_moving_obstacles;
 @property(nonatomic,readwrite) bool ready_for_content;

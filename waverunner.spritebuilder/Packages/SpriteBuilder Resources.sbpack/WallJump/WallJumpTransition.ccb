@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>17</integer>
+	<integer>19</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -165,6 +165,68 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
+				<integer>17</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>Ground</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>512</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>Ground_Cracked.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
 				<integer>5</integer>
 				<key>baseClass</key>
 				<string>CCSprite</string>
@@ -205,12 +267,12 @@
 					<key>points</key>
 					<array>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>8.7688732147216797</real>
+							<real>0.041809052228927612</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>12</real>
+							<real>8.5344905853271484</real>
+							<real>12.015399932861328</real>
 						</array>
 						<array>
 							<real>12</real>
@@ -233,12 +295,12 @@
 								<real>12</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>12</real>
+								<real>8.5344905853271484</real>
+								<real>12.015399932861328</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
+								<real>8.7688732147216797</real>
+								<real>0.041809052228927612</real>
 							</array>
 						</array>
 					</array>
@@ -379,39 +441,39 @@
 					<array>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-						<array>
-							<real>0.0</real>
 							<real>12</real>
 						</array>
 						<array>
-							<real>12</real>
-							<real>12</real>
+							<real>3.6597146987915039</real>
+							<real>12.000571250915527</real>
 						</array>
 						<array>
-							<real>12</real>
+							<real>3.5439016819000244</real>
+							<real>0.071556851267814636</real>
+						</array>
+						<array>
 							<real>0.0</real>
+							<real>0.053878322243690491</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>12</real>
 								<real>0.0</real>
+								<real>0.053878322243690491</real>
 							</array>
 							<array>
-								<real>12</real>
-								<real>12</real>
+								<real>3.5439016819000244</real>
+								<real>0.071556851267814636</real>
+							</array>
+							<array>
+								<real>3.6597146987915039</real>
+								<real>12.000571250915527</real>
 							</array>
 							<array>
 								<real>0.0</real>
 								<real>12</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
 							</array>
 						</array>
 					</array>
@@ -551,12 +613,12 @@
 					<key>points</key>
 					<array>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>7.7026581764221191</real>
+							<real>0.012033612467348576</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>12</real>
+							<real>8.4352216720581055</real>
+							<real>12.000041007995605</real>
 						</array>
 						<array>
 							<real>12</real>
@@ -579,12 +641,12 @@
 								<real>12</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>12</real>
+								<real>8.4352216720581055</real>
+								<real>12.000041007995605</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
+								<real>7.7026581764221191</real>
+								<real>0.012033612467348576</real>
 							</array>
 						</array>
 					</array>
@@ -732,24 +794,24 @@
 							<real>12</real>
 						</array>
 						<array>
-							<real>12</real>
-							<real>12</real>
+							<real>3.375697135925293</real>
+							<real>11.993005752563477</real>
 						</array>
 						<array>
-							<real>12</real>
-							<real>0.0</real>
+							<real>2.6431336402893066</real>
+							<real>0.0081045245751738548</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>12</real>
-								<real>0.0</real>
+								<real>2.6431336402893066</real>
+								<real>0.0081045245751738548</real>
 							</array>
 							<array>
-								<real>12</real>
-								<real>12</real>
+								<real>3.375697135925293</real>
+								<real>11.993005752563477</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -887,8 +949,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>279</real>
-							<real>58</real>
+							<real>331</real>
+							<real>157</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -959,12 +1021,12 @@
 					<key>points</key>
 					<array>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>9.0740318298339844</real>
+							<real>-0.013226865790784359</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>12</real>
+							<real>9.5814037322998047</real>
+							<real>11.983935356140137</real>
 						</array>
 						<array>
 							<real>12</real>
@@ -987,12 +1049,12 @@
 								<real>12</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>12</real>
+								<real>9.5814037322998047</real>
+								<real>11.983935356140137</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
+								<real>9.0740318298339844</real>
+								<real>-0.013226865790784359</real>
 							</array>
 						</array>
 					</array>
@@ -1136,32 +1198,32 @@
 							<real>0.0</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>12</real>
+							<real>0.4656643271446228</real>
+							<real>11.924345970153809</real>
 						</array>
 						<array>
-							<real>12</real>
-							<real>12</real>
+							<real>3.3269820213317871</real>
+							<real>11.944685935974121</real>
 						</array>
 						<array>
-							<real>12</real>
-							<real>0.0</real>
+							<real>2.398639440536499</real>
+							<real>0.0085430480539798737</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>12</real>
-								<real>0.0</real>
+								<real>2.398639440536499</real>
+								<real>0.0085430480539798737</real>
 							</array>
 							<array>
-								<real>12</real>
-								<real>12</real>
+								<real>3.3269820213317871</real>
+								<real>11.944685935974121</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>12</real>
+								<real>0.4656643271446228</real>
+								<real>11.924345970153809</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -1262,6 +1324,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1324,8 +1388,6 @@
 						<string>WallJump/WallJumpExit.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

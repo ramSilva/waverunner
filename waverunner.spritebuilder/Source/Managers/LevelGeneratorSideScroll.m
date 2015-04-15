@@ -426,6 +426,7 @@
             _nextGroundIndex = i;
             g.next_ground = false;
         }
+        g.chance_gap = 1.0f;
     }
 }
 
@@ -453,31 +454,27 @@
 -(void)setWallMode{
     transitionIncoming = true;
     Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
-    _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
+    if(_g.ground_gap){
+        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y+500.0f);
+    }
+    else{
+        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
+    }
 }
 
 -(void)setScrollMode{
     transitionIncoming = false;
-    //Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
     _player.physicsBody.velocity = ccp(0, 0);
-    /*CCActionFollow *_follow = [CCActionFollow actionWithTarget:_player];
-    [_physicsNode runAction:_follow];*/
     
     CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:.5 position:ccp(-800, 0)];
-    
     [_wallNode runAction:_moveby];
     
     CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.5 position:ccp(_physicsNode.position.x, 0)];
-    
     [_physicsNode runAction:_movet];
     
     CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(218,70)];
-    
     CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
     [_player runAction:_move2];
-    
-    
-    //_player.position = [_physicsNode convertToNodeSpace:ccp(218,70)];
 }
 
 @end

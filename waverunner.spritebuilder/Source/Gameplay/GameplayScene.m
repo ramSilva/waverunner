@@ -107,12 +107,14 @@
 }
 
 -(void) runMode{
-        CCLOG(@"RUNMODE");
-   _inputHandler = [[RunIH alloc] init];
+    CCLOG(@"RUNMODE");
+    _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
+    
     _player.runSpeed = _player.previousSpeed;
     _gameManager.scrollSpeed = _player.runSpeed;
     [_lg setScrollMode];
+    _g1.chance_gap = _g2.chance_gap = _g3.chance_gap = _g4.chance_gap = 0.0f;
     
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
     [_wavesNode runAction:_moveWaves];
@@ -125,7 +127,6 @@
 -(void) wallMode{
     CCLOG(@"WALLMODE");
     _player.previousSpeed = _player.runSpeed;
-    
     
     [_lg setWallMode];
    

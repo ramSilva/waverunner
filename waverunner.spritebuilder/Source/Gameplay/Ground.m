@@ -17,6 +17,7 @@
 
 @implementation Ground
 
+@synthesize chance_gap;
 @synthesize ground_gap;
 @synthesize ready_for_content;
 @synthesize number_coins;
@@ -26,6 +27,7 @@
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionType = @"ground";
+    chance_gap = 1.0f;
     ground_gap = false;
     number_obstacles = 0;
     number_coins = 0;
@@ -149,7 +151,7 @@
 - (void) insertGap:(Ground*)cracked {
     ground_gap = false;
     
-    if (drand48() < CHANCE_GAP) {
+    if (drand48() < chance_gap) {
         cracked.position = ccp(self.position.x, self.position.y);
         self.position = ccp(self.position.x, self.position.y - NOT_VISIBLE_IN_SCREEN);
         ground_gap = true;
