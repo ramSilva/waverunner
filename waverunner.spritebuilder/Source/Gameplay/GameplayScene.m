@@ -113,6 +113,9 @@
     _player.runSpeed = _player.previousSpeed;
     _gameManager.scrollSpeed = _player.runSpeed;
     [_lg setScrollMode];
+    
+    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
+    [_wavesNode runAction:_moveWaves];
 }
 
 -(void) climbMode{
@@ -127,7 +130,9 @@
     [_lg setWallMode];
    
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-300, -300)];
-    [_wavesNode runAction:_moveWaves];
+    CCActionMoveTo *_moveWaves2 = [CCActionMoveTo actionWithDuration:1 position:ccp(-600, 0)];
+    CCActionSequence *_seq = [CCActionSequence actionOne:_moveWaves two:_moveWaves2];
+    [_wavesNode runAction:_seq];
     
 }
 

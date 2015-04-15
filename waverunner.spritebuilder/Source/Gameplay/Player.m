@@ -115,6 +115,7 @@
     
     [_GS wallModeIH];
     _airborne = false;
+    _doubleJump = false;
     
     return true;
 }
