@@ -157,20 +157,25 @@
     }
 }
 
-- (void) updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked {
-    float player_x = player.position.x;
-    float x = self.position.x;
-    float width = self.boundingBox.size.width;
-    float node2_x = node2.position.x;
-    float node2_width = node2.boundingBox.size.width;
-    //next_ground = false;
-    if(player_x > (x + width) + (GROUND_BLOCKS_DISTANCE * width)) {
-        self.position = ccp(node2_x + node2_width - 1, original_y);
+- (void) updatePosition:(CCNode*)player :(int)num_grounds :(Ground*)cracked {
+    // get the world position of the ground
+    CGPoint groundWorldPosition = [self.parent convertToWorldSpace:self.position];
+    
+    if (groundWorldPosition.x <= (-1 * self.contentSize.width)) {
+        self.position = ccp(self.position.x + (num_grounds * self.contentSize.width) - num_grounds, original_y);
         [self insertGap :cracked];
         ready_for_content = true;
         coin_pattern = (arc4random() % 2);
         next_ground = true;
     }
+    
+    /*if(player_x > (x + width) + (GROUND_BLOCKS_DISTANCE * width)) {
+        self.position = ccp(node2_x + node2_width - 1, original_y);
+        [self insertGap :cracked];
+        ready_for_content = true;
+        coin_pattern = (arc4random() % 2);
+        next_ground = true;
+    }*/
 }
 
 - (void) moveAllObstacles {

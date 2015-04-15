@@ -50,7 +50,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 - (NSMutableArray*)getStaticObstacles;
 - (NSMutableArray*)getMovingObstacles;
 - (void)insertGap:(Ground*)cracked;
-- (void)updatePosition:(CCNode*)player :(Ground*)node2 :(Ground*)cracked;
+- (void)updatePosition:(CCNode*)player :(int)num_grounds :(Ground*)cracked;
 - (void)moveAllObstacles;
 - (void)moveAllCoins;
 

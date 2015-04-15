@@ -419,10 +419,9 @@
 - (void) updateGround {
     for(int i = 0; i < _grounds.count; i++) {
         Ground *g = [_grounds objectAtIndex:i];
-        Ground *g2 = [_grounds objectAtIndex:(i + 3) % _grounds.count];
         Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
       
-        [g updatePosition :_player :g2 :g_cracked];
+        [g updatePosition :_player :_grounds.count :g_cracked];
         if (g.next_ground) {
             _nextGroundIndex = i;
             g.next_ground = false;
