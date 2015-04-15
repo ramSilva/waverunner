@@ -112,7 +112,7 @@
 
     GameManager *_gm = [GameManager sharedGameManager];
     
-    _gm.scrollSpeed = ccp(0, 40);
+    _gm.scrollSpeed = ccp(0, 100);
     return true;
 }
 

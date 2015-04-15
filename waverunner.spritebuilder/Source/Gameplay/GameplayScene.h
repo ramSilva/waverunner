@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#define SCROLL_SPEED 180.0f
+#define SCROLL_SPEED 250.0f
 #define BACKGROUND1_MULT 0.50f
 #define BACKGROUND2_MULT 0.2f
 #define BACKGROUND3_MULT 10.0f
-#define MOON_MULT 0.1f
+#define MOON_MULT 0.05f
 
 
 @class CCScene;

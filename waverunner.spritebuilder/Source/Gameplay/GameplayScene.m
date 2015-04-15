@@ -61,8 +61,8 @@
 }
 
 - (void)update:(CCTime)delta{
-    CGPoint playerdelta = ccpSub(_player.position, _previousPlayerPosition);
-    _previousPlayerPosition = _player.position;
+    CGPoint playerdelta = ccpSub(_previousPlayerPosition,_physicsNode.position);
+    _previousPlayerPosition = _physicsNode.position;
     CGPoint playerSpeed = [_player runSpeed];
     CGPoint scrollSpeed = [_gameManager scrollSpeed];
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
@@ -127,7 +127,7 @@
     
     [_lg setWallMode];
    
-    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0, -200)];
+    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-300, -300)];
     [_wavesNode runAction:_moveWaves];
     
 }

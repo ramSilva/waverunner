@@ -10,7 +10,7 @@
 @class GameManager;
 @class GameplayScene;
 
-#define BASE_SPEED 100.0f
+#define BASE_SPEED 200.0f
 #define BASE_JUMP 250.0f
 #define SPEED_TO_ANIMATION 0.004f
 
