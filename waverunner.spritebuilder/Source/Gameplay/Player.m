@@ -63,12 +63,12 @@
 }
 
 - (void)hit{
-   /* _hit = TRUE;
+    _hit = TRUE;
     [self changeRunSpeed:ccp(-5.0f, 0)];
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
     CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:0.7f position:ccp(-7.0f, 0.0f)];
     [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
-    [self runAction:action];*/
+    [self runAction:action];
 }
 
 - (void)resetAnimation{
@@ -79,6 +79,10 @@
 - (void)changeRunSpeed:(CGPoint)changeAmount{
     _runSpeed.x += changeAmount.x;
     _runSpeed.y += changeAmount.y;
+    
+    GameManager *_gm = [GameManager sharedGameManager];
+    _gm.scrollSpeed = ccp(_runSpeed.x, _runSpeed.y);
+    
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
 }

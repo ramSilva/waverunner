@@ -79,10 +79,7 @@
 			<true/>
 		</dict>
 		<key>Resources</key>
-		<dict>
-			<key>isDirty</key>
-			<true/>
-		</dict>
+		<dict/>
 		<key>Resources/road.png</key>
 		<dict/>
 		<key>Resources/road_crack copy.png</key>
@@ -96,8 +93,6 @@
 		<dict/>
 		<key>Resources2</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>

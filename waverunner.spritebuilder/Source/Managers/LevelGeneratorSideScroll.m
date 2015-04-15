@@ -139,7 +139,7 @@
             if(count_obstacles_added == [ground numberOfStaticObstaclesInArray]) {
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
-                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
                 
                 [_physicsNode addChild:obstacle];
                 [ground addStaticObstacle:obstacle];
@@ -152,7 +152,7 @@
                 
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
-                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
                 
                 if(temp_obstacle != nil) {
                     [ground updateStaticObstaclePosition :obstacle];
@@ -426,7 +426,7 @@
             _nextGroundIndex = i;
             g.next_ground = false;
         }
-        g.chance_gap = 1.0f;
+        g.chance_gap = 0.1f;
     }
 }
 

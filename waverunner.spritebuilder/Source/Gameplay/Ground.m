@@ -27,7 +27,7 @@
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionType = @"ground";
-    chance_gap = 1.0f;
+    chance_gap = 0.1f;
     ground_gap = false;
     number_obstacles = 0;
     number_coins = 0;
