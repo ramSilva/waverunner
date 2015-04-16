@@ -43,6 +43,7 @@
     next_ground = false;
     matching_obs_index = -1;
     coin_pattern = (arc4random() % 2);
+    obs_pattern = (arc4random() % 1);
 }
 
 - (int) numberOfStaticObstaclesInArray {
@@ -172,6 +173,7 @@
         [self insertGap :cracked];
         ready_for_content = true;
         coin_pattern = (arc4random() % 2);
+        obs_pattern = (arc4random() % 1);
         next_ground = true;
     }
 }
@@ -181,7 +183,9 @@
         for(int i = ((int)moving_obstacles.count - number_obstacles); i < moving_obstacles.count; i++) {
             Obstacle* obs = [moving_obstacles objectAtIndex:i];
             
-            [obs move];
+            if(obs.position.x > self.position.x - self.boundingBox.size.width) {
+                [obs move :obs_pattern];
+            }
         }
     }
 }
@@ -192,7 +196,7 @@
             Coin* coin = [moving_coins objectAtIndex:i];
             
             //If not visible, coin doesn't move
-            if(coin.visible == YES) {
+            if(coin.visible == YES && coin.position.x > self.position.x - self.boundingBox.size.width) {
                 [coin move :coin_pattern];
             }
         }

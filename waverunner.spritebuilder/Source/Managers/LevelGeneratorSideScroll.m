@@ -111,6 +111,31 @@
     return obs;
 }
 
+- (NSArray*) selectStaticCoinPattern:(float)y {
+    NSMutableArray* y_pattern = [[NSMutableArray alloc] init];
+    NSArray* ret_pattern;
+    int max = MAX_COINS_TOGETHER;
+    int pattern = (arc4random() % 2);
+    
+    switch(pattern) {
+        case 0:
+            for(int i = 0; i < max; i++) {
+                [y_pattern addObject:[NSNumber numberWithFloat:y]];
+            }
+            break;
+        case 1:
+            for(int i = 0; i < max; i++) {
+                float j = (i % 2);
+                [y_pattern addObject:[NSNumber numberWithFloat:y + (j * 25.0f)]];
+            }
+            break;
+    }
+    
+    ret_pattern = [y_pattern copy];
+    
+    return ret_pattern;
+}
+
 - (void) insertStaticObstacles:(Ground*)ground :(int)index {
     float first_x = ground.position.x;
     float last_x = first_x + ground.boundingBox.size.width - DISTANCE_FROM_GROUND_OBSTACLES;
@@ -120,7 +145,7 @@
     bool space_between_obstacles = false;
     
     for(float x = first_x; x < last_x; ) {
-        Obstacle* obstacle = [self selectStaticObstacle];//(Obstacle*)[CCBReader load:@"Obstacle_Garbage_B"];
+        Obstacle* obstacle = [self selectStaticObstacle];
         float pos_x = x;
         
         if(count_obstacles < number_obstacles_together) {
@@ -221,6 +246,13 @@
     bool space_between_coins = false;
     float pos_y = 0.0f;
     bool gap = ground.ground_gap;
+    NSMutableArray* all_pos_x;
+    NSArray* all_pos_y;
+    float max_y = 0.0f;
+    float pos_x;
+    CCNode* coin = [CCBReader load:@"Coin"];
+    
+    all_pos_x = [[NSMutableArray alloc] init];
     
     if(gap) {
         g = [_grounds_cracked objectAtIndex:index];
@@ -230,14 +262,41 @@
     }
     
     for(float x = first_x; x < last_x; ) {
-        CCNode* coin = [CCBReader load:@"Coin"];
         float ground_height = (ground.boundingBox.size.height / 2) + (coin.boundingBox.size.height / 2);
-        float pos_x = x;
+        pos_x = x;
         
         if(count_coins < number_coins_together) {
             count_coins++;
             space_between_coins = false;
         } else {
+            all_pos_y = [self selectStaticCoinPattern :max_y];
+            
+            for(int i = 0; i < count_coins; i++) {
+                coin = [CCBReader load:@"Coin"];
+                pos_y = [[all_pos_y objectAtIndex:i] floatValue];
+                
+                if(count_coins_added == [g numberOfStaticCoinsInArray]) {
+                    pos_x = [[all_pos_x objectAtIndex:i] floatValue] + (coin.boundingBox.size.width / 2);
+                    
+                    coin.position = ccp(pos_x, pos_y);
+                    
+                    [_physicsNode addChild:coin];
+                    [g addStaticCoin:coin];
+                } else {
+                    coin = [g getFirstStaticCoin];
+                    
+                    pos_x = [[all_pos_x objectAtIndex:i] floatValue] + (coin.boundingBox.size.width / 2);
+                    
+                    coin.position = ccp(pos_x, pos_y);
+                    
+                    [g updateStaticCoinPosition :coin];
+                }
+                
+                count_coins_added++;
+            }
+            
+            all_pos_x = [[NSMutableArray alloc] init];
+            max_y = 0.0f;
             number_coins_together = (arc4random() % MAX_COINS_TOGETHER) + 1;
             count_coins = 1;
             space_between_coins = true;
@@ -267,8 +326,8 @@
                 
                 for(int i = 0; i < ground_number_obstacles; i++) {
                     CCNode* obs = [obstacles objectAtIndex:(obstacles.count - 1 - i)];
-                    float obs_pos_x_min = obs.position.x - (obs.boundingBox.size.width / 2);
-                    float obs_pos_x_max = obs.position.x + (obs.boundingBox.size.width / 2);
+                    float obs_pos_x_min = obs.position.x - (obs.boundingBox.size.width / 2) - MIN_DISTANCE_COIN_FROM_OBSTACLE;
+                    float obs_pos_x_max = obs.position.x + (obs.boundingBox.size.width / 2) + MIN_DISTANCE_COIN_FROM_OBSTACLE;
                     float coin_pos_x_min = pos_x - (coin.boundingBox.size.width / 2);
                     float coin_pos_x_max = pos_x + (coin.boundingBox.size.width / 2);
                     
@@ -285,24 +344,11 @@
                 }
             }
             
-            if(count_coins_added == [g numberOfStaticCoinsInArray]) {
-                pos_x = pos_x + (coin.boundingBox.size.width / 2);
-                
-                coin.position = ccp(pos_x, pos_y);
-                
-                [_physicsNode addChild:coin];
-                [g addStaticCoin:coin];
-            } else {
-                coin = [g getFirstStaticCoin];
-                
-                pos_x = pos_x + (coin.boundingBox.size.width / 2);
-                
-                coin.position = ccp(pos_x, pos_y);
-                
-                [g updateStaticCoinPosition :coin];
+            if(pos_y > max_y) {
+                max_y = pos_y;
             }
             
-            count_coins_added++;
+            [all_pos_x addObject:[NSNumber numberWithFloat:pos_x]];
         }
         
         x = pos_x + (coin.boundingBox.size.width / 2) + SPACE_NEXT_COIN;
@@ -331,8 +377,7 @@
     
     for(float x = first_x; x < last_x && count_coins_added < MAX_MOVING_COINS; ) {
         Coin* coin = (Coin*)[CCBReader load:@"Coin"];
-        //float ground_height = (ground.boundingBox.size.height / 2) + (coin.boundingBox.size.height / 2);
-        float pos_x = x - (coin.boundingBox.size.width / 2);
+        float pos_x = x;
         
         if(count_coins < number_coins_together) {
             count_coins++;
@@ -348,45 +393,6 @@
         }
         
         if(pos_x + (coin.boundingBox.size.width / 2) < last_x) {
-            //To move the coins independently just give a different pos_y for each coin
-            
-            //No obstacles, coins can be positioned on top of the ground or above the ground
-            //If there is a gap, coins must be above of the gap
-            /*if(ground_number_obstacles == 0) {
-                if(gap) {
-                    pos_y = (ground_height + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
-                } else {
-                    pos_y = ground_height + (drand48() * MAX_HEIGHT_COINS);
-                }
-                //If number of coins added is greater or equal than number of obstacles,
-                //next coin can be on top of the ground, having an obstacle on its left, or above the ground
-            } else if(ground_number_obstacles == 1 && ground.any_moving_obstacles) {
-                pos_y = (ground_height + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
-            } else {
-                NSMutableArray *obstacles = [g getStaticObstacles];
-                pos_y = ground_height + (drand48() * MAX_HEIGHT_COINS);
-                float min_y = 0.0f;
-                
-                for(int i = 0; i < ground_number_obstacles; i++) {
-                    CCNode* obs = [obstacles objectAtIndex:(obstacles.count - 1 - i)];
-                    float obs_pos_x_min = obs.position.x - (obs.boundingBox.size.width / 2);
-                    float obs_pos_x_max = obs.position.x + (obs.boundingBox.size.width / 2);
-                    float coin_pos_x_min = pos_x - (coin.boundingBox.size.width / 2);
-                    float coin_pos_x_max = pos_x + (coin.boundingBox.size.width / 2);
-                    
-                    //If coin collides with obstacle
-                    if((coin_pos_x_max >= obs_pos_x_min && coin_pos_x_max <= obs_pos_x_max)
-                       || (coin_pos_x_min <= obs_pos_x_max && coin_pos_x_min >= obs_pos_x_min)) {
-                        
-                        if(obs.position.y + (obs.boundingBox.size.height / 2) + 1.0f > min_y) {
-                            min_y = obs.position.y + (obs.boundingBox.size.height / 2);
-                        }
-                        
-                        pos_y = (min_y + MIN_HEIGHT_COINS) + (drand48() * MAX_HEIGHT_COINS);
-                    }
-                }
-            }*/
-            
             if(count_coins_added == [ground numberOfMovingCoinsInArray]) {
                 pos_x = pos_x + (coin.boundingBox.size.width / 2);
                 pos_y = MIN_HEIGHT_MOVING_COINS;

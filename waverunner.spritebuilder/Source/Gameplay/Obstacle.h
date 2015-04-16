@@ -8,11 +8,18 @@
 
 @class CCSprite;
 
-@interface Obstacle : CCSprite
+@interface Obstacle : CCSprite {
+    NSString* dir;
+    float original_y;
+    float inc_x;
+    float inc_y;
+    float max_y;
+}
 
 @property(nonatomic,readwrite) NSString* type;
 @property(nonatomic,readwrite) NSString* color;
 
--(void)move;
+-(void)move:(int)movement;
+-(void)moveLeft;
 
 @end

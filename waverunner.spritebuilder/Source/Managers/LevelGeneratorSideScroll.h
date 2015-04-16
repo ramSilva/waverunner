@@ -18,6 +18,7 @@
 - (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
 - (void)insertObstacles:(Ground*)ground :(int)index;
 - (Obstacle*)selectStaticObstacle;
+- (NSArray*)selectStaticCoinPattern:(float)y;
 - (void)insertStaticObstacles:(Ground*)ground :(int)index;
 - (void)insertMovingObstacles:(Ground*)ground :(int)index;
 - (void)insertCoins:(Ground*)ground :(int)index;

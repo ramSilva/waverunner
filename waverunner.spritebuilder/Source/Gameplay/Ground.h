@@ -20,6 +20,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
     NSMutableArray *moving_coins;
     int matching_obs_index;
     int coin_pattern;
+    int obs_pattern;
 }
 
 @property(nonatomic, readwrite) float chance_gap;
