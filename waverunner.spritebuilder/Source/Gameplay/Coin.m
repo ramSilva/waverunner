@@ -14,6 +14,10 @@
     self.physicsBody.collisionMask = @[@"player"];
     self.physicsBody.collisionType = @"coin";
     self.physicsBody.sensor = TRUE;
+    [self initialDir];
+}
+
+-(void)initialDir {
     if(self.position.y >= 150.0f) {
         dir = @"up";
     } else {

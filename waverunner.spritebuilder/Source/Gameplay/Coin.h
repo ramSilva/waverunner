@@ -18,6 +18,7 @@ static float const MAX_Y = 250.0f;
     float max_x;
 }
 
+-(void)initialDir;
 -(void)move:(int)movement;
 -(void)moveUpAndDown;
 -(void)moveLeft;

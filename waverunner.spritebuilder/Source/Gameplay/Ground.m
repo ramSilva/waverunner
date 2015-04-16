@@ -24,6 +24,7 @@
 @synthesize number_obstacles;
 @synthesize next_ground;
 @synthesize any_moving_obstacles;
+@synthesize any_moving_coins;
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionType = @"ground";
@@ -32,6 +33,7 @@
     number_obstacles = 0;
     number_coins = 0;
     any_moving_obstacles = false;
+    any_moving_coins = false;
     original_y = self.position.y;
     ready_for_content = false;
     static_obstacles = [[NSMutableArray alloc] init];
@@ -106,6 +108,7 @@
 }
 
 - (void) addStaticCoin:(CCNode*)coin {
+    any_moving_coins = false;
     [static_coins insertObject:coin atIndex:static_coins.count];
 }
 
@@ -123,12 +126,13 @@
 }
 
 - (void) addMovingCoin:(Coin*)coin {
+    any_moving_coins = true;
     [coin setMaxX :coin.position.x];
     [moving_coins insertObject:coin atIndex:moving_coins.count];
 }
 
-- (CCNode*) getFirstMovingCoin {
-    CCNode* c = [moving_coins objectAtIndex:0];
+- (Coin*) getFirstMovingCoin {
+    Coin* c = [moving_coins objectAtIndex:0];
     
     c.visible = YES;
     
@@ -170,41 +174,29 @@
         coin_pattern = (arc4random() % 2);
         next_ground = true;
     }
-    
-    /*if(player_x > (x + width) + (GROUND_BLOCKS_DISTANCE * width)) {
-        self.position = ccp(node2_x + node2_width - 1, original_y);
-        [self insertGap :cracked];
-        ready_for_content = true;
-        coin_pattern = (arc4random() % 2);
-        next_ground = true;
-    }*/
 }
 
 - (void) moveAllObstacles {
-    for(int i = 0; i < moving_obstacles.count; i++) {
-        Obstacle* obs = [moving_obstacles objectAtIndex:i];
-        
-        //Condition that prevents moving obstacle to keep moving infinitely
-        if(obs.position.x > self.position.x - self.boundingBox.size.width) {
+    if(any_moving_obstacles) {
+        for(int i = ((int)moving_obstacles.count - number_obstacles); i < moving_obstacles.count; i++) {
+            Obstacle* obs = [moving_obstacles objectAtIndex:i];
+            
             [obs move];
         }
     }
 }
 
 - (void) moveAllCoins {
-    for(int i = 0; i < moving_coins.count; i++) {
-        Coin* coin = [moving_coins objectAtIndex:i];
-        
-        //Condition that prevents moving obstacle to keep moving infinitely
-        if(/*coin.visible == YES && */coin.position.x > self.position.x - self.boundingBox.size.width) {
-            [coin move :coin_pattern];
+    if(any_moving_coins) {
+        for(int i = ((int)moving_coins.count - number_coins); i < moving_coins.count; i++) {
+            Coin* coin = [moving_coins objectAtIndex:i];
+            
+            //If not visible, coin doesn't move
+            if(coin.visible == YES) {
+                [coin move :coin_pattern];
+            }
         }
     }
-}
-
-- (void)update:(CCTime)delta {
-    [self moveAllObstacles];
-    [self moveAllCoins];
 }
 
 @end

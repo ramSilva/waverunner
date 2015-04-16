@@ -7,6 +7,7 @@
 //
 
 @class CCSprite;
+@class Coin;
 
 static float const GROUND_BLOCKS_DISTANCE = 1.0f;
 static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
@@ -24,6 +25,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 @property(nonatomic, readwrite) float chance_gap;
 @property(nonatomic,readonly) bool ground_gap;
 @property(nonatomic,readwrite) bool any_moving_obstacles;
+@property(nonatomic,readwrite) bool any_moving_coins;
 @property(nonatomic,readwrite) bool ready_for_content;
 @property(nonatomic,readwrite) int number_obstacles;
 @property(nonatomic,readwrite) int number_coins;
@@ -45,7 +47,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 - (CCNode*)getFirstStaticCoin;
 - (void)updateStaticCoinPosition:(CCNode*)coin;
 - (void)addMovingCoin:(CCNode*)coin;
-- (CCNode*)getFirstMovingCoin;
+- (Coin*)getFirstMovingCoin;
 - (void)updateMovingCoinPosition:(CCNode*)coin;
 - (NSMutableArray*)getStaticObstacles;
 - (NSMutableArray*)getMovingObstacles;

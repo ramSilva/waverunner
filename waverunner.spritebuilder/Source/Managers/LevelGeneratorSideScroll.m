@@ -10,6 +10,7 @@
 #import "Ground.h"
 #import "Player.h"
 #import "Obstacle.h"
+#import "Coin.h"
 
 
 @implementation LevelGeneratorSideScroll
@@ -311,7 +312,6 @@
 }
 
 - (void) insertMovingCoins:(Ground*)ground :(int)index {
-    Ground* g = ground;
     float first_x = ground.position.x + (ground.boundingBox.size.width / 2) - 1.0f - DISTANCE_FROM_NEXT_GROUND_COINS;
     int ground_number_obstacles = ground.number_obstacles;
     float last_x = ground.position.x + ground.boundingBox.size.width - DISTANCE_FROM_NEXT_GROUND_COINS;
@@ -323,14 +323,14 @@
     bool gap = ground.ground_gap;
     
     if(gap) {
-        g = [_grounds_cracked objectAtIndex:index];
+        Ground* g = [_grounds_cracked objectAtIndex:index];
         first_x = g.position.x + (g.boundingBox.size.width / 2) - 1.0f - DISTANCE_FROM_NEXT_GROUND_COINS;
         ground_number_obstacles = g.number_obstacles;
         last_x = g.position.x + g.boundingBox.size.width - DISTANCE_FROM_NEXT_GROUND_COINS;
     }
     
     for(float x = first_x; x < last_x && count_coins_added < MAX_MOVING_COINS; ) {
-        CCNode* coin = [CCBReader load:@"Coin"];
+        Coin* coin = (Coin*)[CCBReader load:@"Coin"];
         //float ground_height = (ground.boundingBox.size.height / 2) + (coin.boundingBox.size.height / 2);
         float pos_x = x - (coin.boundingBox.size.width / 2);
         
@@ -387,23 +387,24 @@
                 }
             }*/
             
-            if(count_coins_added == [g numberOfMovingCoinsInArray]) {
+            if(count_coins_added == [ground numberOfMovingCoinsInArray]) {
                 pos_x = pos_x + (coin.boundingBox.size.width / 2);
                 pos_y = MIN_HEIGHT_MOVING_COINS;
                 
                 coin.position = ccp(pos_x, pos_y);
                 
                 [_physicsNode addChild:coin];
-                [g addMovingCoin:coin];
+                [ground addMovingCoin:coin];
             } else {
-                coin = [g getFirstMovingCoin];
+                coin = [ground getFirstMovingCoin];
                 
                 pos_x = pos_x + (coin.boundingBox.size.width / 2);
                 pos_y = MIN_HEIGHT_MOVING_COINS;
                 
                 coin.position = ccp(pos_x, pos_y);
+                [coin initialDir];
                 
-                [g updateMovingCoinPosition :coin];
+                [ground updateMovingCoinPosition :coin];
             }
             
             count_coins_added++;
@@ -412,7 +413,7 @@
         x = pos_x + (coin.boundingBox.size.width / 2) + SPACE_NEXT_COIN;
     }
     
-    g.number_coins = count_coins_added;
+    ground.number_coins = count_coins_added;
 }
 
 
@@ -421,7 +422,7 @@
         Ground *g = [_grounds objectAtIndex:i];
         Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
       
-        [g updatePosition :_player :_grounds.count :g_cracked];
+        [g updatePosition :_player :(int)_grounds.count :g_cracked];
         if (g.next_ground) {
             _nextGroundIndex = i;
             g.next_ground = false;
@@ -439,16 +440,17 @@
             [self insertCoins :ground :i];
             ground.ready_for_content = false;
         }
+        
+        [ground moveAllObstacles];
+        [ground moveAllCoins];
     }
 }
 
 - (void) updateLevel {
-    
     if (!transitionIncoming) {
         [self updateGround];
         [self updateContent];
     }
-    
 }
 
 -(void)setWallMode{
