@@ -114,7 +114,7 @@
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerenter:(CCNode *)nodeA player:(CCNode *)nodeB{
 
     GameManager *_gm = [GameManager sharedGameManager];
-    
+    self.physicsBody.affectedByGravity = NO;
     _gm.scrollSpeed = ccp(0, 100);
     
     return true;
@@ -143,6 +143,7 @@
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerexit:(CCNode *)nodeA player:(CCNode *)nodeB{
     [_GS runMode];
+    self.physicsBody.affectedByGravity = YES;
     return true;
 }
 

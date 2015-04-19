@@ -15,20 +15,33 @@
 }
 
 -(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
-    touchLocationBegan = [touch locationInWorld];
-}
-
--(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     touchLocationEnded = [touch locationInWorld];
-    CGPoint diff = ccpSub(touchLocationEnded, touchLocationBegan);
+    CGPoint diff = ccpSub(touchLocationEnded, [_player.parent convertToWorldSpace:_player.position]);
+    
     if (CGPointEqualToPoint(diff, ccp(0, 0))) {
         return;
     }
     CGPoint launchDirection = ccpNormalize(diff);
-    CGPoint force = ccpMult(launchDirection, 20000);
+    printf("touch direction: %f, %f\n", diff.x, diff.y);
+    CGPoint force = ccpMult(launchDirection, 8000);
+    
+    [_player wallJump:force];
+
+    
+    //touchLocationBegan = [touch locationInWorld];
+}
+
+-(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
+    /*touchLocationEnded = [touch locationInWorld];
+    CGPoint diff = ccpSub(touchLocationEnded, _player.position);
+    if (CGPointEqualToPoint(diff, ccp(0, 0))) {
+        return;
+    }
+    CGPoint launchDirection = ccpNormalize(diff);
+    CGPoint force = ccpMult(launchDirection, 8000);
 
     [_player wallJump:force];
-    
+    */
     //printf("LOL: %f, %f\n", diff.x, diff.y);
 }
 
