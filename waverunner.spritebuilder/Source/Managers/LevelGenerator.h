@@ -36,6 +36,7 @@ static float const CHANCE_COINS = 0.5f;
 }
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
+- (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
 - (void)initContent;
 - (void)insertObstacles:(Ground*)ground;
 - (void)insertCoins:(Ground*)ground :(int)index;
@@ -45,6 +46,7 @@ static float const CHANCE_COINS = 0.5f;
 - (void)setWallMode;
 - (void)setScrollMode;
 - (void)setClimbMode;
+-(CCNode*) getWallNode;
 
 
 

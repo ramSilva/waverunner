@@ -13,7 +13,7 @@
 
 @interface LevelGeneratorSideScroll : LevelGenerator
 
-- (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
+- (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
 - (void)initContent;
 - (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
 - (void)insertObstacles:(Ground*)ground :(int)index;

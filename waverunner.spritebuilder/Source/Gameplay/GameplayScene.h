@@ -50,6 +50,8 @@
     CCNode *_wavesNode;
     
     CGPoint _previousPlayerPosition;
+    
+    CCNode* _wallNode;
 }
 
 -(void) runMode;

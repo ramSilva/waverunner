@@ -15,20 +15,14 @@
 
 @implementation LevelGeneratorSideScroll
 
--(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn {
-    _grounds = [g copy];
-    _grounds_cracked = [gc copy];
-    _player = p;
-    _physicsNode = pn;
+-(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*)wn{
+    [super initializeLevel:g :gc :p :pn :wn];
     _nextGroundIndex = 3;
     
     //Initialize seed
     srand48(arc4random());
     
-    [self initContent];
-    _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
-    _wallNode.position = ccp(-500, -500);
-    [pn addChild:_wallNode];
+    
 }
 
 - (void) initContent {
@@ -468,21 +462,8 @@
     else{
         _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
     }
-}
-
--(void)setScrollMode{
-    transitionIncoming = false;
-    _player.physicsBody.velocity = ccp(0, 0);
     
-    CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:.5 position:ccp(-800, 0)];
-    [_wallNode runAction:_moveby];
     
-    CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.5 position:ccp(_physicsNode.position.x, 0)];
-    [_physicsNode runAction:_movet];
-    
-    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(218,70)];
-    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
-    [_player runAction:_move2];
 }
 
 @end
