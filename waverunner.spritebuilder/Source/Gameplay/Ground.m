@@ -182,8 +182,10 @@
     if(any_moving_obstacles) {
         for(int i = ((int)moving_obstacles.count - number_obstacles); i < moving_obstacles.count; i++) {
             Obstacle* obs = [moving_obstacles objectAtIndex:i];
+            CGPoint obsWorldPosition = [self.parent convertToWorldSpace:obs.position];
+            CGPoint obsScreenPosition = [self convertToNodeSpace:obsWorldPosition];
             
-            if(obs.position.x > self.position.x - self.boundingBox.size.width) {
+            if (obsScreenPosition.x > (-1 * self.contentSize.width)) {
                 [obs move :obs_pattern];
             }
         }
@@ -194,9 +196,11 @@
     if(any_moving_coins) {
         for(int i = ((int)moving_coins.count - number_coins); i < moving_coins.count; i++) {
             Coin* coin = [moving_coins objectAtIndex:i];
+            CGPoint coinWorldPosition = [self.parent convertToWorldSpace:coin.position];
+            CGPoint coinScreenPosition = [self convertToNodeSpace:coinWorldPosition];
             
             //If not visible, coin doesn't move
-            if(coin.visible == YES && coin.position.x > self.position.x - self.boundingBox.size.width) {
+            if(coin.visible == YES && coinScreenPosition.x > (-1 * self.contentSize.width)) {
                 [coin move :coin_pattern];
             }
         }
