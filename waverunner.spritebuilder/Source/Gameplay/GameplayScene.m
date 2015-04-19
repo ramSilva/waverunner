@@ -56,30 +56,26 @@
     //[self runMode];
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
-    _player.runSpeed = _player.previousSpeed;
-    _gameManager.scrollSpeed = _player.runSpeed;
 }
 
 - (void)update:(CCTime)delta{
-    CGPoint playerdelta = ccpSub(_previousPlayerPosition,_physicsNode.position);
-    _previousPlayerPosition = _physicsNode.position;
+    CGPoint physicsdelta = ccpSub(_previousPhysicsPosition,_physicsNode.position);
+    _previousPhysicsPosition = _physicsNode.position;
     CGPoint playerSpeed = [_player runSpeed];
     CGPoint scrollSpeed = [_gameManager scrollSpeed];
+    printf("player speed: %f\n", delta*playerSpeed.x);
+    printf("scroll speed: %f\n", delta*scrollSpeed.x);
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
     _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y);
     _physicsNode.position = ccp(_physicsNode.position.x - delta*scrollSpeed.x, _physicsNode.position.y - delta*scrollSpeed.y);
-    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*playerdelta.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*playerdelta.y*BACKGROUND1_MULT);
-    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*playerdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y- delta*playerdelta.y*BACKGROUND2_MULT);
-    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*playerdelta.x*BACKGROUND3_MULT, _backgrounds3node.position.y- delta*playerdelta.y*BACKGROUND3_MULT);
-    _moon.position = ccp(_moon.position.x - delta*playerdelta.x*MOON_MULT, _moon.position.y - delta*playerdelta.y*MOON_MULT);
+    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*physicsdelta.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*physicsdelta.y*BACKGROUND1_MULT);
+    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*physicsdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y - delta*physicsdelta.y*BACKGROUND2_MULT);
+    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*physicsdelta.x*BACKGROUND3_MULT, _backgrounds3node.position.y - delta*physicsdelta.y*BACKGROUND3_MULT);
+    _moon.position = ccp(_moon.position.x - delta*physicsdelta.x*MOON_MULT, _moon.position.y - delta*physicsdelta.y*MOON_MULT);
 
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];
-    
-    //printf("Player: %f  :  %f \nNodeSpace: %f  :  %f \n", _player.position.x, _player.position.y, [self convertToNodeSpace:_player.position].x, [self convertToNodeSpace:_player.position].y);
-    //printf("pn: %f   :   %f\n", [_physicsNode convertToWorldSpace:_player.position].x, [_physicsNode convertToWorldSpace:_player.position].y);
-    
-    
+
     [_lg updateLevel];
 }
 

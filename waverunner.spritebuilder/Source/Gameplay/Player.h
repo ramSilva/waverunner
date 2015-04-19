@@ -22,7 +22,6 @@
     BOOL _hit;
     CCPhysicsJoint *_wallJoint;
     BOOL _jumpingRight;
-    CGPoint _previousSpeed;
     GameplayScene *_GS;
 }
 

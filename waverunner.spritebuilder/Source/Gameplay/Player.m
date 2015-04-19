@@ -13,12 +13,12 @@
 
 @implementation Player
 @synthesize runSpeed = _runSpeed;
-@synthesize previousSpeed = _previousSpeed;
 @synthesize GS = _GS;
 
 - (void)didLoadFromCCB{
     _runSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
-    _previousSpeed = _runSpeed;
+    GameManager *_gm = [GameManager sharedGameManager];
+    _gm.scrollSpeed = _runSpeed;
     _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] jumpLevel];
     self.physicsBody.collisionType = @"player";
     
@@ -28,10 +28,6 @@
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
-}
-
-- (void)update:(CCTime)delta{
-
 }
 
 - (void)jump{
@@ -64,7 +60,7 @@
 
 - (void)hit{
     _hit = TRUE;
-    [self changeRunSpeed:ccp(-5.0f, 0)];
+    [self changeRunSpeed:ccp(10.0f, 0)];
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
     CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:0.7f position:ccp(-7.0f, 0.0f)];
     [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
@@ -82,6 +78,8 @@
     
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = ccp(_runSpeed.x, _runSpeed.y);
+    
+    _previousSpeed = _runSpeed;
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];

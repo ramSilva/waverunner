@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#define SCROLL_SPEED 250.0f
-#define BACKGROUND1_MULT 0.50f
-#define BACKGROUND2_MULT 0.2f
+#define BACKGROUND1_MULT 5.0f
+#define BACKGROUND2_MULT 5.0f
 #define BACKGROUND3_MULT 500.0f
 #define MOON_MULT 0.05f
 
@@ -49,7 +48,7 @@
     
     CCNode *_wavesNode;
     
-    CGPoint _previousPlayerPosition;
+    CGPoint _previousPhysicsPosition;
 }
 
 -(void) runMode;
