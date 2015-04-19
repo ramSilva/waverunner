@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>5</integer>
+	<integer>0</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -983,40 +983,40 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>18.33984375</real>
-					<real>28.7578125</real>
+					<real>29.16796875</real>
+					<real>35.05859375</real>
 				</array>
 				<array>
-					<real>28.92578125</real>
-					<real>80.7109375</real>
+					<real>34.01171875</real>
+					<real>80.64453125</real>
 				</array>
 				<array>
-					<real>64.4140625</real>
-					<real>80.7109375</real>
+					<real>58.95703125</real>
+					<real>78.953125</real>
 				</array>
 				<array>
-					<real>64.4140625</real>
-					<real>28.7578125</real>
+					<real>51.34765625</real>
+					<real>33.48046875</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>64.4140625</real>
-						<real>28.7578125</real>
+						<real>51.34765625</real>
+						<real>33.48046875</real>
 					</array>
 					<array>
-						<real>64.4140625</real>
-						<real>80.7109375</real>
+						<real>58.95703125</real>
+						<real>78.953125</real>
 					</array>
 					<array>
-						<real>28.92578125</real>
-						<real>80.7109375</real>
+						<real>34.01171875</real>
+						<real>80.64453125</real>
 					</array>
 					<array>
-						<real>18.33984375</real>
-						<real>28.7578125</real>
+						<real>29.16796875</real>
+						<real>35.05859375</real>
 					</array>
 				</array>
 			</array>
@@ -1177,7 +1177,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.20000000298023224</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
