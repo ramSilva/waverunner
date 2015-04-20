@@ -17,6 +17,7 @@
 
 @implementation Ground
 
+@synthesize original_y;
 @synthesize chance_gap;
 @synthesize ground_gap;
 @synthesize ready_for_content;

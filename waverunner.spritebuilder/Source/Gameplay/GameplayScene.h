@@ -48,7 +48,11 @@
     
     CCNode *_wavesNode;
     
+
     CGPoint _previousPhysicsPosition;
+    CGPoint _previousPlayerPosition;
+    
+    CCNode* _wallNode;
 }
 
 -(void) runMode;

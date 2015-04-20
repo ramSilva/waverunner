@@ -13,6 +13,7 @@
 #import "Ground.h"
 #import "LevelGenerator.h"
 #import "LevelGeneratorSideScroll.h"
+#import "LevelGeneratorWallJump.h"
 #import "RunIH.h"
 #import "WallJumpIH.h"
 #import "GameManager.h"
@@ -49,9 +50,14 @@
     
     _player.zOrder = 1;
     
+    //[self initContent];
+    _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
+    _wallNode.position = ccp(-500, -500);
+    [_physicsNode addChild:_wallNode];
+    
     _lg = [[LevelGeneratorSideScroll alloc] init];
     
-    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode];
+    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
     
     //[self runMode];
     _inputHandler = [[RunIH alloc] init];
@@ -109,7 +115,11 @@
     
     _player.runSpeed = _player.previousSpeed;
     _gameManager.scrollSpeed = _player.runSpeed;
+    
     [_lg setScrollMode];
+    _lg = [[LevelGeneratorSideScroll alloc] init];
+    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
+   
     _g1.chance_gap = _g2.chance_gap = _g3.chance_gap = _g4.chance_gap = 0.0f;
     
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
@@ -125,6 +135,9 @@
     _player.previousSpeed = _player.runSpeed;
     
     [_lg setWallMode];
+     _lg = [[LevelGeneratorWallJump alloc] init];
+    
+    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
    
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-300, -300)];
     CCActionMoveTo *_moveWaves2 = [CCActionMoveTo actionWithDuration:1 position:ccp(-600, 0)];
@@ -153,6 +166,9 @@
 -(void) wallModeIH{
     _inputHandler = [[WallJumpIH alloc] init];
     [_inputHandler initialize:_player];
+    _lg = [[LevelGeneratorWallJump alloc] init];
+    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
+
 }
 
 @end

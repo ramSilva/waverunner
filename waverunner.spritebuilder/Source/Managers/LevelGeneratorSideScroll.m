@@ -15,20 +15,23 @@
 
 @implementation LevelGeneratorSideScroll
 
--(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn {
-    _grounds = [g copy];
-    _grounds_cracked = [gc copy];
-    _player = p;
-    _physicsNode = pn;
+-(void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*)wn{
+    [super initializeLevel:g :gc :p :pn :wn];
     _nextGroundIndex = 3;
     
-    //Initialize seed
-    srand48(arc4random());
+    /*if(!p.jumpingRight) {
+        printf("entrei\n");
+        [self initContent];
+    }*/
     
-    [self initContent];
-    _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
-    _wallNode.position = ccp(-500, -500);
-    [pn addChild:_wallNode];
+    if(wn.position.x != -500) {
+        existedWallJump = true;
+    } else {
+       [self initContent];
+    }
+    
+    //Initialize seed
+    srand48(arc4random());    
 }
 
 - (void) initContent {
@@ -433,6 +436,11 @@
             _nextGroundIndex = i;
             g.next_ground = false;
         }
+        
+        if(existedWallJump) {
+            g.ready_for_content = false;
+        }
+        
         g.chance_gap = 0.1f;
     }
 }
@@ -455,34 +463,27 @@
 - (void) updateLevel {
     if (!transitionIncoming) {
         [self updateGround];
-        [self updateContent];
+        
+        if(!existedWallJump) {
+            [self updateContent];
+        }
+        
+        if(existedWallJump && !_player.airborne) {
+            existedWallJump = false;
+        }
     }
 }
 
--(void)setWallMode{
+- (void) setWallMode{
     transitionIncoming = true;
     Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
+    
     if(_g.ground_gap){
-        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y+500.0f);
+        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.original_y);
     }
     else{
         _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
     }
-}
-
--(void)setScrollMode{
-    transitionIncoming = false;
-    _player.physicsBody.velocity = ccp(0, 0);
-    
-    CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:.5 position:ccp(-800, 0)];
-    [_wallNode runAction:_moveby];
-    
-    CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.5 position:ccp(_physicsNode.position.x, 0)];
-    [_physicsNode runAction:_movet];
-    
-    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(218,70)];
-    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
-    [_player runAction:_move2];
 }
 
 @end

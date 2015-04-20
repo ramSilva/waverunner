@@ -25,6 +25,7 @@
     GameplayScene *_GS;
 }
 
+@property (nonatomic, readonly) BOOL airborne;
 @property (nonatomic, readwrite) CGPoint runSpeed;
 @property (nonatomic, readwrite) CGPoint previousSpeed;
 @property (nonatomic, readwrite) GameplayScene *GS;

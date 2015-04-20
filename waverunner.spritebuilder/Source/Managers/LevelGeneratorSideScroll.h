@@ -11,9 +11,11 @@
 @class Player;
 @class Obstacle;
 
-@interface LevelGeneratorSideScroll : LevelGenerator
+@interface LevelGeneratorSideScroll : LevelGenerator {
+    bool existedWallJump;
+}
 
-- (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
+- (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
 - (void)initContent;
 - (float)calculateObstaclePositionX:(float)first_x :(float)posx :(int)index :(CCNode*)obstacle;
 - (void)insertObstacles:(Ground*)ground :(int)index;
@@ -26,6 +28,5 @@
 - (void)updateGround;
 - (void)updateContent;
 - (void)updateLevel;
-//- (Ground*)getNextGround;
 
 @end
