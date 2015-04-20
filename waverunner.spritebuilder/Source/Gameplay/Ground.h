@@ -13,7 +13,7 @@ static float const GROUND_BLOCKS_DISTANCE = 1.0f;
 static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
 @interface Ground : CCSprite {
-    int original_y;
+    //int original_y;
     NSMutableArray *static_obstacles;
     NSMutableArray *moving_obstacles;
     NSMutableArray *static_coins;
@@ -25,6 +25,7 @@ static float const NOT_VISIBLE_IN_SCREEN = 500.0f;
 
 @property(nonatomic, readwrite) float chance_gap;
 @property(nonatomic,readonly) bool ground_gap;
+@property(nonatomic,readonly) float original_y;
 @property(nonatomic,readwrite) bool any_moving_obstacles;
 @property(nonatomic,readwrite) bool any_moving_coins;
 @property(nonatomic,readwrite) bool ready_for_content;

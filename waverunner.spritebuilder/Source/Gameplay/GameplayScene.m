@@ -171,7 +171,7 @@
     _inputHandler = [[WallJumpIH alloc] init];
     [_inputHandler initialize:_player];
     _lg = [[LevelGeneratorWallJump alloc] init];
-    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode];
+    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
 
 }
 

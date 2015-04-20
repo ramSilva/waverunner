@@ -17,8 +17,12 @@
     _physicsNode = pn;
 }
 - (void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn : (CCNode*) wn {
-    [self initializeLevel:g :gc :p :pn];
+    //[self initializeLevel:g :gc :p :pn];
     _wallNode = wn;
+    _grounds = [g copy];
+    _grounds_cracked = [gc copy];
+    _player = p;
+    _physicsNode = pn;
 }
 
 - (void) initContent {}

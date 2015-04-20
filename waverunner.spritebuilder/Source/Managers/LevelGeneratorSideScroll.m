@@ -19,10 +19,19 @@
     [super initializeLevel:g :gc :p :pn :wn];
     _nextGroundIndex = 3;
     
+    /*if(!p.jumpingRight) {
+        printf("entrei\n");
+        [self initContent];
+    }*/
+    
+    if(wn.position.x != -500) {
+        existedWallJump = true;
+    } else {
+       [self initContent];
+    }
+    
     //Initialize seed
-    srand48(arc4random());
-    
-    
+    srand48(arc4random());    
 }
 
 - (void) initContent {
@@ -427,6 +436,11 @@
             _nextGroundIndex = i;
             g.next_ground = false;
         }
+        
+        if(existedWallJump) {
+            g.ready_for_content = false;
+        }
+        
         g.chance_gap = 0.1f;
     }
 }
@@ -449,21 +463,27 @@
 - (void) updateLevel {
     if (!transitionIncoming) {
         [self updateGround];
-        [self updateContent];
+        
+        if(!existedWallJump) {
+            [self updateContent];
+        }
+        
+        if(existedWallJump && !_player.airborne) {
+            existedWallJump = false;
+        }
     }
 }
 
--(void)setWallMode{
+- (void) setWallMode{
     transitionIncoming = true;
     Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
+    
     if(_g.ground_gap){
-        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y+500.0f);
+        _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.original_y);
     }
     else{
         _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
     }
-    
-    
 }
 
 @end

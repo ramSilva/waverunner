@@ -31,16 +31,15 @@
 
 -(void)setScrollMode{
     _player.physicsBody.velocity = ccp(0, 0);
-    /*
-    CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:0 position:ccp(-1800, 0)];
-    [_wallNode runAction:_moveby];*/
-    _wallNode.position = ccp(0, 0);
     
-    CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.5 position:ccp(_physicsNode.position.x, 0)];
+    CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:0 position:ccp(-1800, 0)];
+    [_wallNode runAction:_moveby];
+    
+    CCActionMoveTo *_movet = [CCActionMoveTo actionWithDuration:1.2 position:ccp(_physicsNode.position.x, 0)];
     [_physicsNode runAction:_movet];
     
     CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(218,70)];
-    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
+    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:1 position:nodeposition];
     [_player runAction:_move2];
 }
 

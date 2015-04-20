@@ -12,6 +12,8 @@
 #import "GameplayScene.h"
 
 @implementation Player
+
+@synthesize airborne = _airborne;
 @synthesize runSpeed = _runSpeed;
 @synthesize previousSpeed = _previousSpeed;
 @synthesize GS = _GS;
