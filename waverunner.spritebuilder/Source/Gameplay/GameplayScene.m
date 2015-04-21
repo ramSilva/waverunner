@@ -31,6 +31,8 @@
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
     _grounds = @[_g1, _g2, _g3, _g4];
+    timer = 0.0f;
+    useTimer = true;
     
     NSMutableArray *_g_cracked = [[NSMutableArray alloc] init];
     
@@ -81,7 +83,17 @@
 
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];
-
+    
+    if(useTimer) {
+        timer = timer + delta;
+    }
+    
+    if(timer >= TIMER_WALLJUMP && drand48() < CHANCE_WALLJUMP) {
+        timer = 0.0f;
+        useTimer = false;
+        [self wallMode];
+    }
+    
     [_lg updateLevel];
 }
 
@@ -124,13 +136,14 @@
     
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
     [_wavesNode runAction:_moveWaves];
+    useTimer = true;
 }
 
 -(void) climbMode{
     
 }
 
--(void) wallMode{
+-(void) wallMode {
     CCLOG(@"WALLMODE");
     _player.previousSpeed = _player.runSpeed;
     
