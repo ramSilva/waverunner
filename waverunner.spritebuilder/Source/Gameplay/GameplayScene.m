@@ -71,8 +71,8 @@
     _previousPhysicsPosition = _physicsNode.position;
     CGPoint playerSpeed = [_player runSpeed];
     CGPoint scrollSpeed = [_gameManager scrollSpeed];
-    printf("player speed: %f\n", delta*playerSpeed.x);
-    printf("scroll speed: %f\n", delta*scrollSpeed.x);
+    /*printf("player speed: %f\n", delta*playerSpeed.x);
+    printf("scroll speed: %f\n", delta*scrollSpeed.x);*/
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
     _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y);
     _physicsNode.position = ccp(_physicsNode.position.x - delta*scrollSpeed.x, _physicsNode.position.y - delta*scrollSpeed.y);
@@ -129,11 +129,12 @@
 
 -(void) runMode{
     CCLOG(@"RUNMODE");
+    _gameManager.runningMode = true;
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
     
-    _player.runSpeed = _player.previousSpeed;
-    _gameManager.scrollSpeed = _player.runSpeed;
+    _player.runSpeed = _player.initialSpeed;
+    _gameManager.scrollSpeed = _player.initialSpeed;
     
     [_lg setScrollMode];
     _lg = [[LevelGeneratorSideScroll alloc] init];
@@ -152,7 +153,8 @@
 
 -(void) wallMode {
     CCLOG(@"WALLMODE");
-    _player.previousSpeed = _player.runSpeed;
+    _gameManager.runningMode = false;
+    //_player.previousSpeed = _player.runSpeed;
     
     [_lg setWallMode];
      _lg = [[LevelGeneratorWallJump alloc] init];

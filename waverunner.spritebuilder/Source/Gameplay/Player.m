@@ -16,9 +16,11 @@
 @synthesize airborne = _airborne;
 @synthesize runSpeed = _runSpeed;
 @synthesize GS = _GS;
+@synthesize initialSpeed = _initialSpeed;
+
 
 - (void)didLoadFromCCB{
-    _runSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
+    _runSpeed = _initialSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = _runSpeed;
     _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] jumpLevel];
@@ -30,6 +32,7 @@
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
+    hitTimer =  l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e = 0;
 }
 
 - (void)jump{
@@ -62,11 +65,13 @@
 
 - (void)hit{
     _hit = TRUE;
-    [self changeRunSpeed:ccp(10.0f, 0)];
+    [self changeRunSpeed:ccp(-10.0f, 0)];
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
-    CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:0.7f position:ccp(-7.0f, 0.0f)];
+    //CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:1.4f position:ccp(-10.0f, 0.0f)];
     [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
-    [self runAction:action];
+    //[self runAction:action];
+    hitTimer = 0;
+    
 }
 
 - (void)resetAnimation{
@@ -79,9 +84,9 @@
     _runSpeed.y += changeAmount.y;
     
     GameManager *_gm = [GameManager sharedGameManager];
-    _gm.scrollSpeed = ccp(_runSpeed.x, _runSpeed.y);
+    _gm.scrollSpeed = ccp(_gm.scrollSpeed.x, _runSpeed.y);
     
-    _previousSpeed = _runSpeed;
+    //_previousSpeed = _runSpeed;
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
@@ -169,4 +174,26 @@
 
 }
 
+-(void)update:(CCTime)delta{
+    if (![GameManager sharedGameManager].runningMode) return;
+    
+    if (hitTimer>5) {
+        [self changeRunSpeed:ccp(10, 0)];
+        hitTimer = 0;
+    }
+    if ([self.parent convertToWorldSpace:self.position].x < 350.0f){
+        hitTimer += delta;
+    }
+    else{
+        _runSpeed = _initialSpeed;
+    }
+    
+    if (l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e > 20) {
+        l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e = 0;
+        [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
+    }
+    l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e += delta;
+    
+    printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
+}
 @end

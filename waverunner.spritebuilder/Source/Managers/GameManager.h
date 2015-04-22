@@ -14,6 +14,7 @@
     NSInteger _coins;
     CGPoint _scrollSpeed;
     CCLabelTTF *_coinLabel;
+    bool _runningMode;
 }
 
 @property (readonly, nonatomic) NSInteger jumpLevel;
@@ -23,6 +24,8 @@
 @property (readonly, nonatomic) NSInteger coins;
 @property (readonly, nonatomic) CCLabelTTF *coinLabel;
 @property (readwrite,nonatomic) CGPoint scrollSpeed;
+@property (readwrite,nonatomic) bool runningMode;
+
 
 
 + (GameManager*) sharedGameManager;

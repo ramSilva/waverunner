@@ -22,6 +22,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize coins = _coins;
 @synthesize coinLabel = _coinLabel;
 @synthesize scrollSpeed;
+@synthesize runningMode = _runningMode;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:_coins forKey:GameManagerCoinsKey];
@@ -57,6 +58,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     _jumpLevelMax = 10;
     _speedLevelMax = 10;
     _coins = 0;
+    _runningMode = true;
 }
 
 - (void)deleteDocument{
@@ -81,6 +83,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _coins = [aDecoder decodeIntegerForKey:GameManagerCoinsKey];
         _speedLevel = [aDecoder decodeIntegerForKey:GameManagerSpeedLevelKey];
         _jumpLevel = [aDecoder decodeIntegerForKey:GameManagerJumpLevelKey];
+        _runningMode = true;
     }
     return self;
 }
@@ -97,6 +100,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         [_coinLabel setPositionType:CCPositionTypeNormalized];
         _coinLabel.position = ccp(0.5f, 0.90f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
+        _runningMode = true;
         //sharedInstance = self;
     }
     return self;
