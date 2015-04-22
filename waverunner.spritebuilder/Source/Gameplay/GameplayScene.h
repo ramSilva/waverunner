@@ -56,6 +56,7 @@ static float const TIMER_WALLJUMP = 30.0f;
     
     float timer;
     BOOL useTimer;
+    
     CCNode* _wallNode;
 }
 

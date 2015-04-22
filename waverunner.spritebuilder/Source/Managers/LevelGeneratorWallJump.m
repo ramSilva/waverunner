@@ -27,7 +27,23 @@
     //[pn addChild:_wallNode];
 }
 
+- (void) buildWallJump {
+    
+}
 
+- (void) updateLevel {
+    /*if (!transitionIncoming) {
+        [self updateGround];
+        
+        if(!existedWallJump) {
+            [self updateContent];
+        }
+        
+        if(existedWallJump && !_player.airborne) {
+            existedWallJump = false;
+        }
+    }*/
+}
 
 -(void)setScrollMode{
     _player.physicsBody.velocity = ccp(0, 0);

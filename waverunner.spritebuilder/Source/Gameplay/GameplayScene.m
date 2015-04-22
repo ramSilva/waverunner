@@ -91,10 +91,17 @@
     if(timer >= TIMER_WALLJUMP && drand48() < CHANCE_WALLJUMP) {
         timer = 0.0f;
         useTimer = false;
-        [self wallMode];
+        //[self wallMode];
+        _lg.staticObjectsOnly = true;
     }
     
     [_lg updateLevel];
+    
+    if(_lg.staticObjectsOnly && _lg.countGroundsUpdatedStaticOnly >= 4) {
+        _lg.staticObjectsOnly = false;
+        _lg.countGroundsUpdatedStaticOnly = 0;
+        [self wallMode];
+    }
 }
 
 -(void) loopSprites:(NSArray*)array{

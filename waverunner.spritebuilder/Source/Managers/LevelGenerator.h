@@ -14,7 +14,7 @@ static float const DISTANCE_FROM_NEXT_GROUND_COINS = 50.0f;
 static float const DISTANCE_BETWEEN_OBSTACLES = 170.0f;
 static float const DISTANCE_BETWEEN_COINS = 100.0f;
 static float const SPACE_NEXT_COIN = 10.0f;
-static float const MIN_DISTANCE_COIN_FROM_OBSTACLE = 10.0f;
+static float const MIN_DISTANCE_COIN_FROM_OBSTACLE = 30.0f;
 static float const MAX_HEIGHT_COINS = 125.0f;
 static float const MIN_HEIGHT_COINS = 30.0f;
 static float const MIN_HEIGHT_MOVING_COINS = 100.0f;
@@ -34,6 +34,11 @@ static float const CHANCE_COINS = 0.5f;
     CCNode *_wallNode;
     int _nextGroundIndex;
 }
+
+@property(nonatomic, readwrite) float chance_moving_coins;
+@property(nonatomic, readwrite) float chance_moving_obstacles;
+@property(nonatomic, readwrite) bool staticObjectsOnly;
+@property(nonatomic, readwrite) int countGroundsUpdatedStaticOnly;
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn;
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;

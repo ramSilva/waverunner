@@ -10,19 +10,25 @@
 
 @implementation LevelGenerator
 
+@synthesize chance_moving_coins;
+@synthesize chance_moving_obstacles;
+@synthesize staticObjectsOnly;
+@synthesize countGroundsUpdatedStaticOnly;
+
 - (void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn {
     _grounds = [g copy];
     _grounds_cracked = [gc copy];
     _player = p;
     _physicsNode = pn;
+    chance_moving_obstacles = CHANCE_MOVING_OBSTACLES;
+    chance_moving_coins = CHANCE_MOVING_COINS;
+    staticObjectsOnly = false;
+    countGroundsUpdatedStaticOnly = 0;
+    
 }
 - (void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn : (CCNode*) wn {
-    //[self initializeLevel:g :gc :p :pn];
+    [self initializeLevel:g :gc :p :pn];
     _wallNode = wn;
-    _grounds = [g copy];
-    _grounds_cracked = [gc copy];
-    _player = p;
-    _physicsNode = pn;
 }
 
 - (void) initContent {}

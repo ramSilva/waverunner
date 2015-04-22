@@ -19,16 +19,11 @@
     [super initializeLevel:g :gc :p :pn :wn];
     _nextGroundIndex = 3;
     
-    /*if(!p.jumpingRight) {
-        printf("entrei\n");
-        [self initContent];
-    }*/
-    
     if(wn.position.x != -500) {
         existedWallJump = true;
-    } else {
+    } /*else {
        [self initContent];
-    }
+    }*/
     
     //Initialize seed
     srand48(arc4random());    
@@ -76,7 +71,7 @@
     bool gap = ground.ground_gap;
     
     if(drand48() < CHANCE_OBSTACLES && !gap) {
-        if(drand48() < CHANCE_MOVING_OBSTACLES) {
+        if(drand48() < super.chance_moving_obstacles) {
             [self insertMovingObstacles:ground :index];
         } else {
             [self insertStaticObstacles :ground :index];
@@ -230,7 +225,7 @@
 
 - (void) insertCoins:(Ground*)ground :(int)index {
     if(drand48() < CHANCE_COINS) {
-        if(drand48() < CHANCE_MOVING_COINS) {
+        if(drand48() < super.chance_moving_coins) {
             [self insertMovingCoins :ground :index];
         } else {
             [self insertStaticCoins :ground :index];
@@ -432,9 +427,14 @@
         Ground *g_cracked = [_grounds_cracked objectAtIndex:i];
       
         [g updatePosition :_player :(int)_grounds.count :g_cracked];
+        
         if (g.next_ground) {
             _nextGroundIndex = i;
             g.next_ground = false;
+            
+            if(super.staticObjectsOnly) {
+                super.countGroundsUpdatedStaticOnly = super.countGroundsUpdatedStaticOnly + 1;
+            }
         }
         
         if(existedWallJump) {
@@ -462,6 +462,14 @@
 
 - (void) updateLevel {
     if (!transitionIncoming) {
+        if(super.staticObjectsOnly) {
+            super.chance_moving_coins = 0.0f;
+            super.chance_moving_obstacles = 0.0f;
+        } else {
+            super.chance_moving_coins = CHANCE_MOVING_COINS;
+            super.chance_moving_obstacles = CHANCE_MOVING_OBSTACLES;
+        }
+        
         [self updateGround];
         
         if(!existedWallJump) {
