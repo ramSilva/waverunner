@@ -48,11 +48,12 @@
     
     self.userInteractionEnabled = TRUE;
     
-    //_physicsNode.debugDraw = TRUE;
+    _physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     
     //[self initContent];
+    //_wallNode =[CCBReader load:@"WallJump/WallJumpTransitionStart"];
     _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
     _wallNode.position = ccp(-500, -500);
     [_physicsNode addChild:_wallNode];
@@ -188,8 +189,8 @@
 -(void) wallModeIH{
     _inputHandler = [[WallJumpIH alloc] init];
     [_inputHandler initialize:_player];
-    _lg = [[LevelGeneratorWallJump alloc] init];
-    [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
+    //_lg = [[LevelGeneratorWallJump alloc] init];
+    //[_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
 
 }
 

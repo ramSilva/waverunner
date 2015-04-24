@@ -10,8 +10,8 @@
 #define BACKGROUND2_MULT 5.0f
 #define BACKGROUND3_MULT 500.0f
 #define MOON_MULT 0.05f
-static float const CHANCE_WALLJUMP = 0.5f;
-static float const TIMER_WALLJUMP = 30.0f;
+static float const CHANCE_WALLJUMP = 1.0f;
+static float const TIMER_WALLJUMP = 5.0f;
 
 
 @class CCScene;

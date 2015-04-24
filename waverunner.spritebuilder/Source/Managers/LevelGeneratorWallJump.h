@@ -12,7 +12,11 @@
 @class Player;
 @class Obstacle;
 
-@interface LevelGeneratorWallJump : LevelGenerator
+@interface LevelGeneratorWallJump : LevelGenerator {
+    bool wallBuilt;
+    CCNode* wallJumpEnd;
+    NSMutableArray *walls;
+}
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
 
