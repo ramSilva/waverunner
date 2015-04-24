@@ -349,7 +349,7 @@
             [all_pos_x addObject:[NSNumber numberWithFloat:pos_x]];
         }
         
-        x = pos_x + (coin.boundingBox.size.width / 2) + SPACE_NEXT_COIN;
+        x = pos_x + coin.boundingBox.size.width + SPACE_NEXT_COIN;
     }
     
     g.number_coins = count_coins_added;
@@ -392,7 +392,6 @@
         
         if(pos_x + (coin.boundingBox.size.width / 2) < last_x) {
             if(count_coins_added == [ground numberOfMovingCoinsInArray]) {
-                pos_x = pos_x + (coin.boundingBox.size.width / 2);
                 pos_y = MIN_HEIGHT_MOVING_COINS;
                 
                 coin.position = ccp(pos_x, pos_y);
@@ -402,7 +401,6 @@
             } else {
                 coin = [ground getFirstMovingCoin];
                 
-                pos_x = pos_x + (coin.boundingBox.size.width / 2);
                 pos_y = MIN_HEIGHT_MOVING_COINS;
                 
                 coin.position = ccp(pos_x, pos_y);
@@ -414,7 +412,7 @@
             count_coins_added++;
         }
         
-        x = pos_x + (coin.boundingBox.size.width / 2) + SPACE_NEXT_COIN;
+        x = pos_x + coin.boundingBox.size.width + SPACE_NEXT_COIN;
     }
     
     ground.number_coins = count_coins_added;
