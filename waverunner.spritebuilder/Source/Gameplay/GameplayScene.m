@@ -52,9 +52,7 @@
     
     _player.zOrder = 1;
     
-    //[self initContent];
-    //_wallNode =[CCBReader load:@"WallJump/WallJumpTransitionStart"];
-    _wallNode =[CCBReader load:@"WallJump/WallJumpTransition"];
+    _wallNode =[CCBReader load:@"WallJump/WallJumpTransitionStart"];
     _wallNode.position = ccp(-500, -500);
     [_physicsNode addChild:_wallNode];
     
@@ -62,7 +60,6 @@
     
     [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
     
-    //[self runMode];
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
 }
@@ -92,7 +89,6 @@
     if(timer >= TIMER_WALLJUMP && drand48() < CHANCE_WALLJUMP) {
         timer = 0.0f;
         useTimer = false;
-        //[self wallMode];
         _lg.staticObjectsOnly = true;
     }
     
