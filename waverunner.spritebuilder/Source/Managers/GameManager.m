@@ -9,6 +9,7 @@
 #import "GameManager.h"
 
 static GameManager *sharedInstance;
+static NSString *const GameManagerHighscoreKey = @"highscore";
 static NSString *const GameManagerCoinsKey = @"coins";
 static NSString *const GameManagerSpeedLevelKey = @"speedLevel";
 static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
@@ -20,11 +21,13 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize speedLevel = _speedLevel;
 @synthesize speedLevelMax = _speedLevelMax;
 @synthesize coins = _coins;
+@synthesize highscore = _highscore;
 @synthesize coinLabel = _coinLabel;
 @synthesize scrollSpeed;
 @synthesize runningMode = _runningMode;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeInteger:_highscore forKey:GameManagerHighscoreKey];
     [aCoder encodeInteger:_coins forKey:GameManagerCoinsKey];
     [aCoder encodeInteger:_speedLevel forKey:GameManagerSpeedLevelKey];
     [aCoder encodeInteger:_jumpLevel forKey:GameManagerJumpLevelKey];
@@ -58,6 +61,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     _jumpLevelMax = 10;
     _speedLevelMax = 10;
     _coins = 0;
+    _highscore = 0;
     _runningMode = true;
 }
 
@@ -78,8 +82,15 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _speedLevelMax = 10;
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
-        _coinLabel.position = ccp(0.5f, 0.90f);
+        _coinLabel.position = ccp(0.75f, 0.90f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
+        
+        _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
+        [_highscoreLabel setPositionType:CCPositionTypeNormalized];
+        _highscoreLabel.position = ccp(0.25f, 0.90f);
+        [_highscoreLabel setFontColor: [CCColor whiteColor]];
+                
+        _highscore = [aDecoder decodeIntegerForKey:GameManagerHighscoreKey];
         _coins = [aDecoder decodeIntegerForKey:GameManagerCoinsKey];
         _speedLevel = [aDecoder decodeIntegerForKey:GameManagerSpeedLevelKey];
         _jumpLevel = [aDecoder decodeIntegerForKey:GameManagerJumpLevelKey];
@@ -96,10 +107,18 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _jumpLevelMax = 10;
         _speedLevelMax = 10;
         _coins = 0;
+        _highscore = 0;
+        
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
-        _coinLabel.position = ccp(0.5f, 0.90f);
+        _coinLabel.position = ccp(0.75f, 0.90f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
+        
+        _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
+        [_highscoreLabel setPositionType:CCPositionTypeNormalized];
+        _highscoreLabel.position = ccp(0.25f, 0.90f);
+        [_highscoreLabel setFontColor: [CCColor whiteColor]];
+        
         _runningMode = true;
         //sharedInstance = self;
     }
@@ -122,6 +141,12 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 - (NSInteger)changeCoins:(NSInteger)ammount{
     _coins += ammount;
     return _coins;
+}
+
+- (void)setHighscore:(NSInteger)score{
+    if(_highscore < score){
+        _highscore = score;
+    }
 }
 
 - (NSInteger)upgradeJumpLevel{

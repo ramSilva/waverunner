@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#define BACKGROUND1_MULT 5.0f
-#define BACKGROUND2_MULT 5.0f
+#define BACKGROUND1_MULT 1.0f
+#define BACKGROUND2_MULT 0.25f
 #define BACKGROUND3_MULT 500.0f
 #define MOON_MULT 0.05f
-static float const CHANCE_WALLJUMP = 1.0f;
+static float const CHANCE_WALLJUMP = 0.0f;
 static float const TIMER_WALLJUMP = 5.0f;
 
 
@@ -27,6 +27,8 @@ static float const TIMER_WALLJUMP = 5.0f;
     InputHandler * _inputHandler;
 
     CCLabelTTF* _coinLabel;
+    CCLabelTTF* _scoreLabel;
+    NSInteger _currentScore;
     
     CCNode *_contentNode;
     CCNode *_gameOverNode;
@@ -59,6 +61,8 @@ static float const TIMER_WALLJUMP = 5.0f;
     
     CCNode* _wallNode;
 }
+
+@property (readonly, nonatomic) NSInteger currentScore;
 
 -(void) runMode;
 -(void) wallModeIH;

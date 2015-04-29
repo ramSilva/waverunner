@@ -24,7 +24,7 @@
     BOOL _jumpingRight;
     GameplayScene *_GS;
     float hitTimer;
-    float l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e;
+    float _lastScrollUpdate;
     
 }
 

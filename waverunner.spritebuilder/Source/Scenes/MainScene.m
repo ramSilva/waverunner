@@ -10,6 +10,12 @@
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
     
+    p = _highscoreLabel.parent;
+    _highscoreLabel = [_gameManager highscoreLabel];
+    [_highscoreLabel removeFromParent];
+    [p addChild:_highscoreLabel];
+    _highscoreLabel.string = [NSString stringWithFormat:@"High Score: %ld", (long)_gameManager.highscore];
+    
 }
 
 - (void)play{

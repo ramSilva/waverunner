@@ -20,14 +20,20 @@
 
 @implementation GameplayScene
 
+@synthesize currentScore = _currentScore;
+
 - (void)didLoadFromCCB{
+    _currentScore = 0;
+    
     _player.GS = self;
     _gameManager = [GameManager sharedGameManager];
+    
     [_gameManager updateCoinLabel];
     CCNode* p = _coinLabel.parent;
     _coinLabel = [_gameManager coinLabel];
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
+    
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
     _grounds = @[_g1, _g2, _g3, _g4];
@@ -69,6 +75,10 @@
     _previousPhysicsPosition = _physicsNode.position;
     CGPoint playerSpeed = [_player runSpeed];
     CGPoint scrollSpeed = [_gameManager scrollSpeed];
+    
+    _currentScore += abs(physicsdelta.x + physicsdelta.y);
+    _scoreLabel.string = [NSString stringWithFormat:@"Score: %ld", (long)_currentScore];
+    
     /*printf("player speed: %f\n", delta*playerSpeed.x);
     printf("scroll speed: %f\n", delta*scrollSpeed.x);*/
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
@@ -109,14 +119,18 @@
         // get the screen position of the ground
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         // if the left corner is one complete width off the screen, move it to the right
+        
+        printf("content size: %f, scale: %f\n", currentSprite.contentSize.width, currentSprite.scaleX);
+        
         if (groundScreenPosition.x <= (-1 * currentSprite.contentSize.width)) {
-            currentSprite.position = ccp((currentSprite.position.x + [array count] * currentSprite.contentSize.width)-4, currentSprite.position.y);//minus array count needed to adjust a black pixel on the sprites
+            currentSprite.position = ccp((currentSprite.position.x + [array count] * currentSprite.contentSize.width*currentSprite.scaleX)-4, currentSprite.position.y);//minus array count needed to adjust a black pixel on the sprites
         }
     }
 }
 
 - (void)menu{
     [[GameManager sharedGameManager] save];
+    [[GameManager sharedGameManager] setHighscore:_currentScore];
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 

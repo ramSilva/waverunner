@@ -14,6 +14,9 @@
     NSInteger _coins;
     CGPoint _scrollSpeed;
     CCLabelTTF *_coinLabel;
+    CCLabelTTF *_scoreLabel;
+    CCLabelTTF *_highscoreLabel;
+    NSInteger _highscore;
     bool _runningMode;
 }
 
@@ -22,7 +25,9 @@
 @property (readonly, nonatomic) NSInteger speedLevel;
 @property (readonly, nonatomic) NSInteger speedLevelMax;
 @property (readonly, nonatomic) NSInteger coins;
+@property (readonly, nonatomic) NSInteger highscore;
 @property (readonly, nonatomic) CCLabelTTF *coinLabel;
+@property (readonly, nonatomic) CCLabelTTF *highscoreLabel;
 @property (readwrite,nonatomic) CGPoint scrollSpeed;
 @property (readwrite,nonatomic) bool runningMode;
 
@@ -36,5 +41,6 @@
 - (void)save;
 - (void)updateCoinLabel;
 - (void)deleteDocument;
+- (void)setHighscore:(NSInteger)score;
 
 @end

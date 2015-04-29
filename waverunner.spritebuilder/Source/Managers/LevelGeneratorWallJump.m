@@ -83,7 +83,7 @@
 
 -(void)setScrollMode {
     
-    _player.physicsBody.velocity = ccp(0, 0);
+    [_player.physicsBody setVelocity:ccp(0, 0)];
     
     CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:0 position:ccp(-1800, 0)];
     [_wallNode runAction:_moveby];

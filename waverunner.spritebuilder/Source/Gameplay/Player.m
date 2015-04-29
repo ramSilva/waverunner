@@ -32,7 +32,7 @@
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
-    hitTimer =  l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e = 0;
+    hitTimer =  _lastScrollUpdate = 0;
 }
 
 - (void)jump{
@@ -99,6 +99,7 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
+    [[GameManager sharedGameManager] setHighscore:_GS.currentScore];
     return TRUE;
 }
 
@@ -191,11 +192,11 @@
         _runSpeed = _initialSpeed;
     }
     
-    if (l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e > 20) {
-        l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e = 0;
+    if (_lastScrollUpdate > 20) {
+        _lastScrollUpdate = 0;
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
     }
-    l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e += delta;
+    _lastScrollUpdate += delta;
     
     //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
 }
