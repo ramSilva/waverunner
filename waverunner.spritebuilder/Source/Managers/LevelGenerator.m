@@ -7,6 +7,7 @@
 //
 
 #import "LevelGenerator.h"
+#import "GameManager.h"
 
 @implementation LevelGenerator
 
@@ -24,6 +25,7 @@
     chance_moving_coins = CHANCE_MOVING_COINS;
     staticObjectsOnly = false;
     countGroundsUpdatedStaticOnly = 0;
+    _gameManager = [GameManager sharedGameManager];
     
 }
 - (void) initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn : (CCNode*) wn {

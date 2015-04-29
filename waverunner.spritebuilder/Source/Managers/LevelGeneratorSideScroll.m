@@ -11,6 +11,7 @@
 #import "Player.h"
 #import "Obstacle.h"
 #import "Coin.h"
+#import "GameManager.h"
 
 
 @implementation LevelGeneratorSideScroll
@@ -496,6 +497,8 @@
     CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(screenwidth/2 + 50,70)];
     CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
     [_player runAction:_move2];
+    _player.runSpeed = _gameManager.scrollSpeed;
+    
 }
 
 @end

@@ -23,7 +23,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize coins = _coins;
 @synthesize highscore = _highscore;
 @synthesize coinLabel = _coinLabel;
-@synthesize scrollSpeed;
+@synthesize scrollSpeed = _scrollSpeed;
 @synthesize runningMode = _runningMode;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{

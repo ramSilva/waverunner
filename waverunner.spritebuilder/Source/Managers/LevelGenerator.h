@@ -8,6 +8,7 @@
 
 @class Ground;
 @class Player;
+@class GameManager;
 
 static float const DISTANCE_FROM_GROUND_OBSTACLES = 50.0f;
 static float const DISTANCE_FROM_NEXT_GROUND_COINS = 50.0f;
@@ -33,6 +34,7 @@ static float const CHANCE_COINS = 0.5f;
     bool transitionIncoming;
     CCNode *_wallNode;
     int _nextGroundIndex;
+    GameManager *_gameManager;
 }
 
 @property(nonatomic, readwrite) float chance_moving_coins;
