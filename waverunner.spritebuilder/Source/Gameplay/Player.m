@@ -94,6 +94,7 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
     [self land];
+    self.physicsBody.collisionMask = nil;
     return TRUE;
 }
 
@@ -153,6 +154,7 @@
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerexit:(CCNode *)nodeA player:(CCNode *)nodeB{
     [_GS runMode];
+    self.physicsBody.collisionMask = @[@"ground"];
     self.physicsBody.affectedByGravity = YES;
     return true;
 }

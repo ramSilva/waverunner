@@ -174,6 +174,7 @@
         
         [_wallNode removeChild:child];
     }
+    
 }
 
 @end
