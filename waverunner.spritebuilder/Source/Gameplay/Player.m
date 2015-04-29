@@ -98,8 +98,8 @@
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
-    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
     [[GameManager sharedGameManager] setHighscore:_GS.currentScore];
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
     return TRUE;
 }
 
@@ -194,6 +194,7 @@
     
     if (_lastScrollUpdate > 20) {
         _lastScrollUpdate = 0;
+        _runSpeed =
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
     }
     _lastScrollUpdate += delta;

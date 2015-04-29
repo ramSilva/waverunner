@@ -1389,7 +1389,7 @@
 										<key>value</key>
 										<array>
 											<real>1</real>
-											<real>5</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1403,6 +1403,8 @@
 										<string>GameOver.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>

@@ -54,7 +54,7 @@
     
     self.userInteractionEnabled = TRUE;
     
-    //_physicsNode.debugDraw = TRUE;
+    _physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     
@@ -82,7 +82,7 @@
     /*printf("player speed: %f\n", delta*playerSpeed.x);
     printf("scroll speed: %f\n", delta*scrollSpeed.x);*/
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
-    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y);
+    _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y + delta*scrollSpeed.y);
     _physicsNode.position = ccp(_physicsNode.position.x - delta*scrollSpeed.x, _physicsNode.position.y - delta*scrollSpeed.y);
     _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*physicsdelta.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*physicsdelta.y*BACKGROUND1_MULT);
     _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*physicsdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y - delta*physicsdelta.y*BACKGROUND2_MULT);
