@@ -63,7 +63,7 @@
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
             spawn_posx = wall.position.x + 100.0f;
             spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
-            [self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
+            //[self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
         } else {
             CCNode* last_wall = [walls objectAtIndex:walls.count - 1];
 

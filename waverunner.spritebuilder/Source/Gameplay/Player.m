@@ -122,7 +122,8 @@
     GameManager *_gm = [GameManager sharedGameManager];
     self.physicsBody.affectedByGravity = NO;
     _gm.scrollSpeed = ccp(0, 100);
-
+    _runSpeed = ccp(0, 0);
+    [self.physicsBody applyForce:ccp(10000, 0)];
     
     return true;
 }
