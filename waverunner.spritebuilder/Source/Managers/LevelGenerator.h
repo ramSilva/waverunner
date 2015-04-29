@@ -9,7 +9,7 @@
 @class Ground;
 @class Player;
 
-static float const DISTANCE_FROM_GROUND_OBSTACLES = 20.0f;
+static float const DISTANCE_FROM_GROUND_OBSTACLES = 50.0f;
 static float const DISTANCE_FROM_NEXT_GROUND_COINS = 50.0f;
 static float const DISTANCE_BETWEEN_OBSTACLES = 170.0f;
 static float const DISTANCE_BETWEEN_COINS = 100.0f;
