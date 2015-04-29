@@ -494,8 +494,8 @@
     
     int screenwidth = [CCDirector sharedDirector].viewSize.width;
     
-    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(screenwidth/2 + 50,70)];
-    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
+    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(screenwidth/2 + 70,70)];
+    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:3 position:nodeposition];
     [_player runAction:_move2];
     _player.runSpeed = _gameManager.scrollSpeed;
     
