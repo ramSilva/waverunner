@@ -120,8 +120,6 @@
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         // if the left corner is one complete width off the screen, move it to the right
         
-        printf("content size: %f, scale: %f\n", currentSprite.contentSize.width, currentSprite.scaleX);
-        
         if (groundScreenPosition.x <= (-1 * currentSprite.contentSize.width)) {
             currentSprite.position = ccp((currentSprite.position.x + [array count] * currentSprite.contentSize.width*currentSprite.scaleX)-4, currentSprite.position.y);//minus array count needed to adjust a black pixel on the sprites
         }

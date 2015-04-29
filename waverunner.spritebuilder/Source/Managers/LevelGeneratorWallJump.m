@@ -43,6 +43,7 @@
         float distance_between_walls;
         float spawn_posx;
         float spawn_posy;
+        float dist;
         
         if(i % 2 == 0) {
             distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * MAX_DISTANCE_WALLS / 2);
@@ -61,7 +62,7 @@
             }
             
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
-            spawn_posx = wall.position.x + 100.0f;
+            spawn_posx = wall.position.x + (drand48() * distance_between_walls);
             spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
             //[self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
         } else {
@@ -69,15 +70,19 @@
 
             if(walls.count % 2 == 0) {
                 wall.position = ccp(last_wall.position.x - distance_between_walls, last_wall.position.y + (3 * last_wall.boundingBox.size.height / 4));
-                spawn_posx = wall.position.x + 100.0f;
+                spawn_posx = wall.position.x + wall.boundingBox.size.width / 2;
                 spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
+                dist = distance_between_walls - wall.boundingBox.size.width;
+                [self insertSpawner :spawn_posx :spawn_posy :dist :false];
             } else {
                 wall.position = ccp(last_wall.position.x + distance_between_walls, last_wall.position.y + (3 * last_wall.boundingBox.size.height / 4));
-                spawn_posx = wall.position.x - 100.0f;
+                spawn_posx = wall.position.x - wall.boundingBox.size.width / 2;
                 spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
+                dist = distance_between_walls - wall.boundingBox.size.width;
+                [self insertSpawner :spawn_posx :spawn_posy :dist :true];
             }
             
-            [self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
+            
         }
         
         [_wallNode addChild:wall];
@@ -87,30 +92,31 @@
     [self insertLastWallJump];
 }
 
-- (void) insertSpawner :(float)posx :(float)posy :(float)dimx {
+- (void) insertSpawner :(float)posx :(float)posy :(float)dimx :(bool)right {
     CCNode* spawner = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
     //NSArray* spawner_pos = [NSArray arrayWithObjects: [NSNumber numberWithFloat:posx], [NSNumber numberWithFloat:posy], nil];
+    float x;
+    float distance = dimx - spawner.boundingBox.size.width;
     
-    spawner.position = ccp(posx, posy);
+    if(right) {
+        x = posx - (drand48() * distance);
+    } else {
+        x = posx + (drand48() * distance);
+    }
+    
+    spawner.position = ccp(x , posy);
     [spawners addObject:spawner];
     //[_wallNode addChild:spawner];
 }
 
-- (void) updateLevel {
-    if (!wallBuilt) {
-        [self buildWallJump];
-        wallBuilt = true;
-    }
-    
+- (void) spawnObstacles {
+    printf("spawners.count: %d\n", (int)spawners.count);
     if(spawners.count > 0) {
         CCNode* spawner = [spawners objectAtIndex:0];
         CGSize s = [CCDirector sharedDirector].viewSize;
         
-        //printf("i: %d\n", i);
-        //printf("pos_X: %f & pos_Y: %f\n", spawner.position.x, spawner.position.y);
         CGPoint spawnerWorldPosition = [_wallNode convertToWorldSpace:spawner.position];
-        printf("Wpos_X: %f & Wpos_Y: %f\n", spawnerWorldPosition.x, spawnerWorldPosition.y);
-        printf("Wpos_Y: %f - half screen: %f\n", spawnerWorldPosition.x, (s.height));
+
         if(spawnerWorldPosition.y > s.height && obstacles.count == 0) {
             CCNode* obs = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
             
@@ -118,17 +124,15 @@
             [obstacles addObject:obs];
             [_wallNode addChild:obs];
             
-            printf("ADDED: %d\n", (int)obstacles.count);
         } else {
             if(spawnerWorldPosition.y < s.height) {
                 [spawners removeObject:spawner];
             }
         }
-        //CCNode* obs = [obstacles objectAtIndex:i];
-        
-        //obs.position = ccp(obs.position.x, obs.position.y - 1.0f);
     }
-    
+}
+
+- (void) moveObstacles {
     if(obstacles.count > 0) {
         CCNode* obs = [obstacles objectAtIndex:0];
         
@@ -139,6 +143,16 @@
             [obstacles removeObject:obs];
         }
     }
+}
+
+- (void) updateLevel {
+    if (!wallBuilt) {
+        [self buildWallJump];
+        wallBuilt = true;
+    }
+    
+    [self spawnObstacles];
+    [self moveObstacles];
 }
 
 -(void)setScrollMode {

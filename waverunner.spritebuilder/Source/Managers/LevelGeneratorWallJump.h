@@ -27,7 +27,9 @@ static int const MAX_DISTANCE_WALLS = 350.0f;
 }
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
-- (void)insertSpawner :(float)posx :(float)dimx;
+- (void)insertSpawner:(float)posx :(float)posy :(float)dimx :(bool)right;
+- (void)spawnObstacles;
+- (void)moveObstacles;
 
 
 @end
