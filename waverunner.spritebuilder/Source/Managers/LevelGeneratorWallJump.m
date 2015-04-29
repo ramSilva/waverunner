@@ -19,6 +19,8 @@
     
     wallBuilt = false;
     walls = [[NSMutableArray alloc] init];
+    spawners = [[NSMutableArray alloc] init];
+    obstacles = [[NSMutableArray alloc] init];
     wallJumpEnd = (CCNode*)[CCBReader load:@"WallJump/WallJumpTransitionEnd"];
 }
 
@@ -39,6 +41,8 @@
         float wall_pos_y = 0.0f;
         float wall_height = 0.0f;
         float distance_between_walls;
+        float spawn_posx;
+        float spawn_posy;
         
         if(i % 2 == 0) {
             distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * MAX_DISTANCE_WALLS / 2);
@@ -57,14 +61,23 @@
             }
             
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
+            spawn_posx = wall.position.x + 100.0f;
+            spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
+            [self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
         } else {
             CCNode* last_wall = [walls objectAtIndex:walls.count - 1];
 
             if(walls.count % 2 == 0) {
                 wall.position = ccp(last_wall.position.x - distance_between_walls, last_wall.position.y + (3 * last_wall.boundingBox.size.height / 4));
+                spawn_posx = wall.position.x + 100.0f;
+                spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
             } else {
                 wall.position = ccp(last_wall.position.x + distance_between_walls, last_wall.position.y + (3 * last_wall.boundingBox.size.height / 4));
+                spawn_posx = wall.position.x - 100.0f;
+                spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
             }
+            
+            [self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
         }
         
         [_wallNode addChild:wall];
@@ -74,17 +87,63 @@
     [self insertLastWallJump];
 }
 
+- (void) insertSpawner :(float)posx :(float)posy :(float)dimx {
+    CCNode* spawner = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
+    //NSArray* spawner_pos = [NSArray arrayWithObjects: [NSNumber numberWithFloat:posx], [NSNumber numberWithFloat:posy], nil];
+    
+    spawner.position = ccp(posx, posy);
+    [spawners addObject:spawner];
+    //[_wallNode addChild:spawner];
+}
+
 - (void) updateLevel {
-     if (!wallBuilt) {
+    if (!wallBuilt) {
         [self buildWallJump];
         wallBuilt = true;
+    }
+    
+    if(spawners.count > 0) {
+        CCNode* spawner = [spawners objectAtIndex:0];
+        CGSize s = [CCDirector sharedDirector].viewSize;
+        
+        //printf("i: %d\n", i);
+        //printf("pos_X: %f & pos_Y: %f\n", spawner.position.x, spawner.position.y);
+        CGPoint spawnerWorldPosition = [_wallNode convertToWorldSpace:spawner.position];
+        printf("Wpos_X: %f & Wpos_Y: %f\n", spawnerWorldPosition.x, spawnerWorldPosition.y);
+        printf("Wpos_Y: %f - half screen: %f\n", spawnerWorldPosition.x, (s.height));
+        if(spawnerWorldPosition.y > s.height && obstacles.count == 0) {
+            CCNode* obs = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
+            
+            obs.position = ccp(spawner.position.x, spawner.position.y);
+            [obstacles addObject:obs];
+            [_wallNode addChild:obs];
+            
+            printf("ADDED: %d\n", (int)obstacles.count);
+        } else {
+            if(spawnerWorldPosition.y < s.height) {
+                [spawners removeObject:spawner];
+            }
+        }
+        //CCNode* obs = [obstacles objectAtIndex:i];
+        
+        //obs.position = ccp(obs.position.x, obs.position.y - 1.0f);
+    }
+    
+    if(obstacles.count > 0) {
+        CCNode* obs = [obstacles objectAtIndex:0];
+        
+        obs.position = ccp(obs.position.x, obs.position.y - 3.0f);
+        CGPoint obsWorldPosition = [_wallNode convertToWorldSpace:obs.position];
+        
+        if(obsWorldPosition.y < 0.0f) {
+            [obstacles removeObject:obs];
+        }
     }
 }
 
 -(void)setScrollMode {
-    
     [_player.physicsBody setVelocity:ccp(0, 0)];
-    
+
     CCActionMoveBy *_moveby = [CCActionMoveBy actionWithDuration:0 position:ccp(-1800, 0)];
     [_wallNode runAction:_moveby];
     

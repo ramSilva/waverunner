@@ -22,9 +22,12 @@ static int const MAX_DISTANCE_WALLS = 350.0f;
     bool wallBuilt;
     CCNode* wallJumpEnd;
     NSMutableArray *walls;
+    NSMutableArray *spawners;
+    NSMutableArray *obstacles;
 }
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
+- (void)insertSpawner :(float)posx :(float)dimx;
 
 
 @end
