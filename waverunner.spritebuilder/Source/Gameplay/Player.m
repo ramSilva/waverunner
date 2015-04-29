@@ -121,6 +121,7 @@
     GameManager *_gm = [GameManager sharedGameManager];
     self.physicsBody.affectedByGravity = NO;
     _gm.scrollSpeed = ccp(0, 100);
+
     
     return true;
 }
@@ -196,6 +197,6 @@
     }
     l_a_s_t_S_c_r_o_l_l_U_p_d_a_t_e += delta;
     
-    printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
+    //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
 }
 @end

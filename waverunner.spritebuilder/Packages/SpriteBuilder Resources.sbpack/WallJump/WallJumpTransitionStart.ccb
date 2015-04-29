@@ -397,8 +397,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -432,8 +430,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>331</real>
-							<real>157</real>
+							<real>429</real>
+							<real>167</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -461,6 +459,8 @@
 						<string>WallJump/WallJumpEnter.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

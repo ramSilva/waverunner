@@ -490,6 +490,12 @@
     else{
         _wallNode.position = ccp(_g.position.x + _g.boundingBox.size.width - 1, _g.position.y);
     }
+    
+    int screenwidth = [CCDirector sharedDirector].viewSize.width;
+    
+    CGPoint nodeposition = [_physicsNode convertToNodeSpace:ccp(screenwidth/2 + 50,70)];
+    CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:2 position:nodeposition];
+    [_player runAction:_move2];
 }
 
 @end
