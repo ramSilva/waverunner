@@ -79,7 +79,10 @@
 			<true/>
 		</dict>
 		<key>Resources</key>
-		<dict/>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+		</dict>
 		<key>Resources/road.png</key>
 		<dict/>
 		<key>Resources/road_crack copy.png</key>

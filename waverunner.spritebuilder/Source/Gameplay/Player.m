@@ -162,7 +162,10 @@
 }
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA fallingObstacle:(CCNode *)nodeB{
-    self.physicsBody.affectedByGravity = true;
+    if (!_airborne) {
+        self.physicsBody.affectedByGravity = true;
+    }
+    return true;
 }
 
 -(void)wallJump:(CGPoint)jumpForce{
