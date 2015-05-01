@@ -17,6 +17,7 @@
 @synthesize runSpeed = _runSpeed;
 @synthesize GS = _GS;
 @synthesize initialSpeed = _initialSpeed;
+@synthesize num_obstacles_collision;
 
 
 - (void)didLoadFromCCB{
@@ -33,6 +34,7 @@
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
     hitTimer =  _lastScrollUpdate = 0;
+    num_obstacles_collision = 0;
 }
 
 - (void)jump{
@@ -71,7 +73,7 @@
     [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
     //[self runAction:action];
     hitTimer = 0;
-    
+    num_obstacles_collision += 1;
 }
 
 - (void)resetAnimation{

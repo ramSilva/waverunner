@@ -27,6 +27,6 @@
 - (void)insertStaticCoins:(Ground*)ground :(int)index;
 - (void)updateGround;
 - (void)updateContent;
-- (void)updateLevel;
+- (void)updateLevel:(CCTime)delta;
 
 @end

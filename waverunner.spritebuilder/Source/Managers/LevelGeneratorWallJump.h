@@ -16,7 +16,7 @@ static int const MIN_NUMBER_WALLS = 2;
 //2 * MAX_MULT_WALLS = MAX_NUMBER_WALLS
 static int const MAX_MULT_WALLS = 5;
 static int const MIN_DISTANCE_WALLS = 200.0f;
-static int const MAX_DISTANCE_WALLS = 350.0f;
+static int const MAX_DISTANCE_WALLS = 300.0f;
 
 @interface LevelGeneratorWallJump : LevelGenerator {
     bool wallBuilt;
@@ -30,6 +30,7 @@ static int const MAX_DISTANCE_WALLS = 350.0f;
 - (void)insertSpawner:(float)posx :(float)posy :(float)dimx :(bool)right;
 - (void)spawnObstacles;
 - (void)moveObstacles;
+- (void)updateLevel:(CCTime)delta;
 
 
 @end

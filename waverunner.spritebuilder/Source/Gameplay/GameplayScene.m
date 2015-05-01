@@ -102,7 +102,7 @@
         _lg.staticObjectsOnly = true;
     }
     
-    [_lg updateLevel];
+    [_lg updateLevel :delta];
     
     if(_lg.staticObjectsOnly && _lg.countGroundsUpdatedStaticOnly >= 4) {
         _lg.staticObjectsOnly = false;

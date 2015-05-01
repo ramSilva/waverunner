@@ -29,6 +29,7 @@
 }
 
 @property (nonatomic, readonly) BOOL airborne;
+@property (nonatomic, readwrite) int num_obstacles_collision;
 @property (nonatomic, readwrite) CGPoint runSpeed;
 @property (nonatomic, readonly) CGPoint initialSpeed;
 @property (nonatomic, readwrite) GameplayScene *GS;

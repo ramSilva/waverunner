@@ -64,7 +64,6 @@
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
             spawn_posx = wall.position.x + (drand48() * distance_between_walls);
             spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
-            //[self insertSpawner :spawn_posx :spawn_posy :distance_between_walls];
         } else {
             CCNode* last_wall = [walls objectAtIndex:walls.count - 1];
 
@@ -81,8 +80,6 @@
                 dist = distance_between_walls - wall.boundingBox.size.width;
                 [self insertSpawner :spawn_posx :spawn_posy :dist :true];
             }
-            
-            
         }
         
         [_wallNode addChild:wall];
@@ -94,9 +91,8 @@
 
 - (void) insertSpawner :(float)posx :(float)posy :(float)dimx :(bool)right {
     CCNode* spawner = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
-    //NSArray* spawner_pos = [NSArray arrayWithObjects: [NSNumber numberWithFloat:posx], [NSNumber numberWithFloat:posy], nil];
     float x;
-    float distance = dimx - spawner.boundingBox.size.width;
+    float distance = dimx - spawner.boundingBox.size.width - 50.0f;
     
     if(right) {
         x = posx - (drand48() * distance);
@@ -106,11 +102,9 @@
     
     spawner.position = ccp(x , posy);
     [spawners addObject:spawner];
-    //[_wallNode addChild:spawner];
 }
 
 - (void) spawnObstacles {
-    printf("spawners.count: %d\n", (int)spawners.count);
     if(spawners.count > 0) {
         CCNode* spawner = [spawners objectAtIndex:0];
         CGSize s = [CCDirector sharedDirector].viewSize;
@@ -145,7 +139,7 @@
     }
 }
 
-- (void) updateLevel {
+- (void) updateLevel:(CCTime)delta {
     if (!wallBuilt) {
         [self buildWallJump];
         wallBuilt = true;
@@ -174,7 +168,6 @@
         
         [_wallNode removeChild:child];
     }
-    
 }
 
 @end

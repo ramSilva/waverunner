@@ -71,7 +71,7 @@
 - (void) insertObstacles:(Ground*)ground :(int)index {
     bool gap = ground.ground_gap;
     
-    if(drand48() < CHANCE_OBSTACLES && !gap) {
+    if(drand48() < super.chance_obstacles && !gap) {
         if(drand48() < super.chance_moving_obstacles) {
             [self insertMovingObstacles:ground :index];
         } else {
@@ -225,7 +225,7 @@
 }
 
 - (void) insertCoins:(Ground*)ground :(int)index {
-    if(drand48() < CHANCE_COINS) {
+    if(drand48() < super.chance_coins) {
         if(drand48() < super.chance_moving_coins) {
             [self insertMovingCoins :ground :index];
         } else {
@@ -459,15 +459,19 @@
     }
 }
 
-- (void) updateLevel {
+- (void) updateLevel:(CCTime)delta {    
     if (!transitionIncoming) {
+        super.timer = super.timer + delta;
+        
+        [super updateDifficulty];
+        
         if(super.staticObjectsOnly) {
             super.chance_moving_coins = 0.0f;
             super.chance_moving_obstacles = 0.0f;
-        } else {
+        } /*else {
             super.chance_moving_coins = CHANCE_MOVING_COINS;
             super.chance_moving_obstacles = CHANCE_MOVING_OBSTACLES;
-        }
+        }*/
         
         [self updateGround];
         
@@ -483,6 +487,7 @@
 
 - (void) setWallMode{
     transitionIncoming = true;
+    super.timer = 0.0f;
     Ground *_g = [_grounds objectAtIndex:_nextGroundIndex];
     
     if(_g.ground_gap){
