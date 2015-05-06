@@ -220,7 +220,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/road_crack.png</string>
+					<string>Resources/road_crack copy.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -256,6 +256,8 @@
 				<array/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
