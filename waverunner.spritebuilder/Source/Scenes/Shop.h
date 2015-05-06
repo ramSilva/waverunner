@@ -13,6 +13,7 @@
     CCLabelTTF *_coinLabel;
     CCLabelTTF *_jumpLabel;
     CCLabelTTF *_speedLabel;
+    CCLabelTTF *_multiplierLabel;
 }
 
 @end

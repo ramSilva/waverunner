@@ -20,6 +20,7 @@
     
     _speedLabel.string = [NSString stringWithFormat:@"Speed: %ld/%ld", [[GameManager sharedGameManager] speedLevel], [[GameManager sharedGameManager] speedLevelMax]];
     _jumpLabel.string = [NSString stringWithFormat:@"Jump: %ld/%ld", [[GameManager sharedGameManager] jumpLevel], [[GameManager sharedGameManager] jumpLevelMax]];
+    _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/%ld", [[GameManager sharedGameManager] coinMultiplier], [[GameManager sharedGameManager] coinMultiplierMax]];
 }
 
 - (void)menu{
@@ -47,4 +48,16 @@
         _jumpLabel.string = [NSString stringWithFormat:@"Jump: %ld/10", [gm upgradeJumpLevel]];
     }
 }
+
+-(void)upgradeMultiplier{
+    CCLOG(@	"Entrei no upgrade multiplier");
+    GameManager *gm = [GameManager sharedGameManager];
+    NSInteger upgradeCost = 1;
+    if([gm coins] >= upgradeCost && [gm coinMultiplier] < [gm coinMultiplierMax]){
+        [gm changeCoins:-upgradeCost];
+        [[GameManager sharedGameManager] updateCoinLabel];
+        _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/10", [gm upgradeMultiplierLevel]];
+    }
+}
+
 @end

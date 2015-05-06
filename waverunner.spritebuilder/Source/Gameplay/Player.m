@@ -113,7 +113,7 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair coin:(CCNode *)nodeA player:(CCNode *)nodeB{
     nodeA.visible = NO;
-    [[GameManager sharedGameManager] changeCoins:1];
+    [[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
     [[GameManager sharedGameManager] updateCoinLabel];
     //[nodeA.parent removeChild:nodeA];
     return TRUE;

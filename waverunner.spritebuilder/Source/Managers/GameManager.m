@@ -13,6 +13,7 @@ static NSString *const GameManagerHighscoreKey = @"highscore";
 static NSString *const GameManagerCoinsKey = @"coins";
 static NSString *const GameManagerSpeedLevelKey = @"speedLevel";
 static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
+static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 
 @implementation GameManager
 
@@ -25,12 +26,15 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 @synthesize coinLabel = _coinLabel;
 @synthesize scrollSpeed = _scrollSpeed;
 @synthesize runningMode = _runningMode;
+@synthesize coinMultiplier = _coinMultiplier;
+@synthesize coinMultiplierMax = _coinMultiplierMax;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:_highscore forKey:GameManagerHighscoreKey];
     [aCoder encodeInteger:_coins forKey:GameManagerCoinsKey];
     [aCoder encodeInteger:_speedLevel forKey:GameManagerSpeedLevelKey];
     [aCoder encodeInteger:_jumpLevel forKey:GameManagerJumpLevelKey];
+    [aCoder encodeInteger:_coinMultiplier forKey:GameManagerCoinMultiplier];
 }
 
 + (NSString*)filePath{
@@ -60,8 +64,10 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     _jumpLevel = 1;
     _jumpLevelMax = 10;
     _speedLevelMax = 10;
+    _coinMultiplierMax = 10;
     _coins = 0;
     _highscore = 0;
+    _coinMultiplier = 1;
     _runningMode = true;
 }
 
@@ -80,6 +86,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
     if(self){
         _jumpLevelMax = 10;
         _speedLevelMax = 10;
+        _coinMultiplierMax = 10;
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
         _coinLabel.position = ccp(0.75f, 0.90f);
@@ -94,6 +101,9 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _coins = [aDecoder decodeIntegerForKey:GameManagerCoinsKey];
         _speedLevel = [aDecoder decodeIntegerForKey:GameManagerSpeedLevelKey];
         _jumpLevel = [aDecoder decodeIntegerForKey:GameManagerJumpLevelKey];
+        _coinMultiplier = [aDecoder decodeIntegerForKey:GameManagerCoinMultiplier];
+
+        
         _runningMode = true;
     }
     return self;
@@ -108,6 +118,8 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
         _speedLevelMax = 10;
         _coins = 0;
         _highscore = 0;
+        _coinMultiplier =1;
+        _coinMultiplierMax = 10;
         
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Coins: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -139,7 +151,7 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 }
 
 - (NSInteger)changeCoins:(NSInteger)ammount{
-    _coins += ammount;
+    _coins += (ammount);
     return _coins;
 }
 
@@ -157,6 +169,11 @@ static NSString *const GameManagerJumpLevelKey = @"jumpLevel";
 - (NSInteger)upgradeSpeedLevel{
     _speedLevel++;
     return _speedLevel;
+}
+
+-(NSInteger)upgradeMultiplierLevel{
+    _coinMultiplier++;
+    return _coinMultiplier;
 }
 
 - (void)updateCoinLabel{
