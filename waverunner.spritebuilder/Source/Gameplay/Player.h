@@ -25,7 +25,8 @@
     GameplayScene *_GS;
     float hitTimer;
     float _lastScrollUpdate;
-    
+    BOOL _lastChance;
+    bool _lastHit;
 }
 
 @property (nonatomic, readonly) BOOL airborne;

@@ -30,6 +30,7 @@
     _airborne = FALSE;
     _doubleJump = FALSE;
     _hit = FALSE;
+    _lastChance = true;
     
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
@@ -74,6 +75,9 @@
     //[self runAction:action];
     hitTimer = 0;
     num_obstacles_collision += 1;
+    if (_lastHit) {
+        _lastChance = false;
+    }
 }
 
 - (void)resetAnimation{
@@ -136,7 +140,6 @@
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA wall:(CCNode *)nodeB{
     CCLOG(@"colision detected");
     
-    printf("player.x: %f\n", self.position.x);
     
     self.physicsBody.affectedByGravity = false;
     
@@ -212,6 +215,20 @@
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
     }
     _lastScrollUpdate += delta;
+    
+    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+
+    if (_lastChance ) {
+        CGPoint _pos = [self.parent convertToWorldSpace:self.position];
+        if (_pos.x <= 100) {
+            CCLOG(@"LAST CHANCE");
+            self.position = [self.parent convertToNodeSpace:ccp(100, _pos.y)];
+            _lastHit = true;
+        }
+        else{
+            _lastHit = false;
+        }
+    }
     
     //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
 }
