@@ -10,7 +10,7 @@
 @class Player;
 @class GameManager;
 
-static float const DISTANCE_FROM_GROUND_OBSTACLES = 50.0f;
+static float const DISTANCE_FROM_GROUND_OBSTACLES = 100.0f;
 static float const DISTANCE_FROM_NEXT_GROUND_COINS = 50.0f;
 static float const DISTANCE_BETWEEN_OBSTACLES = 170.0f;
 static float const DISTANCE_BETWEEN_COINS = 100.0f;
@@ -45,6 +45,7 @@ static float const DIFFICULTY_TIMER = 5.0f;
 @property(nonatomic, readwrite) float chance_obstacles;
 @property(nonatomic, readwrite) float chance_moving_coins;
 @property(nonatomic, readwrite) float chance_moving_obstacles;
+@property(nonatomic, readwrite) float distance_between_obstacles;
 @property(nonatomic, readwrite) bool staticObjectsOnly;
 @property(nonatomic, readwrite) int countGroundsUpdatedStaticOnly;
 @property(nonatomic, readwrite) int difficulty;

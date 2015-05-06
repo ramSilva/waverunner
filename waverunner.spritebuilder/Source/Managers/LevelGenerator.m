@@ -16,6 +16,7 @@
 @synthesize chance_obstacles;
 @synthesize chance_moving_coins;
 @synthesize chance_moving_obstacles;
+@synthesize distance_between_obstacles;
 @synthesize staticObjectsOnly;
 @synthesize countGroundsUpdatedStaticOnly;
 @synthesize timer;
@@ -27,7 +28,6 @@
     _grounds_cracked = [gc copy];
     _player = p;
     _physicsNode = pn;
-    chance_moving_coins = CHANCE_MOVING_COINS;
     staticObjectsOnly = false;
     countGroundsUpdatedStaticOnly = 0;
     _gameManager = [GameManager sharedGameManager];
@@ -60,11 +60,11 @@
             if(difficulty < 5) {
                 difficulty += 1;
             }
-        } else if(_player.num_obstacles_collision >= 3) {
+        } /*else if(_player.num_obstacles_collision >= 3) {
             if(difficulty > 1) {
                 difficulty -= 1;
             }
-        }
+        }*/
         
         _player.num_obstacles_collision = 0;
         printf("difficulty: %d ", difficulty);
@@ -80,6 +80,7 @@
     chance_coins = difficulty * 0.1 + 0.2f;
     chance_moving_obstacles = (difficulty - 1) * 0.07 + 0.16f;
     chance_moving_coins = (difficulty - 1) * 0.07 + 0.16f;
+    distance_between_obstacles = 850.0f / difficulty;
 }
 
 @end

@@ -50,10 +50,10 @@
         CCNode* last_obs_g_before = [prev_ground getLastStaticObstacle];
         float distance = (posx + (obstacle.boundingBox.size.width / 2)) - (last_obs_g_before.position.x + (last_obs_g_before.boundingBox.size.width / 2));
         
-        if(distance > DISTANCE_BETWEEN_OBSTACLES) {
+        if(distance > super.distance_between_obstacles) {
             pos_x = posx + (obstacle.boundingBox.size.width / 2); //+random?
         } else {
-            pos_x = posx + (obstacle.boundingBox.size.width / 2) + (DISTANCE_BETWEEN_OBSTACLES - distance);
+            pos_x = posx + (obstacle.boundingBox.size.width / 2) + (super.distance_between_obstacles - distance);
         }
         
     } else {
@@ -157,7 +157,7 @@
         }
         
         if(space_between_obstacles) {
-            pos_x = pos_x + DISTANCE_BETWEEN_OBSTACLES;
+            pos_x = pos_x + super.distance_between_obstacles;
         }
         
         if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
