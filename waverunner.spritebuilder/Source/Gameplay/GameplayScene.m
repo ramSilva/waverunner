@@ -202,4 +202,10 @@
 
 }
 
+-(void) resetGameOver{
+    [[_physicsNode space] addPostStepBlock:^{
+        _gameOverNode.position = ccp(_gameOverNode.position.x, 35.0f);
+    } key:_gameOverNode];
+}
+
 @end

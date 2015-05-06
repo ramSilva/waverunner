@@ -13,6 +13,7 @@
 
 - (void)didLoadFromCCB{
     self.physicsBody.collisionMask = @[@"player"];
+    self.physicsBody.collisionCategories = @[@"gameOver"];
     self.physicsBody.collisionType = @"gameOver";
     self.physicsBody.sensor = TRUE;
 }

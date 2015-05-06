@@ -100,6 +100,7 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
     [self land];
+    [_GS resetGameOver];
     self.physicsBody.collisionMask = nil;
     return TRUE;
 }
