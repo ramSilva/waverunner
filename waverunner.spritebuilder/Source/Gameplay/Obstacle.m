@@ -17,7 +17,7 @@
     self.physicsBody.collisionMask = @[@"player"];
     self.physicsBody.collisionType = @"obstacle";
     self.physicsBody.sensor = TRUE;
-    [self.physicsBody applyTorque:10000.0f];
+    //[self.physicsBody applyTorque:10000.0f];
     type = @"";
     color = @"";
     dir = @"up";

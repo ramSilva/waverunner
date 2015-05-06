@@ -164,10 +164,14 @@
             if(count_obstacles_added == [ground numberOfStaticObstaclesInArray]) {
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
-                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
-                
-                [_physicsNode addChild:obstacle];
-                [ground addStaticObstacle:obstacle];
+                if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
+                    obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
+                    
+                    [_physicsNode addChild:obstacle];
+                    [ground addStaticObstacle:obstacle];
+                    
+                    count_obstacles_added++;
+                }
             } else {
                 Obstacle* temp_obstacle = (Obstacle*)[ground getFirstStaticObstacle :obstacle.type :obstacle.color];
                 
@@ -177,18 +181,19 @@
                 
                 pos_x = [self calculateObstaclePositionX :first_x :pos_x :index :obstacle];
                 
-                obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
-                
-                if(temp_obstacle != nil) {
-                    [ground updateStaticObstaclePosition :obstacle];
-                } else {
-                    [_physicsNode addChild:obstacle];
-                    [ground addStaticObstacle:obstacle];	
+                if(pos_x + (obstacle.boundingBox.size.width / 2) < last_x) {
+                    obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
+                    
+                    if(temp_obstacle != nil) {
+                        [ground updateStaticObstaclePosition :obstacle];
+                    } else {
+                        [_physicsNode addChild:obstacle];
+                        [ground addStaticObstacle:obstacle];
+                    }
+                    
+                    count_obstacles_added++;
                 }
-                
             }
-            
-            count_obstacles_added++;
         }
         
         x = pos_x + (obstacle.boundingBox.size.width / 2) + 1.0f;
@@ -206,14 +211,14 @@
     
     if(pos_x < last_x) {
         if(count_obstacles_added == [ground numberOfMovingObstaclesInArray]) {
-            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
             
             [_physicsNode addChild:obstacle];
             [ground addMovingObstacle:obstacle];
         } else {
             obstacle = (Obstacle*)[ground getFirstMovingObstacle];
             
-            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2));
+            obstacle.position = ccp(pos_x, (ground.boundingBox.size.height / 2) + (obstacle.boundingBox.size.height / 2 - 10));
             
             [ground updateMovingObstaclePosition :obstacle];
         }
