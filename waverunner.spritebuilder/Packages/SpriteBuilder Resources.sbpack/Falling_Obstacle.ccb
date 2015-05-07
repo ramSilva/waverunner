@@ -74,8 +74,8 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>6.6269049644470215</real>
-					<real>5.6925740242004395</real>
+					<real>7.6514153480529785</real>
+					<real>7.4610958099365234</real>
 				</array>
 			</array>
 			<key>polygons</key>
@@ -137,7 +137,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/seal.png</string>
+					<string>Resources/falling_rock.png</string>
 				</array>
 			</dict>
 			<dict>
