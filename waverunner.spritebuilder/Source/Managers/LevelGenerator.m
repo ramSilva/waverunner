@@ -76,9 +76,9 @@
 }
 
 - (void) setChances {
-    chance_obstacles = 1.0f;//difficulty * 0.1 + 0.2f;
+    chance_obstacles = difficulty * 0.1 + 0.2f;
     chance_coins = difficulty * 0.1 + 0.2f;
-    chance_moving_obstacles = 0.0f;//(difficulty - 1) * 0.07 + 0.16f;
+    chance_moving_obstacles = (difficulty - 1) * 0.07 + 0.16f;
     chance_moving_coins = (difficulty - 1) * 0.07 + 0.16f;
     distance_between_obstacles = 290.0f - ((difficulty - 1) * 30.0f);
 }

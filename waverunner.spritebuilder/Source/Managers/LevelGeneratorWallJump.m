@@ -46,7 +46,7 @@
         float dist;
         
         if(i % 2 == 0) {
-            distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * MAX_DISTANCE_WALLS / 2);
+            distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * MAX_INC_DISTANCE_WALLS);
         }
         
         wall.scaleX = -2.05;

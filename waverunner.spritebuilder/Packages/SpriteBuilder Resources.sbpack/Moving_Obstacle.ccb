@@ -54,7 +54,7 @@
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>collisionCategories</key>
 			<array/>
 			<key>collisionMask</key>
@@ -62,7 +62,7 @@
 			<key>collisionType</key>
 			<string></string>
 			<key>cornerRadius</key>
-			<real>6</real>
+			<real>0.0</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
@@ -74,12 +74,43 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>6.5</real>
-					<real>6</real>
+					<real>0.0</real>
+					<real>0.0</real>
+				</array>
+				<array>
+					<real>0.0</real>
+					<real>24.063177108764648</real>
+				</array>
+				<array>
+					<real>30.877574920654297</real>
+					<real>24.063177108764648</real>
+				</array>
+				<array>
+					<real>30</real>
+					<real>0.0</real>
 				</array>
 			</array>
 			<key>polygons</key>
-			<array/>
+			<array>
+				<array>
+					<array>
+						<real>30</real>
+						<real>0.0</real>
+					</array>
+					<array>
+						<real>30.877574920654297</real>
+						<real>24.063177108764648</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>24.063177108764648</real>
+					</array>
+					<array>
+						<real>0.0</real>
+						<real>0.0</real>
+					</array>
+				</array>
+			</array>
 		</dict>
 		<key>properties</key>
 		<array>
@@ -137,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/shopping_cart2.png</string>
+					<string>Resources/shopping_cart2-2.png</string>
 				</array>
 			</dict>
 			<dict>
