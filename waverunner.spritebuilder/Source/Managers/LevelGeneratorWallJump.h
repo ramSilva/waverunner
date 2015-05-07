@@ -16,7 +16,8 @@ static int const MIN_NUMBER_WALLS = 2;
 //2 * MAX_MULT_WALLS = MAX_NUMBER_WALLS
 static int const MAX_MULT_WALLS = 5;
 static int const MIN_DISTANCE_WALLS = 200.0f;
-static int const MAX_INC_DISTANCE_WALLS = 100.0f;
+static int const MAX_DISTANCE_WALLS = 300.0f;
+static int const MAX_CHALLENGE_ITEMS = 3;
 
 @interface LevelGeneratorWallJump : LevelGenerator {
     bool wallBuilt;
@@ -29,6 +30,7 @@ static int const MAX_INC_DISTANCE_WALLS = 100.0f;
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;
 - (void)insertSpawner:(float)posx :(float)posy :(float)dimx :(bool)right;
 - (void)spawnObstacles;
+- (void)insertChallengeItems :(float)posx :(float)posy :(float)dimy :(bool)right;
 - (void)moveObstacles;
 - (void)updateLevel:(CCTime)delta;
 

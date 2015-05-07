@@ -34,6 +34,24 @@
 
 - (void) buildWallJump {
     int numberOfWalls = MIN_NUMBER_WALLS + 2 * (arc4random() % MAX_MULT_WALLS);
+    NSMutableArray *indexes_citems = [[NSMutableArray alloc] init];
+    
+    //Select which walls are going to have challenge items
+    if(numberOfWalls > 2) {
+        NSMutableArray *all = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < numberOfWalls; i++) {
+            [all addObject:[NSNumber numberWithInt:i]];
+        }
+        
+        for (int i = 0; i < MAX_CHALLENGE_ITEMS; i++) {
+            int all_index = arc4random() % (int)all.count;
+            int citem_index = [[all objectAtIndex:all_index] intValue];
+            
+            [indexes_citems addObject:[NSNumber numberWithInt:citem_index]];
+            [all removeObject:[NSNumber numberWithInt:citem_index]];
+        }
+    }
     
     for(int i = 0; i < numberOfWalls; i++) {
         CCNode* wall = (CCNode*)[CCBReader load:@"WallJump/Wall"];
@@ -46,7 +64,7 @@
         float dist;
         
         if(i % 2 == 0) {
-            distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * MAX_INC_DISTANCE_WALLS);
+            distance_between_walls = MIN_DISTANCE_WALLS + (drand48() * (MAX_DISTANCE_WALLS - MIN_DISTANCE_WALLS));
         }
         
         wall.scaleX = -2.05;
@@ -62,8 +80,12 @@
             }
             
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
-            spawn_posx = wall.position.x + (drand48() * distance_between_walls);
+            spawn_posx = wall.position.x + wall.boundingBox.size.width / 2;
             spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
+            
+            if (numberOfWalls > 2 && [indexes_citems containsObject:[NSNumber numberWithInt:i]]) {
+                [self insertChallengeItems :spawn_posx :wall.position.y :wall.boundingBox.size.height :false];
+            }
         } else {
             CCNode* last_wall = [walls objectAtIndex:walls.count - 1];
 
@@ -73,12 +95,20 @@
                 spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
                 dist = distance_between_walls - wall.boundingBox.size.width;
                 [self insertSpawner :spawn_posx :spawn_posy :dist :false];
+                
+                if (numberOfWalls > 2 && [indexes_citems containsObject:[NSNumber numberWithInt:i]]) {
+                    [self insertChallengeItems :spawn_posx :wall.position.y :wall.boundingBox.size.height :false];
+                }
             } else {
                 wall.position = ccp(last_wall.position.x + distance_between_walls, last_wall.position.y + (3 * last_wall.boundingBox.size.height / 4));
                 spawn_posx = wall.position.x - wall.boundingBox.size.width / 2;
                 spawn_posy = wall.position.y + (wall.boundingBox.size.height / 2);
                 dist = distance_between_walls - wall.boundingBox.size.width;
                 [self insertSpawner :spawn_posx :spawn_posy :dist :true];
+                
+                if (numberOfWalls > 2 && [indexes_citems containsObject:[NSNumber numberWithInt:i]]) {
+                    [self insertChallengeItems :spawn_posx :wall.position.y :wall.boundingBox.size.height :true];
+                }
             }
         }
         
@@ -124,6 +154,23 @@
             }
         }
     }
+}
+
+- (void) insertChallengeItems :(float)posx :(float)posy :(float)dimy :(bool)right {
+    CCNode* citem = (CCNode*)[CCBReader load:@"Challenge_Item"];
+    float min_y = posy - (dimy / 2) + (citem.boundingBox.size.height / 2);
+    float max_y = posy + (dimy / 2) - (citem.boundingBox.size.height / 2);
+    float citem_posy = min_y + (drand48() * (max_y - min_y));
+    float citem_posx;
+    
+    if(right) {
+        citem_posx = posx - (citem.boundingBox.size.width / 2);
+    } else {
+        citem_posx = posx + (citem.boundingBox.size.width / 2);
+    }
+    
+    citem.position = ccp(citem_posx, citem_posy);
+    [_wallNode addChild:citem];
 }
 
 - (void) moveObstacles {
