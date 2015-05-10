@@ -21,7 +21,7 @@
 
 
 - (void)didLoadFromCCB{
-    _runSpeed = ccp(BASE_SPEED, 0.0f);
+    _runSpeed = _initialSpeed = ccp(BASE_SPEED, 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = _runSpeed;
     _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] powerUpDurationLevel];
@@ -135,7 +135,7 @@
     _gm.scrollSpeed = ccp(0, 100);
     _runSpeed = ccp(0, 0);
     [self.physicsBody applyForce:ccp(10000, 0)];
-    
+    [self updateChallengeLabel];
     return true;
 }
 
@@ -253,10 +253,16 @@
 
 -(void)clearChallengeLabel{
     _challengeLabel.string = @"";
+    _challengeCounter = -1;
 }
 
 -(void) updateChallengeLabel{
-    _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
+    if (_challengeCounter<0) {
+        [self clearChallengeLabel];
+    }
+    else{
+        _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
+    }
 }
 
 -(void)setChallengeCount:(NSInteger)quantity{

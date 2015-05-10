@@ -174,7 +174,6 @@
     citem.position = ccp(citem_posx, citem_posy);
     [_wallNode addChild:citem];
     [_player setChallengeCount:0];
-    [_player updateChallengeLabel];
 }
 
 - (void) moveObstacles {
