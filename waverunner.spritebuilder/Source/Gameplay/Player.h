@@ -27,6 +27,8 @@
     float _lastScrollUpdate;
     BOOL _lastChance;
     bool _lastHit;
+    CCLabelTTF *_challengeLabel;
+    NSInteger _challengeCounter;
 }
 
 @property (nonatomic, readonly) BOOL airborne;
@@ -41,5 +43,9 @@
 - (void)hit;
 - (void)changeRunSpeed:(CGPoint)changeAmount;
 -(void)wallJump:(CGPoint)jumpForce;
+-(void)clearChallengeLabel;
+- (void)setChallengeCount:(NSInteger)quantity;
+-(void)incrementChallengeCount;
+-(void)updateChallengeLabel;
 
 @end

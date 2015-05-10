@@ -107,6 +107,7 @@
                 [self insertSpawner :spawn_posx :spawn_posy :dist :true];
                 
                 if (numberOfWalls > 2 && [indexes_citems containsObject:[NSNumber numberWithInt:i]]) {
+                    //[_gameManager setChal];
                     [self insertChallengeItems :spawn_posx :wall.position.y :wall.boundingBox.size.height :true];
                 }
             }
@@ -171,6 +172,8 @@
     
     citem.position = ccp(citem_posx, citem_posy);
     [_wallNode addChild:citem];
+    [_player setChallengeCount:0];
+    [_player updateChallengeLabel];
 }
 
 - (void) moveObstacles {

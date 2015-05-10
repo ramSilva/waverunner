@@ -20,6 +20,7 @@
     bool _runningMode;
     NSInteger _coinMultiplier;
     NSInteger _coinMultiplierMax;
+    NSInteger _challengeCounter;
 }
 
 @property (readonly, nonatomic) NSInteger jumpLevel;
@@ -47,5 +48,6 @@
 - (void)updateCoinLabel;
 - (void)deleteDocument;
 - (void)setHighscore:(NSInteger)score;
+
 
 @end

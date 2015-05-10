@@ -154,6 +154,7 @@
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
     [_wavesNode runAction:_moveWaves];
     useTimer = true;
+    [_player clearChallengeLabel];
 }
 
 -(void) climbMode{

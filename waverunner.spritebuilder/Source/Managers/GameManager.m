@@ -180,4 +180,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     _coinLabel.string = [NSString stringWithFormat:@"Coins: %ld", (long)_coins];
 }
 
+
+
+
 @end

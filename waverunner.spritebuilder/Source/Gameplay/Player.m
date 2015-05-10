@@ -36,6 +36,8 @@
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
     hitTimer =  _lastScrollUpdate = 0;
     num_obstacles_collision = 0;
+    
+    [self clearChallengeLabel];
 }
 
 - (void)jump{
@@ -115,6 +117,8 @@
     nodeA.visible = NO;
     [[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
     [[GameManager sharedGameManager] updateCoinLabel];
+    CCLOG(@"Coin item caught");
+
     //[nodeA.parent removeChild:nodeA];
     return TRUE;
 }
@@ -139,7 +143,7 @@
 
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA wall:(CCNode *)nodeB{
-    CCLOG(@"colision detected");
+    //CCLOG(@"colision detected");
     
     
     self.physicsBody.affectedByGravity = false;
@@ -172,6 +176,18 @@
         self.physicsBody.affectedByGravity = true;
     }
     return true;
+}
+
+- (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair challenge:(CCNode *)nodeA player:(CCNode *)nodeB{
+    nodeA.visible = NO;
+    [self incrementChallengeCount];
+    [self updateChallengeLabel];
+    //[[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
+    //[[GameManager sharedGameManager] updateCoinLabel];
+    
+    CCLOG(@"Challenge item caught");
+    
+    return TRUE;
 }
 
 -(void)wallJump:(CGPoint)jumpForce{
@@ -217,7 +233,7 @@
     }
     _lastScrollUpdate += delta;
     
-    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+    //printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];
@@ -232,5 +248,22 @@
     }
     
     //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
+}
+
+
+-(void)clearChallengeLabel{
+    _challengeLabel.string = @"";
+}
+
+-(void) updateChallengeLabel{
+    _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
+}
+
+-(void)setChallengeCount:(NSInteger)quantity{
+    _challengeCounter = quantity;
+}
+
+-(void)incrementChallengeCount{
+    _challengeCounter++;
 }
 @end

@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>86</integer>
+	<integer>87</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -1403,8 +1403,6 @@
 										<string>GameOver.ccb</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>
@@ -1715,6 +1713,8 @@
 										<string>Player.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

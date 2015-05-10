@@ -11,6 +11,7 @@
 		3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80B9D1AD2D2BD00866542 /* RunIH.m */; };
 		3FC80BA21AD2D2F000866542 /* ClimbIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA11AD2D2F000866542 /* ClimbIH.m */; };
 		3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC80BA41AD2D34C00866542 /* WallJumpIH.m */; };
+		5533B2EE1AFF755F00B36B8E /* ChallengeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5533B2ED1AFF755F00B36B8E /* ChallengeItem.m */; };
 		5544787F1AE408C00008A0F3 /* LevelGeneratorWallJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 5544787E1AE408C00008A0F3 /* LevelGeneratorWallJump.m */; };
 		55E8641F1ADD7D0E007D0175 /* WallTriggerEnter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E8641C1ADD7D0E007D0175 /* WallTriggerEnter.m */; };
 		55E864201ADD7D0E007D0175 /* WallTriggerExit.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E8641E1ADD7D0E007D0175 /* WallTriggerExit.m */; };
@@ -172,6 +173,8 @@
 		3FC80BA11AD2D2F000866542 /* ClimbIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClimbIH.m; path = Source/Managers/Input/ClimbIH.m; sourceTree = "<group>"; };
 		3FC80BA31AD2D34C00866542 /* WallJumpIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WallJumpIH.h; path = Source/Managers/Input/WallJumpIH.h; sourceTree = "<group>"; };
 		3FC80BA41AD2D34C00866542 /* WallJumpIH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WallJumpIH.m; path = Source/Managers/Input/WallJumpIH.m; sourceTree = "<group>"; };
+		5533B2EC1AFF755F00B36B8E /* ChallengeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeItem.h; sourceTree = "<group>"; };
+		5533B2ED1AFF755F00B36B8E /* ChallengeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeItem.m; sourceTree = "<group>"; };
 		5544787D1AE408C00008A0F3 /* LevelGeneratorWallJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelGeneratorWallJump.h; path = Source/Managers/LevelGeneratorWallJump.h; sourceTree = "<group>"; };
 		5544787E1AE408C00008A0F3 /* LevelGeneratorWallJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelGeneratorWallJump.m; path = Source/Managers/LevelGeneratorWallJump.m; sourceTree = "<group>"; };
 		55E8641B1ADD7D0E007D0175 /* WallTriggerEnter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallTriggerEnter.h; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 				7B60B3BE1ADABCF200BA39DC /* Obstacle.m */,
 				740A3ED21AD2CC8300C96970 /* Ground.h */,
 				740A3ED31AD2CC8300C96970 /* Ground.m */,
+				5533B2EC1AFF755F00B36B8E /* ChallengeItem.h */,
+				5533B2ED1AFF755F00B36B8E /* ChallengeItem.m */,
 			);
 			name = Gameplay;
 			path = Source/Gameplay;
@@ -950,6 +955,7 @@
 				3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */,
 				740A3ED91AD2CC8300C96970 /* GameOver.m in Sources */,
 				740A3EDD1AD2CC8300C96970 /* Player.m in Sources */,
+				5533B2EE1AFF755F00B36B8E /* ChallengeItem.m in Sources */,
 				3FC80B9F1AD2D2BD00866542 /* RunIH.m in Sources */,
 				740A3ECA1AD2CBF000C96970 /* LevelGeneratorSideScroll.m in Sources */,
 				55E8641F1ADD7D0E007D0175 /* WallTriggerEnter.m in Sources */,
