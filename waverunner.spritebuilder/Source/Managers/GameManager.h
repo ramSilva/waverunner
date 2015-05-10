@@ -7,10 +7,10 @@
 //
 
 @interface GameManager : CCNode <NSCoding>{
-    NSInteger _jumpLevel;
-    NSInteger _speedLevel;
-    NSInteger _jumpLevelMax;
-    NSInteger _speedLevelMax;
+    NSInteger _powerUpDurationLevel;
+    NSInteger _resistanceLevel;
+    NSInteger _powerUpDurationMax;
+    NSInteger _resistanceMax;
     NSInteger _coins;
     CGPoint _scrollSpeed;
     CCLabelTTF *_coinLabel;
@@ -23,10 +23,10 @@
     NSInteger _challengeCounter;
 }
 
-@property (readonly, nonatomic) NSInteger jumpLevel;
-@property (readonly, nonatomic) NSInteger jumpLevelMax;
-@property (readonly, nonatomic) NSInteger speedLevel;
-@property (readonly, nonatomic) NSInteger speedLevelMax;
+@property (readonly, nonatomic) NSInteger powerUpDurationLevel;
+@property (readonly, nonatomic) NSInteger powerUpDurationMax;
+@property (readonly, nonatomic) NSInteger resistanceLevel;
+@property (readonly, nonatomic) NSInteger resistanceMax;
 @property (readonly, nonatomic) NSInteger coins;
 @property (readonly, nonatomic) NSInteger highscore;
 @property (readonly, nonatomic) NSInteger coinMultiplier;
@@ -41,8 +41,8 @@
 + (GameManager*) sharedGameManager;
 
 - (NSInteger)changeCoins:(NSInteger)ammount;
-- (NSInteger)upgradeSpeedLevel;
-- (NSInteger)upgradeJumpLevel;
+- (NSInteger)upgradeResistanceLevel;
+- (NSInteger)upgradePowerUpDurationLevel;
 - (NSInteger)upgradeMultiplierLevel;
 - (void)save;
 - (void)updateCoinLabel;

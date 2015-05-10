@@ -54,7 +54,7 @@
     
     self.userInteractionEnabled = TRUE;
     
-    //_physicsNode.debugDraw = TRUE;
+    _physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     
@@ -165,7 +165,7 @@
     CCLOG(@"WALLMODE");
     _gameManager.runningMode = false;
     //_player.previousSpeed = _player.runSpeed;
-    
+    _gameOverNode.position = ccp(_gameOverNode.position.x-100.0f, 35.0f);
     [_lg setWallMode];
      _lg = [[LevelGeneratorWallJump alloc] init];
     
@@ -205,7 +205,7 @@
 
 -(void) resetGameOver{
     [[_physicsNode space] addPostStepBlock:^{
-        _gameOverNode.position = ccp(_gameOverNode.position.x, 35.0f);
+        _gameOverNode.position = ccp(_gameOverNode.position.x + 100.0f, 35.0f);
     } key:_gameOverNode];
 }
 

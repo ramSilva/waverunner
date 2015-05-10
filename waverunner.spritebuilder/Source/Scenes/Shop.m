@@ -18,9 +18,18 @@
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
     
-    _speedLabel.string = [NSString stringWithFormat:@"Speed: %ld/%ld", [[GameManager sharedGameManager] speedLevel], [[GameManager sharedGameManager] speedLevelMax]];
-    _jumpLabel.string = [NSString stringWithFormat:@"Jump: %ld/%ld", [[GameManager sharedGameManager] jumpLevel], [[GameManager sharedGameManager] jumpLevelMax]];
-    _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/%ld", [[GameManager sharedGameManager] coinMultiplier], [[GameManager sharedGameManager] coinMultiplierMax]];
+    [self updateCostLabels];
+    
+    _resistanceLabel.string = [NSString stringWithFormat:@"Resistance: %ld/%ld", (long)[[GameManager sharedGameManager] resistanceLevel], (long)[[GameManager sharedGameManager] resistanceMax]];
+    _powerUpDurationLabel.string = [NSString stringWithFormat:@"Power ups\nduration: %ld/%ld", (long)[[GameManager sharedGameManager] powerUpDurationLevel], (long)[[GameManager sharedGameManager] powerUpDurationMax]];
+    _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/%ld", (long)[[GameManager sharedGameManager] coinMultiplier], (long)[[GameManager sharedGameManager] coinMultiplierMax]];
+}
+
+- (void)updateCostLabels{
+    GameManager *gm = [GameManager sharedGameManager];
+    _resistanceCostLabel.string = [NSString stringWithFormat:@"x%d", gm.resistanceLevel*10];
+    _powerUpDurationCostLabel.string = [NSString stringWithFormat:@"x%d", gm.powerUpDurationLevel*10];
+    _multiplierCostLabel.string = [NSString stringWithFormat:@"x%d", gm.coinMultiplier*10];
 }
 
 - (void)menu{
@@ -28,35 +37,38 @@
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 
-- (void)upgradeSpeed{
+- (void)upgradeResistance{
     GameManager *gm = [GameManager sharedGameManager];
-    NSInteger upgradeCost = 1;//[gm getSpeedLevel]*10;
-    if([gm coins] >= upgradeCost && [gm speedLevel] < [gm speedLevelMax] ){
+    NSInteger upgradeCost = gm.resistanceLevel*10;
+    if([gm coins] >= upgradeCost && [gm resistanceLevel] < [gm resistanceMax] ){
         [gm changeCoins:-upgradeCost];
         [[GameManager sharedGameManager] updateCoinLabel];
-        _speedLabel.string = [NSString stringWithFormat:@"Speed: %ld/10", [gm upgradeSpeedLevel]];
+        _resistanceLabel.string = [NSString stringWithFormat:@"Resistance: %ld/10", (long)[gm upgradeResistanceLevel]];
+        [self updateCostLabels];
         
     }
 }
 
-- (void)upgradeJump{
+- (void)upgradePowerUpDuration{
     GameManager *gm = [GameManager sharedGameManager];
-    NSInteger upgradeCost = 1;//[gm getJumpLevel]*10;
-    if([gm coins] >= upgradeCost && [gm jumpLevel] < [gm jumpLevelMax]){
+    NSInteger upgradeCost = gm.powerUpDurationLevel*10;
+    if([gm coins] >= upgradeCost && [gm powerUpDurationLevel] < [gm powerUpDurationMax]){
         [gm changeCoins:-upgradeCost];
         [[GameManager sharedGameManager] updateCoinLabel];
-        _jumpLabel.string = [NSString stringWithFormat:@"Jump: %ld/10", [gm upgradeJumpLevel]];
+        _powerUpDurationLabel.string = [NSString stringWithFormat:@"Power ups\nduration: %ld/10", (long)[gm upgradePowerUpDurationLevel]];
+        [self updateCostLabels];
     }
 }
 
 -(void)upgradeMultiplier{
     CCLOG(@	"Entrei no upgrade multiplier");
     GameManager *gm = [GameManager sharedGameManager];
-    NSInteger upgradeCost = 1;
+    NSInteger upgradeCost = gm.coinMultiplier*10;
     if([gm coins] >= upgradeCost && [gm coinMultiplier] < [gm coinMultiplierMax]){
         [gm changeCoins:-upgradeCost];
         [[GameManager sharedGameManager] updateCoinLabel];
-        _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/10", [gm upgradeMultiplierLevel]];
+        _multiplierLabel.string = [NSString stringWithFormat:@"Multiplier: %ld/10", (long)[gm upgradeMultiplierLevel]];
+        [self updateCostLabels];
     }
 }
 

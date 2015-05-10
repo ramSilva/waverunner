@@ -21,10 +21,10 @@
 
 
 - (void)didLoadFromCCB{
-    _runSpeed = _initialSpeed = ccp(BASE_SPEED*[[GameManager sharedGameManager] speedLevel], 0.0f);
+    _runSpeed = ccp(BASE_SPEED, 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = _runSpeed;
-    _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] jumpLevel];
+    _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] powerUpDurationLevel];
     self.physicsBody.collisionType = @"player";
     
     _airborne = FALSE;
@@ -70,7 +70,7 @@
 
 - (void)hit{
     _hit = TRUE;
-    [self changeRunSpeed:ccp(-10.0f, 0)];
+    [self changeRunSpeed:ccp(-20.0f+[GameManager sharedGameManager].resistanceLevel, 0)];
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
     //CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:1.4f position:ccp(-10.0f, 0.0f)];
     [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
@@ -102,7 +102,6 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
     [self land];
-    [_GS resetGameOver];
     self.physicsBody.collisionMask = nil;
     return TRUE;
 }
@@ -166,13 +165,14 @@
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerexit:(CCNode *)nodeA player:(CCNode *)nodeB{
     [_GS runMode];
+    [_GS resetGameOver];
     self.physicsBody.collisionMask = @[@"ground"];
     self.physicsBody.affectedByGravity = YES;
     return true;
 }
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA fallingObstacle:(CCNode *)nodeB{
-    if (!_airborne) {
+    if (_airborne) {
         self.physicsBody.affectedByGravity = true;
     }
     return true;
@@ -215,20 +215,20 @@
 -(void)update:(CCTime)delta{
     if (![GameManager sharedGameManager].runningMode) return;
     
-    if (hitTimer>5) {
+    if (hitTimer>5 ) {
         [self changeRunSpeed:ccp(10, 0)];
         hitTimer = 0;
     }
-    if ([self.parent convertToWorldSpace:self.position].x < 350.0f){
+    if ([self.parent convertToWorldSpace:self.position].x < 300.0f){
         hitTimer += delta;
     }
-    else{
-        _runSpeed = _initialSpeed;
+    else if(!_hit){
+        _runSpeed = [GameManager sharedGameManager].scrollSpeed;
     }
     
-    if (_lastScrollUpdate > 20) {
+    if (_lastScrollUpdate > 10) {
         _lastScrollUpdate = 0;
-        _runSpeed =
+        _runSpeed = ccpAdd(_runSpeed, ccp(10, 0));
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
     }
     _lastScrollUpdate += delta;
