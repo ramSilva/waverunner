@@ -11,9 +11,14 @@
 
 @interface Shop : CCNode{
     CCLabelTTF *_coinLabel;
-    CCLabelTTF *_jumpLabel;
-    CCLabelTTF *_speedLabel;
+    CCLabelTTF *_powerUpDurationLabel;
+    CCLabelTTF *_resistanceLabel;
     CCLabelTTF *_multiplierLabel;
+    CCLabelTTF *_powerUpDurationCostLabel;
+    CCLabelTTF *_resistanceCostLabel;
+    CCLabelTTF *_multiplierCostLabel;
 }
+
+-(void)updateCostLabels;
 
 @end

@@ -143,10 +143,11 @@
 
         if(spawnerWorldPosition.y > s.height && obstacles.count == 0) {
             CCNode* obs = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
-            
+            obs.physicsBody.sensor = TRUE;
             obs.position = ccp(spawner.position.x, spawner.position.y);
             [obstacles addObject:obs];
             [_wallNode addChild:obs];
+            [obs.physicsBody applyImpulse:ccp(0.0f, -20.0f)];
             
         } else {
             if(spawnerWorldPosition.y < s.height) {
@@ -177,7 +178,7 @@
     if(obstacles.count > 0) {
         CCNode* obs = [obstacles objectAtIndex:0];
         
-        obs.position = ccp(obs.position.x, obs.position.y - 3.0f);
+        //obs.position = ccp(obs.position.x, obs.position.y - 3.0f);
         CGPoint obsWorldPosition = [_wallNode convertToWorldSpace:obs.position];
         
         if(obsWorldPosition.y < 0.0f) {

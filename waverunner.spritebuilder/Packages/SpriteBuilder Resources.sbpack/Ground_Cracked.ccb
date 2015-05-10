@@ -82,19 +82,19 @@
 					<real>53.5703125</real>
 				</array>
 				<array>
-					<real>58.2421875</real>
+					<real>72.28125</real>
 					<real>53.5703125</real>
 				</array>
 				<array>
-					<real>58.2421875</real>
+					<real>72.28125</real>
 					<real>-88.5625</real>
 				</array>
 				<array>
-					<real>199.00390625</real>
+					<real>179.078125</real>
 					<real>-88.5625</real>
 				</array>
 				<array>
-					<real>199.00390625</real>
+					<real>179.078125</real>
 					<real>53.5703125</real>
 				</array>
 				<array>
@@ -118,11 +118,11 @@
 						<real>53.5703125</real>
 					</array>
 					<array>
-						<real>199.00390625</real>
+						<real>179.078125</real>
 						<real>53.5703125</real>
 					</array>
 					<array>
-						<real>199.00390625</real>
+						<real>179.078125</real>
 						<real>-88.5625</real>
 					</array>
 				</array>
@@ -136,21 +136,21 @@
 						<real>-99.14453125</real>
 					</array>
 					<array>
-						<real>199.00390625</real>
+						<real>179.078125</real>
 						<real>-88.5625</real>
 					</array>
 					<array>
-						<real>58.2421875</real>
+						<real>72.28125</real>
 						<real>-88.5625</real>
 					</array>
 				</array>
 				<array>
 					<array>
-						<real>58.2421875</real>
+						<real>72.28125</real>
 						<real>-88.5625</real>
 					</array>
 					<array>
-						<real>58.2421875</real>
+						<real>72.28125</real>
 						<real>53.5703125</real>
 					</array>
 					<array>
@@ -256,8 +256,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
