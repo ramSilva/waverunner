@@ -52,7 +52,7 @@ static float const TIMER_WALLJUMP = 5.0f;
     /*******************************/
     
     CCNode *_wavesNode;
-    
+    CCNode *_exclamationMark;
 
     CGPoint _previousPhysicsPosition;
     CGPoint _previousPlayerPosition;
@@ -68,4 +68,5 @@ static float const TIMER_WALLJUMP = 5.0f;
 -(void) resetGameOver;
 -(void) runMode;
 -(void) wallModeIH;
+-(void) lastChance:(BOOL)isLastChance;
 @end

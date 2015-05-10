@@ -209,4 +209,13 @@
     } key:_gameOverNode];
 }
 
+-(void) lastChance:(BOOL)isLastChance{
+    if(isLastChance){
+        _exclamationMark.visible = true;
+    }
+    else{
+        _exclamationMark.visible = false;   
+    }
+}
+
 @end

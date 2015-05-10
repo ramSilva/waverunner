@@ -233,17 +233,19 @@
     }
     _lastScrollUpdate += delta;
     
-    //printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];
         if (_pos.x <= 100) {
+            [_GS lastChance:true];
             CCLOG(@"LAST CHANCE");
             self.position = [self.parent convertToNodeSpace:ccp(100, _pos.y)];
             _lastHit = true;
         }
-        else{
+        else if(_pos.x >= 150){
             _lastHit = false;
+            [_GS lastChance:false];
         }
     }
     
