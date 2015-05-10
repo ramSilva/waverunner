@@ -264,6 +264,9 @@
     }
     else{
         _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
+        if (_challengeCounter >= 3) {
+            [self enablePowerButton:true];
+        }
     }
 }
 
@@ -273,5 +276,13 @@
 
 -(void)incrementChallengeCount{
     _challengeCounter++;
+}
+
+-(void)activatePowerUp{
+    CCLOG(@"Ganda PowerUp");
+}
+
+-(void)enablePowerButton:(BOOL)value{
+    [_GS enablePowerButton:value];
 }
 @end

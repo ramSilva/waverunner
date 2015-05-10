@@ -68,6 +68,7 @@
     
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
+    _powerUpButton.visible = false;
 }
 
 - (void)update:(CCTime)delta{
@@ -216,6 +217,15 @@
     else{
         _exclamationMark.visible = false;   
     }
+}
+
+-(void) activatePowerUp{
+    [_player activatePowerUp];
+    [self enablePowerButton:false];
+}
+
+-(void)enablePowerButton:(BOOL)value{
+    _powerUpButton.visible = value;
 }
 
 @end

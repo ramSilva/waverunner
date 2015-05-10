@@ -47,5 +47,6 @@
 - (void)setChallengeCount:(NSInteger)quantity;
 -(void)incrementChallengeCount;
 -(void)updateChallengeLabel;
+-(void)activatePowerUp;
 
 @end
