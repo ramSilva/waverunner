@@ -30,6 +30,7 @@
     CCLabelTTF *_challengeLabel;
     NSInteger _challengeCounter;
     NSInteger _enabledPowerup;
+    BOOL _shieldOn, _slowmotionOn;
 }
 
 @property (nonatomic, readonly) BOOL airborne;

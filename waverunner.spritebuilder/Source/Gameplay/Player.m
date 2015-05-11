@@ -38,6 +38,7 @@
     num_obstacles_collision = 0;
     
     [self clearChallengeLabel];
+    _shieldOn = _slowmotionOn = false;
 }
 
 - (void)jump{
@@ -69,11 +70,12 @@
 }
 
 - (void)hit{
+    [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
+    if(_shieldOn) return;
     _hit = TRUE;
     [self changeRunSpeed:ccp(-20.0f+[GameManager sharedGameManager].resistanceLevel, 0)];
     [self.animationManager runAnimationsForSequenceNamed:@"Hit"];
     //CCActionMoveBy *action = [CCActionMoveBy actionWithDuration:1.4f position:ccp(-10.0f, 0.0f)];
-    [self scheduleOnce:@selector(resetAnimation) delay:0.7f];
     //[self runAction:action];
     hitTimer = 0;
     num_obstacles_collision += 1;
@@ -281,9 +283,13 @@
 -(void)activatePowerUp{
     if (_enabledPowerup == 0) {
         CCLOG(@"enable slowmotion\n");
+        _shieldOn = FALSE;
+        _slowmotionOn = true;
     }
     else if (_enabledPowerup == 1){
         CCLOG(@"enable shield\n");
+        _shieldOn = true;
+        _slowmotionOn = false;
     }
 }
 

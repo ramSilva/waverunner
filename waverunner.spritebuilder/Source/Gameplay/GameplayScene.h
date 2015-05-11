@@ -63,6 +63,7 @@ static float const TIMER_WALLJUMP = 10.0f;
     CCNode* _wallNode;
     
     CCNode* _timeButton, *_shieldButton;
+    
 }
 
 @property (readonly, nonatomic) NSInteger currentScore;
