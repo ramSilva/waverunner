@@ -62,7 +62,7 @@ static float const TIMER_WALLJUMP = 5.0f;
     
     CCNode* _wallNode;
     
-    CCNode* _powerUpButton;
+    CCNode* _timeButton, *_shieldButton;
 }
 
 @property (readonly, nonatomic) NSInteger currentScore;
@@ -71,5 +71,5 @@ static float const TIMER_WALLJUMP = 5.0f;
 -(void) runMode;
 -(void) wallModeIH;
 -(void) lastChance:(BOOL)isLastChance;
--(void) enablePowerButton:(BOOL)value;
+-(void) enablePowerButton:(BOOL)value :(NSInteger)powerUpType;
 @end

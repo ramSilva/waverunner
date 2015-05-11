@@ -54,7 +54,7 @@
     
     self.userInteractionEnabled = TRUE;
     
-    _physicsNode.debugDraw = TRUE;
+    //_physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     
@@ -68,7 +68,7 @@
     
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
-    _powerUpButton.visible = false;
+    _timeButton.visible = _shieldButton.visible = false;
 }
 
 - (void)update:(CCTime)delta{
@@ -221,11 +221,27 @@
 
 -(void) activatePowerUp{
     [_player activatePowerUp];
-    [self enablePowerButton:false];
+    [self enablePowerButton:false :-1];
 }
 
--(void)enablePowerButton:(BOOL)value{
-    _powerUpButton.visible = value;
+-(void)enablePowerButton:(BOOL)value :(NSInteger)powerUpType{
+    if (value) {
+        if (powerUpType == 0) {
+            CCLOG(@"slowmo button\n");
+            _timeButton.visible = true;
+            _shieldButton.visible = false;
+        }
+        else if (powerUpType == 1){
+            CCLOG(@"shield button\n");
+            _timeButton.visible = false;
+            _shieldButton.visible = true;
+        }
+    }
+    else{
+        CCLOG(@"turn off 2 buttons\n");
+        _timeButton.visible = false;
+        _shieldButton.visible = false;
+    }
 }
 
 @end

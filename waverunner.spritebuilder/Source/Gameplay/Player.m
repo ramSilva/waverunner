@@ -264,7 +264,7 @@
     }
     else{
         _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
-        if (_challengeCounter >= 3) {
+        if (_challengeCounter == 3) {
             [self enablePowerButton:true];
         }
     }
@@ -279,10 +279,21 @@
 }
 
 -(void)activatePowerUp{
-    CCLOG(@"Ganda PowerUp");
+    if (_enabledPowerup == 0) {
+        CCLOG(@"enable slowmotion\n");
+    }
+    else if (_enabledPowerup == 1){
+        CCLOG(@"enable shield\n");
+    }
 }
 
 -(void)enablePowerButton:(BOOL)value{
-    [_GS enablePowerButton:value];
+    [self choosePowerUp];
+    [_GS enablePowerButton:value :_enabledPowerup];
+}
+
+-(void) choosePowerUp{
+    _enabledPowerup = (arc4random() % 2);
+    printf("Enable powerup number: %d\n", _enabledPowerup);
 }
 @end

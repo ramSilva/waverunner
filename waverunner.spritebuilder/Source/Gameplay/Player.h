@@ -29,6 +29,7 @@
     bool _lastHit;
     CCLabelTTF *_challengeLabel;
     NSInteger _challengeCounter;
+    NSInteger _enabledPowerup;
 }
 
 @property (nonatomic, readonly) BOOL airborne;
