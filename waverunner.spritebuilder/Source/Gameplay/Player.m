@@ -233,7 +233,7 @@
     }
     _lastScrollUpdate += delta;
     
-    //printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];

@@ -7,6 +7,7 @@
 //
 
 #import "LevelGeneratorWallJump.h"
+#import "GameManager.h"
 #import "Ground.h"
 #import "Player.h"
 #import "Obstacle.h"
@@ -22,6 +23,7 @@
     spawners = [[NSMutableArray alloc] init];
     obstacles = [[NSMutableArray alloc] init];
     wallJumpEnd = (CCNode*)[CCBReader load:@"WallJump/WallJumpTransitionEnd"];
+    wave_wj = (CCNode*)[CCBReader load:@"WallJump/Wave"];
 }
 
 - (void) insertLastWallJump {
@@ -78,6 +80,16 @@
                     wall_height = childNode.boundingBox.size.height;
                 }
             }
+            
+            
+            float screenwidth = [CCDirector sharedDirector].viewSize.width;
+            wave_wj.scaleX = screenwidth / wave_wj.boundingBox.size.width;
+            wave_wj.position = ccp(wall_pos_x - (wave_wj.boundingBox.size.width / 2) - (wall.boundingBox.size.width / 2), -500.0f);
+            [_wallNode addChild:wave_wj];
+            wave_wj.zOrder = 1;
+            CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:5.5 position:ccp(wave_wj.position.x, wave_wj.boundingBox.size.height / 4)];
+
+            [wave_wj runAction:_moveWaves];
             
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
             spawn_posx = wall.position.x + wall.boundingBox.size.width / 2;
@@ -197,6 +209,13 @@
     
     [self spawnObstacles];
     [self moveObstacles];
+    
+    CGPoint scrollSpeed = [_gameManager scrollSpeed];
+    wave_wj.position = ccp(wave_wj.position.x, wave_wj.position.y + delta * scrollSpeed.y);
+    //CCActionMoveBy *_moveWaves = [CCActionMoveTo actionWithDuration:1 position:ccp(0, 100)];
+    //CCActionMoveTo *_moveWaves2 = [CCActionMoveTo actionWithDuration:1 position:ccp(-600, 0)];
+    //CCActionSequence *_seq = [CCActionSequence actionOne:_moveWaves two:_moveWaves2];
+    //[wave_wj runAction:_moveWaves];
 }
 
 -(void)setScrollMode {

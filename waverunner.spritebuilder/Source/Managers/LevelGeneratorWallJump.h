@@ -22,6 +22,7 @@ static int const MAX_CHALLENGE_ITEMS = 3;
 @interface LevelGeneratorWallJump : LevelGenerator {
     bool wallBuilt;
     CCNode* wallJumpEnd;
+    CCNode* wave_wj;
     NSMutableArray *walls;
     NSMutableArray *spawners;
     NSMutableArray *obstacles;
