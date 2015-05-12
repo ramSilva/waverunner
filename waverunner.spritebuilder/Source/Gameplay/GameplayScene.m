@@ -100,13 +100,13 @@
     if(timer >= TIMER_WALLJUMP && drand48() < CHANCE_WALLJUMP) {
         timer = 0.0f;
         useTimer = false;
-        _lg.staticObjectsOnly = true;
+        _lg.noObstacles = true;
     }
     
     [_lg updateLevel :delta];
     
-    if(_lg.staticObjectsOnly && _lg.countGroundsUpdatedStaticOnly >= 4) {
-        _lg.staticObjectsOnly = false;
+    if(_lg.noObstacles && _lg.countGroundsUpdatedStaticOnly >= 4) {
+        _lg.noObstacles = false;
         _lg.countGroundsUpdatedStaticOnly = 0;
         [self wallMode];
     }
@@ -147,9 +147,12 @@
     _gameManager.scrollSpeed = _player.initialSpeed;
     
     [_lg setScrollMode];
+    int dif = _lg.difficulty;
+    
     _lg = [[LevelGeneratorSideScroll alloc] init];
     [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
-   
+    _lg.difficulty = dif;
+
     _g1.chance_gap = _g2.chance_gap = _g3.chance_gap = _g4.chance_gap = 0.0f;
     
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(0,0)];
@@ -167,11 +170,16 @@
     _gameManager.runningMode = false;
     //_player.previousSpeed = _player.runSpeed;
     _gameOverNode.position = ccp(_gameOverNode.position.x-100.0f, 35.0f);
-    [_lg setWallMode];
-     _lg = [[LevelGeneratorWallJump alloc] init];
     
+    [_lg setWallMode];
+    
+    int dif = _lg.difficulty;
+    
+     _lg = [[LevelGeneratorWallJump alloc] init];
     [_lg initializeLevel:_grounds :_grounds_cracked :_player :_physicsNode :_wallNode];
-   
+    _lg.difficulty = dif;
+    [self lastChance:false];
+    
     CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:6 position:ccp(-300, -300)];
     CCActionMoveTo *_moveWaves2 = [CCActionMoveTo actionWithDuration:1 position:ccp(-600, 0)];
     CCActionSequence *_seq = [CCActionSequence actionOne:_moveWaves two:_moveWaves2];

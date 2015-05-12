@@ -17,7 +17,7 @@
 @synthesize chance_moving_coins;
 @synthesize chance_moving_obstacles;
 @synthesize distance_between_obstacles;
-@synthesize staticObjectsOnly;
+@synthesize noObstacles;
 @synthesize countGroundsUpdatedStaticOnly;
 @synthesize timer;
 @synthesize change_difficulty_timer;
@@ -28,7 +28,7 @@
     _grounds_cracked = [gc copy];
     _player = p;
     _physicsNode = pn;
-    staticObjectsOnly = false;
+    noObstacles = false;
     countGroundsUpdatedStaticOnly = 0;
     _gameManager = [GameManager sharedGameManager];
     difficulty = 1;

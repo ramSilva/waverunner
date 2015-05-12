@@ -46,7 +46,7 @@ static float const DIFFICULTY_TIMER = 5.0f;
 @property(nonatomic, readwrite) float chance_moving_coins;
 @property(nonatomic, readwrite) float chance_moving_obstacles;
 @property(nonatomic, readwrite) float distance_between_obstacles;
-@property(nonatomic, readwrite) bool staticObjectsOnly;
+@property(nonatomic, readwrite) bool noObstacles;
 @property(nonatomic, readwrite) int countGroundsUpdatedStaticOnly;
 @property(nonatomic, readwrite) int difficulty;
 @property(nonatomic, readwrite) float timer;

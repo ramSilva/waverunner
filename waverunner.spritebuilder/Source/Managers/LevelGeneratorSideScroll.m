@@ -436,7 +436,7 @@
             _nextGroundIndex = i;
             g.next_ground = false;
             
-            if(super.staticObjectsOnly) {
+            if(super.noObstacles) {
                 super.countGroundsUpdatedStaticOnly = super.countGroundsUpdatedStaticOnly + 1;
             }
         }
@@ -470,9 +470,9 @@
         
         [super updateDifficulty];
         
-        if(super.staticObjectsOnly) {
+        if(super.noObstacles) {
             super.chance_moving_coins = 0.0f;
-            super.chance_moving_obstacles = 0.0f;
+            super.chance_obstacles = 0.0f;
         } /*else {
             super.chance_moving_coins = CHANCE_MOVING_COINS;
             super.chance_moving_obstacles = CHANCE_MOVING_OBSTACLES;
