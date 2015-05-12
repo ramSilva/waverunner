@@ -3,7 +3,7 @@
 @implementation MainScene
 
 - (void)didLoadFromCCB{
-    GameManager *_gameManager = [GameManager sharedGameManager];
+    _gameManager = [GameManager sharedGameManager];
     [_gameManager updateCoinLabel];
     CCNode* p = _coinLabel.parent;
     _coinLabel = [_gameManager coinLabel];
@@ -19,6 +19,7 @@
 }
 
 - (void)play{
+    _gameManager.runningMode = true;
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"GameplayScene"]];
 }
 
