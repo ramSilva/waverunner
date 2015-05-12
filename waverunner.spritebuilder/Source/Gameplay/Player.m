@@ -10,6 +10,7 @@
 #import "CCSprite.h"
 #import "GameManager.h"
 #import "GameplayScene.h"
+#import "CCDirector_Private.h"
 
 @implementation Player
 
@@ -235,7 +236,7 @@
     }
     _lastScrollUpdate += delta;
     
-    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+    //printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];
@@ -248,6 +249,18 @@
         else if(_pos.x >= 150){
             _lastHit = false;
             [_GS lastChance:false];
+        }
+    }
+    
+    if (_shieldOn || _slowmotionOn) {
+        if (_powerUpTimeCounter >= POWERUP_TIME_LIMIT) {
+            CCLOG(@"POWERUP END \n");
+            _powerUpTimeCounter = 0;
+            [self enablePowerButton:false];
+            
+        }
+        else{
+            _powerUpTimeCounter += delta;
         }
     }
     
@@ -285,20 +298,33 @@
         CCLOG(@"enable slowmotion\n");
         _shieldOn = FALSE;
         _slowmotionOn = true;
+        [[[CCDirector sharedDirector] scheduler] setTimeScale:0.5f];
+        _powerUpTimeCounter = 0;
     }
     else if (_enabledPowerup == 1){
         CCLOG(@"enable shield\n");
         _shieldOn = true;
         _slowmotionOn = false;
+        _powerUpTimeCounter = 0;
+    }
+    else {
+        _shieldOn = false;
+        _slowmotionOn = false;
     }
 }
 
 -(void)enablePowerButton:(BOOL)value{
-    [self choosePowerUp];
+    [self choosePowerUp :value];
     [_GS enablePowerButton:value :_enabledPowerup];
 }
 
--(void) choosePowerUp{
+-(void) choosePowerUp:(BOOL) value{
+    if (!value) {
+        _enabledPowerup = -1;
+        _shieldOn = _slowmotionOn = false;
+        [[[CCDirector sharedDirector] scheduler] setTimeScale:1.0f];
+        return;
+    }
     _enabledPowerup = (arc4random() % 2);
     printf("Enable powerup number: %d\n", _enabledPowerup);
 }

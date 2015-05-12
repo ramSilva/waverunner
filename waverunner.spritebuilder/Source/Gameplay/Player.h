@@ -11,8 +11,9 @@
 @class GameplayScene;
 
 #define BASE_SPEED 200.0f
-#define BASE_JUMP 600.0f
+#define BASE_JUMP 500.0f
 #define SPEED_TO_ANIMATION 0.004f
+#define POWERUP_TIME_LIMIT 10.0f
 
 @interface Player : CCSprite<CCPhysicsCollisionDelegate>{
     CGPoint _runSpeed, _initialSpeed;
@@ -31,6 +32,7 @@
     NSInteger _challengeCounter;
     NSInteger _enabledPowerup;
     BOOL _shieldOn, _slowmotionOn;
+    CGFloat _powerUpTimeCounter;
 }
 
 @property (nonatomic, readonly) BOOL airborne;
