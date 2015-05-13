@@ -187,9 +187,11 @@
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair challenge:(CCNode *)nodeA player:(CCNode *)nodeB{
-    nodeA.visible = NO;
+    //nodeA.visible = NO;
     [self incrementChallengeCount];
     [self updateChallengeLabel];
+    
+    [nodeA.parent removeChild:nodeA];
     //[[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
     //[[GameManager sharedGameManager] updateCoinLabel];
     
