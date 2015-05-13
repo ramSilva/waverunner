@@ -135,12 +135,12 @@
 - (void) insertSpawner :(float)posx :(float)posy :(float)dimx :(bool)right {
     CCNode* spawner = (CCNode*)[CCBReader load:@"Falling_Obstacle"];
     float x;
-    float distance = dimx - spawner.boundingBox.size.width - 50.0f;
+    float distance = dimx / 2 - spawner.boundingBox.size.width / 2 - _player.boundingBox.size.width / 2;
     
     if(right) {
-        x = posx - (drand48() * distance);
+        x = posx - spawner.boundingBox.size.width / 2 - (3 * _player.boundingBox.size.width) / 4 - (drand48() * distance);
     } else {
-        x = posx + (drand48() * distance);
+        x = posx + spawner.boundingBox.size.width / 2 + (3 * _player.boundingBox.size.width) / 4 + (drand48() * distance);
     }
     
     spawner.position = ccp(x , posy);

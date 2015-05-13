@@ -12,7 +12,7 @@
 @class Player;
 @class Obstacle;
 
-static int const MIN_NUMBER_WALLS = 2;
+static int const MIN_NUMBER_WALLS = 4;
 //2 * MAX_MULT_WALLS = MAX_NUMBER_WALLS
 static int const MAX_MULT_WALLS = 5;
 static int const MIN_DISTANCE_WALLS = 200.0f;
