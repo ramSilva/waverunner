@@ -313,6 +313,7 @@
         _shieldOn = true;
         _slowmotionOn = false;
         _powerUpTimeCounter = 0;
+        [self setOpacity:0.5f];
     }
     else {
         _shieldOn = false;
@@ -333,6 +334,7 @@
         _shieldOn = _slowmotionOn = false;
         [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
         [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
+        [self setOpacity:1.0f];
         return;
     }
     _enabledPowerup = (arc4random() % 2);
