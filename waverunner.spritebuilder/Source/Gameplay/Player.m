@@ -22,10 +22,15 @@
 
 
 - (void)didLoadFromCCB{
+    _fixedUpdateTimer =  [[[CCDirector sharedDirector] scheduler] fixedUpdateInterval];
+    
+    [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
+    [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
+    
     _runSpeed = _initialSpeed = ccp(BASE_SPEED, 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = _runSpeed;
-    _jumpHeight = BASE_JUMP*[[GameManager sharedGameManager] powerUpDurationLevel];
+    _jumpHeight = BASE_JUMP;
     self.physicsBody.collisionType = @"player";
     
     _airborne = FALSE;
@@ -229,7 +234,7 @@
         _runSpeed = [GameManager sharedGameManager].scrollSpeed;
     }
     
-    if (_lastScrollUpdate > 10) {
+    if (_lastScrollUpdate > 5) {
         _lastScrollUpdate = 0;
         _runSpeed = ccpAdd(_runSpeed, ccp(10, 0));
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
@@ -253,7 +258,7 @@
     }
     
     if (_shieldOn || _slowmotionOn) {
-        if (_powerUpTimeCounter >= POWERUP_TIME_LIMIT) {
+        if (_powerUpTimeCounter >= (POWERUP_TIME_LIMIT * [[CCDirector sharedDirector] scheduler].timeScale)) {
             CCLOG(@"POWERUP END \n");
             _powerUpTimeCounter = 0;
             [self enablePowerButton:false];
@@ -298,7 +303,8 @@
         CCLOG(@"enable slowmotion\n");
         _shieldOn = FALSE;
         _slowmotionOn = true;
-        [[[CCDirector sharedDirector] scheduler] setTimeScale:0.5f];
+        [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 0.5f];
+        [[[CCDirector sharedDirector] scheduler]setTimeScale:0.5f];
         _powerUpTimeCounter = 0;
     }
     else if (_enabledPowerup == 1){
@@ -310,7 +316,9 @@
     else {
         _shieldOn = false;
         _slowmotionOn = false;
+        return;
     }
+    
 }
 
 -(void)enablePowerButton:(BOOL)value{
@@ -322,7 +330,8 @@
     if (!value) {
         _enabledPowerup = -1;
         _shieldOn = _slowmotionOn = false;
-        [[[CCDirector sharedDirector] scheduler] setTimeScale:1.0f];
+        [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
+        [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
         return;
     }
     _enabledPowerup = (arc4random() % 2);

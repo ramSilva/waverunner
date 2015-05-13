@@ -25,6 +25,7 @@
 		740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED31AD2CC8300C96970 /* Ground.m */; };
 		740A3EDD1AD2CC8300C96970 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED71AD2CC8300C96970 /* Player.m */; };
 		740A3EE01AD2CCB500C96970 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3EDF1AD2CCB500C96970 /* GameManager.m */; };
+		744ECBC31B0387BE00A047E9 /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 744ECBC21B0387BE00A047E9 /* PowerUp.m */; };
 		74A70F1A1AD57BC300671EC9 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A70F171AD57BC300671EC9 /* MainScene.m */; };
 		74A70F1B1AD57BC300671EC9 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A70F191AD57BC300671EC9 /* Shop.m */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
@@ -207,6 +208,8 @@
 		740A3ED71AD2CC8300C96970 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		740A3EDE1AD2CCB500C96970 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = Source/Managers/GameManager.h; sourceTree = SOURCE_ROOT; };
 		740A3EDF1AD2CCB500C96970 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = Source/Managers/GameManager.m; sourceTree = SOURCE_ROOT; };
+		744ECBC11B0387BE00A047E9 /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerUp.h; path = ../PowerUp.h; sourceTree = "<group>"; };
+		744ECBC21B0387BE00A047E9 /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerUp.m; path = ../PowerUp.m; sourceTree = "<group>"; };
 		74A70F161AD57BC300671EC9 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		74A70F171AD57BC300671EC9 /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
 		74A70F181AD57BC300671EC9 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 				740A3ED31AD2CC8300C96970 /* Ground.m */,
 				5533B2EC1AFF755F00B36B8E /* ChallengeItem.h */,
 				5533B2ED1AFF755F00B36B8E /* ChallengeItem.m */,
+				744ECBC11B0387BE00A047E9 /* PowerUp.h */,
+				744ECBC21B0387BE00A047E9 /* PowerUp.m */,
 			);
 			name = Gameplay;
 			path = Source/Gameplay;
@@ -953,6 +958,7 @@
 				B73789871807631A0076A88C /* main.m in Sources */,
 				3FC80B9E1AD2D2BD00866542 /* InputHandler.m in Sources */,
 				3FC80BA51AD2D34C00866542 /* WallJumpIH.m in Sources */,
+				744ECBC31B0387BE00A047E9 /* PowerUp.m in Sources */,
 				740A3ED91AD2CC8300C96970 /* GameOver.m in Sources */,
 				740A3EDD1AD2CC8300C96970 /* Player.m in Sources */,
 				5533B2EE1AFF755F00B36B8E /* ChallengeItem.m in Sources */,

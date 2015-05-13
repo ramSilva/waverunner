@@ -17,6 +17,7 @@
 #import "RunIH.h"
 #import "WallJumpIH.h"
 #import "GameManager.h"
+#import "PowerUp.h"
 
 @implementation GameplayScene
 
@@ -68,7 +69,8 @@
     
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
-    _timeButton.visible = _shieldButton.visible = false;
+    //_timeButton.visible = _shieldButton.visible = false;
+    [_powerUpNode setGameplayScene:self];
 }
 
 - (void)update:(CCTime)delta{
@@ -233,7 +235,7 @@
 }
 
 -(void)enablePowerButton:(BOOL)value :(NSInteger)powerUpType{
-    if (value) {
+    /*if (value) {
         if (powerUpType == 0) {
             CCLOG(@"slowmo button\n");
             _timeButton.visible = true;
@@ -249,7 +251,22 @@
         CCLOG(@"turn off 2 buttons\n");
         _timeButton.visible = false;
         _shieldButton.visible = false;
+    }*/
+    
+    if (value) {
+        [_powerUpNode.animationManager runAnimationsForSequenceNamed:@"Random"];
+        [_powerUpNode.userObject setCompletedAnimationCallbackBlock:^(id sender) {
+            CCAnimationManager *animationManager = sender;
+            if ([animationManager.lastCompletedSequenceName isEqualToString:@"Random"]) {
+                CCLOG(@"OVERRRRRRRR");
+                [_powerUpNode enablePowerButton:value :powerUpType];
+            }
+        }];
     }
+    else{
+        [_powerUpNode enablePowerButton:value :powerUpType];
+    }
+    
 }
 
 @end

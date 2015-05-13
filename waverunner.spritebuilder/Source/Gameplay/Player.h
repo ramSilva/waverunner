@@ -16,6 +16,7 @@
 #define POWERUP_TIME_LIMIT 10.0f
 
 @interface Player : CCSprite<CCPhysicsCollisionDelegate>{
+    CCTime _fixedUpdateTimer;
     CGPoint _runSpeed, _initialSpeed;
     CGFloat _jumpHeight;
     BOOL _airborne;

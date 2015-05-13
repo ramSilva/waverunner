@@ -10,8 +10,8 @@
 #define BACKGROUND2_MULT 0.25f
 #define BACKGROUND3_MULT 500.0f
 #define MOON_MULT 0.05f
-static float const CHANCE_WALLJUMP = 1.0f;
-static float const TIMER_WALLJUMP = 10.0f;
+static float const CHANCE_WALLJUMP = 0.25f;
+static float const TIMER_WALLJUMP = 5.0f;
 
 #import "CCPhysics+ObjectiveChipmunk.h"
 
@@ -22,6 +22,7 @@ static float const TIMER_WALLJUMP = 10.0f;
 @class Coin;
 @class InputHandler;
 @class GameManager;
+@class PowerUp;
 
 @interface GameplayScene : CCScene<CCPhysicsCollisionDelegate>{
     GameManager *_gameManager;
@@ -62,8 +63,8 @@ static float const TIMER_WALLJUMP = 10.0f;
     
     CCNode* _wallNode;
     
-    CCNode* _timeButton, *_shieldButton;
-    
+    //CCNode* _timeButton, *_shieldButton;
+    PowerUp *_powerUpNode;
 }
 
 @property (readonly, nonatomic) NSInteger currentScore;
@@ -73,4 +74,5 @@ static float const TIMER_WALLJUMP = 10.0f;
 -(void) wallModeIH;
 -(void) lastChance:(BOOL)isLastChance;
 -(void) enablePowerButton:(BOOL)value :(NSInteger)powerUpType;
+-(void) activatePowerUp;
 @end
