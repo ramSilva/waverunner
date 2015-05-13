@@ -180,7 +180,7 @@
 }
 
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA fallingObstacle:(CCNode *)nodeB{
-    if (_airborne) {
+    if (_airborne && !_shieldOn) {
         self.physicsBody.affectedByGravity = true;
     }
     return true;
@@ -223,6 +223,18 @@
 }
 
 -(void)update:(CCTime)delta{
+    if (_shieldOn || _slowmotionOn) {
+        if (_powerUpTimeCounter >= (POWERUP_TIME_LIMIT * [[CCDirector sharedDirector] scheduler].timeScale)) {
+            CCLOG(@"POWERUP END \n");
+            _powerUpTimeCounter = 0;
+            [self enablePowerButton:false];
+            
+        }
+        else{
+            _powerUpTimeCounter += delta;
+        }
+    }
+    
     if (![GameManager sharedGameManager].runningMode) return;
     
     if (hitTimer>5 ) {
@@ -257,20 +269,7 @@
             _lastHit = false;
             [_GS lastChance:false];
         }
-    }
-    
-    if (_shieldOn || _slowmotionOn) {
-        if (_powerUpTimeCounter >= (POWERUP_TIME_LIMIT * [[CCDirector sharedDirector] scheduler].timeScale)) {
-            CCLOG(@"POWERUP END \n");
-            _powerUpTimeCounter = 0;
-            [self enablePowerButton:false];
-            
-        }
-        else{
-            _powerUpTimeCounter += delta;
-        }
-    }
-    
+    }    
     //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
 }
 
