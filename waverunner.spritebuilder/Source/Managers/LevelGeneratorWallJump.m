@@ -124,11 +124,9 @@
                 }
             }
         }
-        
         [_wallNode addChild:wall];
         [walls insertObject:wall atIndex:walls.count];
     }
-    
     [self insertLastWallJump];
 }
 
@@ -237,6 +235,8 @@
         
         [_wallNode removeChild:child];
     }
+    _player.canDoubleJump = true;
+    _player.airborne = true;
 }
 
 @end

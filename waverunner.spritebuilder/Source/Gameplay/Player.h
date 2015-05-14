@@ -20,7 +20,7 @@
     CGPoint _runSpeed, _initialSpeed;
     CGFloat _jumpHeight;
     BOOL _airborne;
-    BOOL _doubleJump;
+    BOOL _doubleJump, _canDoubleJump;
     BOOL _hit;
     CCPhysicsJoint *_wallJoint;
     BOOL _jumpingRight;
@@ -34,9 +34,11 @@
     NSInteger _enabledPowerup;
     BOOL _shieldOn, _slowmotionOn;
     CGFloat _powerUpTimeCounter;
+    CCNode *_shieldField;
 }
 
-@property (nonatomic, readonly) BOOL airborne;
+@property (nonatomic, readwrite) BOOL airborne;
+@property (nonatomic, readwrite) BOOL canDoubleJump;
 @property (nonatomic, readwrite) int num_obstacles_collision;
 @property (nonatomic, readwrite) CGPoint runSpeed;
 @property (nonatomic, readonly) CGPoint initialSpeed;

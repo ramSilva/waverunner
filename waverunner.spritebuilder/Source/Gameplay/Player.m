@@ -19,6 +19,7 @@
 @synthesize GS = _GS;
 @synthesize initialSpeed = _initialSpeed;
 @synthesize num_obstacles_collision;
+@synthesize canDoubleJump = _canDoubleJump;
 
 
 - (void)didLoadFromCCB{
@@ -37,7 +38,7 @@
     _doubleJump = FALSE;
     _hit = FALSE;
     _lastChance = true;
-    
+    _canDoubleJump =  true;
     CCAnimationManager *animationManager = self.animationManager;
     [animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
     hitTimer =  _lastScrollUpdate = 0;
@@ -45,6 +46,7 @@
     
     [self clearChallengeLabel];
     _shieldOn = _slowmotionOn = false;
+    _shieldField.visible =  false;
 }
 
 - (void)jump{
@@ -55,7 +57,7 @@
             [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
             _airborne = TRUE;
         }
-        else if(!_doubleJump){
+        else if(!_doubleJump && _canDoubleJump){
             [self.animationManager runAnimationsForSequenceNamed:@"DoubleJump"];
             [self.animationManager setPlaybackSpeed:0.9f];
             [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
@@ -314,6 +316,7 @@
         _slowmotionOn = false;
         _powerUpTimeCounter = 0;
         [self setOpacity:0.5f];
+        _shieldField.visible = true;
     }
     else {
         _shieldOn = false;
@@ -335,6 +338,7 @@
         [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
         [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
         [self setOpacity:1.0f];
+        _shieldField.visible = false;
         return;
     }
     _enabledPowerup = (arc4random() % 2);
