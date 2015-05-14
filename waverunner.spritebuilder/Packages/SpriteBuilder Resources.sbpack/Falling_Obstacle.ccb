@@ -54,7 +54,7 @@
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>collisionCategories</key>
 			<array/>
 			<key>collisionMask</key>
@@ -62,7 +62,7 @@
 			<key>collisionType</key>
 			<string>fallingObstacle</string>
 			<key>cornerRadius</key>
-			<real>7</real>
+			<real>0.0</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
@@ -74,12 +74,43 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>7.5</real>
-					<real>7.5</real>
+					<real>0.29188355803489685</real>
+					<real>3.0181598663330078</real>
+				</array>
+				<array>
+					<real>0.29188355803489685</real>
+					<real>15.215768814086914</real>
+				</array>
+				<array>
+					<real>19.570766448974609</real>
+					<real>15.215768814086914</real>
+				</array>
+				<array>
+					<real>19.570766448974609</real>
+					<real>3.0181598663330078</real>
 				</array>
 			</array>
 			<key>polygons</key>
-			<array/>
+			<array>
+				<array>
+					<array>
+						<real>19.570766448974609</real>
+						<real>3.0181598663330078</real>
+					</array>
+					<array>
+						<real>19.570766448974609</real>
+						<real>15.215768814086914</real>
+					</array>
+					<array>
+						<real>0.29188355803489685</real>
+						<real>15.215768814086914</real>
+					</array>
+					<array>
+						<real>0.29188355803489685</real>
+						<real>3.0181598663330078</real>
+					</array>
+				</array>
+			</array>
 		</dict>
 		<key>properties</key>
 		<array>
@@ -137,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Resources/falling_rock.png</string>
+					<string>Resources/falling_rock_80.png</string>
 				</array>
 			</dict>
 			<dict>

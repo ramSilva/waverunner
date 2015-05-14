@@ -269,7 +269,7 @@
             _lastHit = false;
             [_GS lastChance:false];
         }
-    }    
+    }
     //printf("playbackspeed: %f\n", self.animationManager.playbackSpeed);
 }
 

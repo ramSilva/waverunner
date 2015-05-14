@@ -380,7 +380,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -446,8 +446,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>100</real>
+							<real>60</real>
+							<real>60</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -492,7 +492,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Resources/shield.png</string>
+							<string>Resources/shield_60.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -690,6 +690,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1100,8 +1102,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>100</real>
+							<real>60</real>
+							<real>60</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -1146,7 +1148,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Resources/slowmotion.png</string>
+							<string>Resources/slowmotion_v2_60.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1344,8 +1346,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1505,7 +1505,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
