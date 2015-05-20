@@ -322,8 +322,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>459.81781005859375</real>
-							<real>167</real>
+							<real>459</real>
+							<real>214.68698120117188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -348,7 +348,7 @@
 						<key>value</key>
 						<array>
 							<real>-2.0495007038116455</real>
-							<real>19.819919586181641</real>
+							<real>25.819999694824219</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -430,8 +430,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>429</real>
-							<real>167</real>
+							<real>433.5</real>
+							<real>171.16665649414062</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -459,6 +459,8 @@
 						<string>WallJump/WallJumpEnter.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -548,7 +550,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>313</real>
+							<real>277</real>
 							<real>90</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -631,8 +633,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -762,7 +762,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.066666670143604279</real>
+			<real>0.46666666865348816</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

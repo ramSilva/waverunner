@@ -148,6 +148,7 @@
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair walltriggerenter:(CCNode *)nodeA player:(CCNode *)nodeB{
 
     GameManager *_gm = [GameManager sharedGameManager];
+     _canDoubleJump = false;
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.collisionMask = nil;
     _incomingWallJump = false;
