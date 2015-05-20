@@ -55,7 +55,7 @@
     
     self.userInteractionEnabled = TRUE;
     
-    _physicsNode.debugDraw = TRUE;
+    //_physicsNode.debugDraw = TRUE;
     
     _player.zOrder = 1;
     

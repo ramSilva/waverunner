@@ -188,6 +188,8 @@
     [_GS resetGameOver];
     self.physicsBody.collisionMask = @[@"ground"];
     self.physicsBody.affectedByGravity = YES;
+    _canDoubleJump = false;
+
     return true;
 }
 

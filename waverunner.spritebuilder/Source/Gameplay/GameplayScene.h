@@ -8,10 +8,10 @@
 
 #define BACKGROUND1_MULT 1.0f
 #define BACKGROUND2_MULT 0.25f
-#define BACKGROUND3_MULT 500.0f
+#define BACKGROUND3_MULT 100.0f
 #define MOON_MULT 0.05f
 static float const CHANCE_WALLJUMP = 0.25f;
-static float const TIMER_WALLJUMP = 3.0f;
+static float const TIMER_WALLJUMP = 10.0f;
 
 #import "CCPhysics+ObjectiveChipmunk.h"
 

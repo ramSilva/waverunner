@@ -508,7 +508,6 @@
     CCActionMoveTo *_move2 = [CCActionMoveTo actionWithDuration:3 position:nodeposition];
     [_player runAction:_move2];
     _player.runSpeed = _gameManager.scrollSpeed;
-    _player.canDoubleJump = false;
     _player.physicsBody.collisionMask = @[@"ground", @"gameOver"];
     _player.incomingWallJump = true;
 }
