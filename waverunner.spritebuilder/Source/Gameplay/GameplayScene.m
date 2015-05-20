@@ -91,6 +91,17 @@
     _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*physicsdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y - delta*physicsdelta.y*BACKGROUND2_MULT);
     _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*physicsdelta.x*BACKGROUND3_MULT, _backgrounds3node.position.y - delta*physicsdelta.y*BACKGROUND3_MULT);
     _moon.position = ccp(_moon.position.x - delta*physicsdelta.x*MOON_MULT, _moon.position.y - delta*physicsdelta.y*MOON_MULT);
+    
+    
+    CGPoint buildingWorldPosition = [_bg3_1.parent convertToWorldSpace:_bg3_1.position];
+    // get the screen position of the ground
+    CGPoint buildingScreenPosition = [self convertToNodeSpace:buildingWorldPosition];
+    
+    printf("build.screen.pos: %f\n", buildingScreenPosition.x);
+    
+    if(buildingScreenPosition.x < - _bg3_1.boundingBox.size.width / 2) {
+        _backgrounds3node.position = ccp(_player.position.x + BACKGROUND3_MULT*100.0f, _backgrounds3node.position.y);
+    }
 
     [self loopSprites:_backgrounds1];
     [self loopSprites:_backgrounds2];
