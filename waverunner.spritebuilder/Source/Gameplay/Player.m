@@ -16,6 +16,7 @@
 
 @synthesize airborne = _airborne;
 @synthesize runSpeed = _runSpeed;
+@synthesize jumpingRight = _jumpingRight;
 @synthesize GS = _GS;
 @synthesize initialSpeed = _initialSpeed;
 @synthesize num_obstacles_collision;
@@ -28,6 +29,7 @@
     [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
     [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
     
+    _jumpingRight = true;
     _runSpeed = _initialSpeed = ccp(BASE_SPEED, 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
     _gm.scrollSpeed = _runSpeed;

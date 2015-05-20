@@ -38,6 +38,7 @@
 }
 
 @property (nonatomic, readwrite) BOOL airborne;
+@property (nonatomic, readonly) BOOL jumpingRight;
 @property (nonatomic, readwrite) BOOL canDoubleJump;
 @property (nonatomic, readwrite) int num_obstacles_collision;
 @property (nonatomic, readwrite) CGPoint runSpeed;

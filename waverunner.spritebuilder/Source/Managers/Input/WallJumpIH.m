@@ -22,28 +22,41 @@
         return;
     }
     CGPoint launchDirection = ccpNormalize(diff);
+    CGFloat angle = atan2(launchDirection.y - diff.y, launchDirection.x-diff.x);
+    
+    angle = CC_RADIANS_TO_DEGREES(angle) + 180.0f;
+    
+    printf("angle: %f\n", angle);
+    
+    if(_player.jumpingRight){
+        if(angle < 90.0f || angle > 270.0f){
+            return;
+        }
+        else if (angle > 90.0f && angle < 135.0f){
+            launchDirection = ccpNormalize(ccp(-1.0f, 1.0f));
+        }
+        else if (angle > 225.0f && angle < 270.0f){
+            launchDirection = ccpNormalize(ccp(-1.0f, -1.0f));
+        }
+    }
+    else{
+        if(angle > 90.0f && angle < 270.0f){
+            return;
+        }
+        else if (angle > 45.0f && angle < 90.0f){
+            launchDirection = ccpNormalize(ccp(1.0f, 1.0f));
+        }
+        else if (angle > 270.0f && angle < 315.0f){
+            launchDirection = ccpNormalize(ccp(1.0f, -1.0f));
+        }
+    }
+    
     printf("touch direction: %f, %f\n", diff.x, diff.y);
     CGPoint force = ccpMult(launchDirection, 8000);
     
     [_player wallJump:force];
-
     
     //touchLocationBegan = [touch locationInWorld];
 }
-
--(void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
-    /*touchLocationEnded = [touch locationInWorld];
-    CGPoint diff = ccpSub(touchLocationEnded, _player.position);
-    if (CGPointEqualToPoint(diff, ccp(0, 0))) {
-        return;
-    }
-    CGPoint launchDirection = ccpNormalize(diff);
-    CGPoint force = ccpMult(launchDirection, 8000);
-
-    [_player wallJump:force];
-    */
-    //printf("LOL: %f, %f\n", diff.x, diff.y);
-}
-
 
 @end
