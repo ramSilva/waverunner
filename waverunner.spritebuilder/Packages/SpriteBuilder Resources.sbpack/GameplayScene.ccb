@@ -4490,11 +4490,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>515.5</real>
-							<real>270</real>
+							<real>0.89999997615814209</real>
+							<real>0.69999998807907104</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
