@@ -11,7 +11,7 @@
 @class GameplayScene;
 
 #define BASE_SPEED 200.0f
-#define BASE_JUMP 500.0f
+#define BASE_JUMP 600.0f
 #define SPEED_TO_ANIMATION 0.004f
 #define POWERUP_TIME_LIMIT 10.0f
 
@@ -35,6 +35,7 @@
     BOOL _shieldOn, _slowmotionOn;
     CGFloat _powerUpTimeCounter;
     CCNode *_shieldField;
+    BOOL _incomingWallJump;
 }
 
 @property (nonatomic, readwrite) BOOL airborne;
@@ -44,6 +45,7 @@
 @property (nonatomic, readwrite) CGPoint runSpeed;
 @property (nonatomic, readonly) CGPoint initialSpeed;
 @property (nonatomic, readwrite) GameplayScene *GS;
+@property (nonatomic, readwrite) BOOL incomingWallJump;
 
 
 - (void)jump;

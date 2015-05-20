@@ -56,7 +56,9 @@
 			<key>bodyShape</key>
 			<integer>0</integer>
 			<key>collisionCategories</key>
-			<array/>
+			<array>
+				<string>wall</string>
+			</array>
 			<key>collisionMask</key>
 			<array/>
 			<key>collisionType</key>

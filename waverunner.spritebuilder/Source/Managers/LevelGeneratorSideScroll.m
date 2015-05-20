@@ -509,7 +509,8 @@
     [_player runAction:_move2];
     _player.runSpeed = _gameManager.scrollSpeed;
     _player.canDoubleJump = false;
-    
+    _player.physicsBody.collisionMask = @[@"ground"];
+    _player.incomingWallJump = true;
 }
 
 @end

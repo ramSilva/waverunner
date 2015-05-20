@@ -21,6 +21,7 @@
 @synthesize initialSpeed = _initialSpeed;
 @synthesize num_obstacles_collision;
 @synthesize canDoubleJump = _canDoubleJump;
+@synthesize incomingWallJump = _incomingWallJump;
 
 
 - (void)didLoadFromCCB{
@@ -49,6 +50,8 @@
     [self clearChallengeLabel];
     _shieldOn = _slowmotionOn = false;
     _shieldField.visible =  false;
+    
+    _incomingWallJump = false;
 }
 
 - (void)jump{
@@ -114,7 +117,9 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair ground:(CCNode *)nodeA player:(CCNode *)nodeB{
     [self land];
-    self.physicsBody.collisionMask = nil;
+    if (!_incomingWallJump) {
+        self.physicsBody.collisionMask = nil;
+    }
     return TRUE;
 }
 
@@ -144,6 +149,8 @@
 
     GameManager *_gm = [GameManager sharedGameManager];
     self.physicsBody.affectedByGravity = NO;
+    self.physicsBody.collisionMask = nil;
+    _incomingWallJump = false;
     _gm.scrollSpeed = ccp(0, 100);
     _runSpeed = ccp(0, 0);
     [self.physicsBody applyForce:ccp(10000, 0)];
