@@ -89,13 +89,10 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _resistanceMax = 10;
         _coinMultiplierMax = 10;
         
-        //coinIcon = (CCNode*)[CCBReader load:@"Coin"];
-        //[_coinIcon setPositionType:CCPositionTypeNormalized];
-        //_coinIcon.position = ccp(0.75f, 0.90f);
-        
          _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
-        _coinLabel.position = ccp(0.75f, 0.90f);
+        _coinLabel.position = ccp(0.725f, 0.90f);
+        _coinLabel.anchorPoint = ccp(0.0f, 0.5f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
         
         _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
@@ -127,13 +124,10 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _coinMultiplier =1;
         _coinMultiplierMax = 10;
         
-        _coinIcon = (CCNode*)[CCBReader load:@"Coin"];
-        [_coinIcon setPositionType:CCPositionTypeNormalized];
-        _coinIcon.position = ccp(0.75f, 0.90f);
-        
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
-        _coinLabel.position = ccp(0.75f, 0.90f);
+        _coinLabel.position = ccp(0.725f, 0.90f);
+        _coinLabel.anchorPoint = ccp(0.0f, 0.5f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
         
         _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
