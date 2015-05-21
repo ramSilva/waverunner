@@ -34,6 +34,12 @@
     [_wallNode addChild:wallJumpEnd];
 }
 
+- (void)launchwave {
+    CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:5.5 position:ccp(wave_wj.position.x, wave_wj.boundingBox.size.height / 4)];
+    
+    [wave_wj runAction:_moveWaves];
+}
+
 - (void) buildWallJump {
     int numberOfWalls = MIN_NUMBER_WALLS + 2 * (arc4random() % MAX_MULT_WALLS);
     NSMutableArray *indexes_citems = [[NSMutableArray alloc] init];
@@ -87,9 +93,8 @@
             wave_wj.position = ccp(wall_pos_x - (wave_wj.boundingBox.size.width / 2) - (wall.boundingBox.size.width / 2), -500.0f);
             [_wallNode addChild:wave_wj];
             wave_wj.zOrder = 1;
-            CCActionMoveTo *_moveWaves = [CCActionMoveTo actionWithDuration:5.5 position:ccp(wave_wj.position.x, wave_wj.boundingBox.size.height / 4)];
-
-            [wave_wj runAction:_moveWaves];
+            
+            [self scheduleOnce:@selector(launchwave) delay:0.7f];
             
             wall.position = ccp(wall_pos_x - distance_between_walls, wall_pos_y + (3 * wall_height / 4));
             spawn_posx = wall.position.x + wall.boundingBox.size.width / 2;

@@ -546,7 +546,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Resources/shield_60.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1200,7 +1200,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Resources/slowmotion_v2_60.png</string>
 						</array>
 					</dict>
 					<dict>

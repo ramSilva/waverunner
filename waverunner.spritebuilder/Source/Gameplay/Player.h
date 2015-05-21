@@ -11,7 +11,7 @@
 @class GameplayScene;
 
 #define BASE_SPEED 200.0f
-#define BASE_JUMP 600.0f
+#define BASE_JUMP 400.0f
 #define SPEED_TO_ANIMATION 0.004f
 #define POWERUP_TIME_LIMIT 10.0f
 

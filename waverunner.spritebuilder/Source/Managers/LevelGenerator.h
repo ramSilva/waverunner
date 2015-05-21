@@ -28,7 +28,7 @@ static float const CHANCE_MOVING_COINS = 0.0f;
 static float const CHANCE_COINS = 0.5f;
 static float const DIFFICULTY_TIMER = 5.0f;
 
-@interface LevelGenerator : NSObject {
+@interface LevelGenerator : CCNode {
     NSArray *_grounds, *_grounds_cracked;
     Player *_player;
     CCPhysicsNode *_physicsNode;
