@@ -53,6 +53,15 @@
     
     _incomingWallJump = false;
     [_goreParticles stopSystem];
+    
+    _trailRenderer = [[NSMutableArray alloc] init];
+    _trailRenderer = [NSMutableArray arrayWithCapacity:6];
+    CCSprite *_lol = [CCSprite spriteWithTexture:self.spriteFrame.texture];
+    for (int i = 0; i < 6; i++) {
+        [_trailRenderer addObject:_lol];
+    }
+
+    
 }
 
 - (void)jump{
@@ -249,9 +258,14 @@
         }
         else{
             _powerUpTimeCounter += delta;
+            if (_slowmotionOn) {
+                [self drawTrailRenderer];
+            }
         }
     }
     
+    //[self drawTrailRenderer];
+
     if (![GameManager sharedGameManager].runningMode) return;
     
     if (hitTimer>5 ) {
@@ -291,6 +305,40 @@
 }
 
 
+
+-(void) drawTrailRenderer{
+    CCSprite *tempSprite = [_trailRenderer objectAtIndex:(currentTrailIndex+5)%6];
+
+    CGFloat trailDist = CGFLOAT_MAX;
+    
+    trailDist = ccpDistance(self.position, tempSprite.position);
+    
+    if(trailDist > 20.0f){
+        tempSprite = [CCSprite spriteWithTexture:self.spriteFrame.texture];
+        tempSprite.flipX = self.flipX;
+        tempSprite.position = self.position;
+        [_trailRenderer replaceObjectAtIndex:currentTrailIndex withObject:tempSprite];
+        [self.physicsNode addChild:tempSprite];
+        tempSprite.zOrder = 1;
+        NSInteger opacityCounter = 0;
+        for (NSInteger i = (currentTrailIndex+1)%6 ; i != currentTrailIndex; i = (i + 1)%6) {
+            opacityCounter++;
+            
+            CGFloat _op = opacityCounter/6.0f;
+            tempSprite = [_trailRenderer objectAtIndex:i];
+            if (tempSprite == nil) {
+                continue;
+            }
+            [tempSprite setOpacity:_op-0.2f];
+        }
+        
+        currentTrailIndex = (currentTrailIndex + 1)%6;
+
+    }
+}
+
+
+
 -(void)clearChallengeLabel{
     _challengeLabel.string = @"";
     _challengeCounter = -1;
@@ -301,7 +349,7 @@
         [self clearChallengeLabel];
     }
     else{
-        _challengeLabel.string = [NSString stringWithFormat:@"✩: %d/3", _challengeCounter];
+        _challengeLabel.string = [NSString stringWithFormat:@"✩: %ld/3", (long)_challengeCounter];
         if (_challengeCounter == 3) {
             [self enablePowerButton:true];
         }

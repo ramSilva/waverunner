@@ -37,6 +37,8 @@
     CCNode *_shieldField;
     BOOL _incomingWallJump;
     CCParticleSystem *_goreParticles;
+    NSInteger currentTrailIndex;
+    NSMutableArray *_trailRenderer;
 }
 
 @property (nonatomic, readwrite) BOOL airborne;
