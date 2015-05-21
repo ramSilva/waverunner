@@ -82,7 +82,16 @@
 
 - (Obstacle*) selectStaticObstacle {
     Obstacle *obs;
-    int obs_type = (arc4random() % 4);
+    int max;;
+    int obs_type;
+    
+    if(super.difficulty < 3) {
+        max = 2;
+    } else {
+        max = 4;
+    }
+    
+    obs_type = (arc4random() % max);
     
     switch(obs_type) {
         case 0:
