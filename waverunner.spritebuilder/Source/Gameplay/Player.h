@@ -36,6 +36,7 @@
     CGFloat _powerUpTimeCounter;
     CCNode *_shieldField;
     BOOL _incomingWallJump;
+    CCParticleSystem *_goreParticles;
 }
 
 @property (nonatomic, readwrite) BOOL airborne;

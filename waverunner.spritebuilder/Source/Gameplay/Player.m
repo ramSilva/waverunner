@@ -52,6 +52,7 @@
     _shieldField.visible =  false;
     
     _incomingWallJump = false;
+    [_goreParticles stopSystem];
 }
 
 - (void)jump{
@@ -92,6 +93,7 @@
     //[self runAction:action];
     hitTimer = 0;
     num_obstacles_collision += 1;
+    [_goreParticles resetSystem];
     if (_lastHit) {
         _lastChance = false;
     }
@@ -196,6 +198,7 @@
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair player:(CCNode *)nodeA fallingObstacle:(CCNode *)nodeB{
     if (_airborne && !_shieldOn) {
         self.physicsBody.affectedByGravity = true;
+        [_goreParticles resetSystem];
     }
     return true;
 }
