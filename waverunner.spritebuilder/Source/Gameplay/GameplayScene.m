@@ -97,8 +97,6 @@
     // get the screen position of the ground
     CGPoint buildingScreenPosition = [self convertToNodeSpace:buildingWorldPosition];
     
-    printf("build.screen.pos: %f\n", buildingScreenPosition.x);
-    
     if(buildingScreenPosition.x < - _bg3_1.boundingBox.size.width / 2) {
         _backgrounds3node.position = ccp(_player.position.x + BACKGROUND3_MULT*100.0f, _backgrounds3node.position.y);
     }

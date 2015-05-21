@@ -13,6 +13,7 @@
     NSInteger _resistanceMax;
     NSInteger _coins;
     CGPoint _scrollSpeed;
+    CCNode *_coinIcon;
     CCLabelTTF *_coinLabel;
     CCLabelTTF *_scoreLabel;
     CCLabelTTF *_highscoreLabel;
