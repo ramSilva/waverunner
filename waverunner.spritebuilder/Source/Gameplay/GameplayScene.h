@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
-#define BACKGROUND1_MULT 1.0f
-#define BACKGROUND2_MULT 0.25f
+#define BACKGROUND1_MULT 10.0f
+#define BACKGROUND2_MULT 0.5f
 #define BACKGROUND3_MULT 100.0f
-#define MOON_MULT 0.05f
+#define MOON_MULT 0.2f
 static float const CHANCE_WALLJUMP = 0.25f;
 static float const TIMER_WALLJUMP = 10.0f;
 

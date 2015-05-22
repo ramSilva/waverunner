@@ -323,7 +323,7 @@
 						<key>value</key>
 						<array>
 							<real>459</real>
-							<real>214.68698120117188</real>
+							<real>156.53932189941406</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -347,8 +347,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>-2.0495007038116455</real>
-							<real>25.819999694824219</real>
+							<real>-2.3150901794433594</real>
+							<real>16.12872314453125</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -397,6 +397,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -459,8 +461,6 @@
 						<string>WallJump/WallJumpEnter.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
