@@ -17,7 +17,7 @@
 
 @interface Player : CCSprite<CCPhysicsCollisionDelegate>{
     CCTime _fixedUpdateTimer;
-    CGPoint _runSpeed, _initialSpeed;
+    CGPoint _runSpeed, _initialSpeed, _previousSpeed;
     CGFloat _jumpHeight;
     BOOL _airborne;
     BOOL _doubleJump, _canDoubleJump;
@@ -49,6 +49,7 @@
 @property (nonatomic, readonly) CGPoint initialSpeed;
 @property (nonatomic, readwrite) GameplayScene *GS;
 @property (nonatomic, readwrite) BOOL incomingWallJump;
+@property (nonatomic, readwrite) CGPoint previousSpeed;
 
 
 - (void)jump;

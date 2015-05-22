@@ -87,9 +87,9 @@
     _player.position = ccp(_player.position.x + delta*playerSpeed.x, _player.position.y);
     _gameOverNode.position = ccp(_gameOverNode.position.x + delta*scrollSpeed.x, _gameOverNode.position.y + delta*scrollSpeed.y);
     _physicsNode.position = ccp(_physicsNode.position.x - delta*scrollSpeed.x, _physicsNode.position.y - delta*scrollSpeed.y);
-    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*physicsdelta.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*physicsdelta.y*BACKGROUND1_MULT*0.2f);
-    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*physicsdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y - delta*physicsdelta.y*BACKGROUND2_MULT*0.2f);
-    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*physicsdelta.x*BACKGROUND3_MULT, _backgrounds3node.position.y - delta*physicsdelta.y*BACKGROUND3_MULT*0.2f);
+    _backgrounds1node.position = ccp(_backgrounds1node.position.x - delta*physicsdelta.x*BACKGROUND1_MULT, _backgrounds1node.position.y - delta*physicsdelta.y*BACKGROUND1_MULT*0.1f);
+    _backgrounds2node.position = ccp(_backgrounds2node.position.x - delta*physicsdelta.x*BACKGROUND2_MULT, _backgrounds2node.position.y - delta*physicsdelta.y*BACKGROUND2_MULT);
+    _backgrounds3node.position = ccp(_backgrounds3node.position.x - delta*physicsdelta.x*BACKGROUND3_MULT, _backgrounds3node.position.y - delta*physicsdelta.y*BACKGROUND3_MULT);
     _moon.position = ccp(_moon.position.x - delta*physicsdelta.x*MOON_MULT, _moon.position.y - delta*physicsdelta.y*MOON_MULT);
     
     
@@ -121,6 +121,7 @@
         _lg.countGroundsUpdatedStaticOnly = 0;
         [self wallMode];
     }
+    printf("SPEED: %f\n", [GameManager sharedGameManager].scrollSpeed.x);
 }
 
 -(void) loopSprites:(NSArray*)array{
@@ -154,8 +155,8 @@
     _inputHandler = [[RunIH alloc] init];
     [_inputHandler initialize:_player];
     
-    _player.runSpeed = _player.initialSpeed;
-    _gameManager.scrollSpeed = _player.initialSpeed;
+    _player.runSpeed = _player.previousSpeed;
+    _gameManager.scrollSpeed = _player.previousSpeed;
     
     [_lg setScrollMode];
     int dif = _lg.difficulty;

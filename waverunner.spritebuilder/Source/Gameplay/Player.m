@@ -22,6 +22,7 @@
 @synthesize num_obstacles_collision;
 @synthesize canDoubleJump = _canDoubleJump;
 @synthesize incomingWallJump = _incomingWallJump;
+@synthesize previousSpeed = _previousSpeed;
 
 
 - (void)didLoadFromCCB{
@@ -163,7 +164,8 @@
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.collisionMask = nil;
     _incomingWallJump = false;
-    _gm.scrollSpeed = ccp(0, 100);
+    _previousSpeed = _runSpeed;
+    _gm.scrollSpeed = ccp(0, _gm.scrollSpeed.x - 100 );
     _runSpeed = ccp(0, 0);
     [self.physicsBody applyForce:ccp(10000, 0)];
     [self updateChallengeLabel];
@@ -279,7 +281,7 @@
         _runSpeed = [GameManager sharedGameManager].scrollSpeed;
     }
     
-    if (_lastScrollUpdate > 5) {
+    if (_lastScrollUpdate > 10) {
         _lastScrollUpdate = 0;
         _runSpeed = ccpAdd(_runSpeed, ccp(10, 0));
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));

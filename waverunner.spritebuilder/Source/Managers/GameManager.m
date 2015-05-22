@@ -94,6 +94,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _coinLabel.position = ccp(0.725f, 0.90f);
         _coinLabel.anchorPoint = ccp(0.0f, 0.5f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
+        [_coinLabel setOutlineColor:[CCColor blackColor]];
         
         _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_highscoreLabel setPositionType:CCPositionTypeNormalized];
@@ -129,6 +130,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _coinLabel.position = ccp(0.725f, 0.90f);
         _coinLabel.anchorPoint = ccp(0.0f, 0.5f);
         [_coinLabel setFontColor: [CCColor whiteColor]];
+        [_coinLabel setOutlineColor:[CCColor blackColor]];
         
         _highscoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Highscore: %ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_highscoreLabel setPositionType:CCPositionTypeNormalized];
