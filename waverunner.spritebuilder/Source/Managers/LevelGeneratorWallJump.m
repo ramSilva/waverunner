@@ -24,6 +24,7 @@
     obstacles = [[NSMutableArray alloc] init];
     wallJumpEnd = (CCNode*)[CCBReader load:@"WallJump/WallJumpTransitionEnd"];
     wave_wj = (CCNode*)[CCBReader load:@"WallJump/Wave"];
+    fallingObstacleDelay = 0;
 }
 
 - (void) insertLastWallJump {
@@ -210,8 +211,12 @@
         wallBuilt = true;
     }
     
-    [self spawnObstacles];
-    [self moveObstacles];
+    if (fallingObstacleDelay > 5) {
+        [self spawnObstacles];
+        [self moveObstacles];
+    }
+    fallingObstacleDelay+=delta;
+    
     
     CGPoint scrollSpeed = [_gameManager scrollSpeed];
     wave_wj.position = ccp(wave_wj.position.x, wave_wj.position.y + delta * scrollSpeed.y);

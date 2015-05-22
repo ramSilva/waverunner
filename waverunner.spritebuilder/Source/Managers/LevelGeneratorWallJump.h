@@ -26,6 +26,7 @@ static int const MAX_CHALLENGE_ITEMS = 3;
     NSMutableArray *walls;
     NSMutableArray *spawners;
     NSMutableArray *obstacles;
+    CGFloat fallingObstacleDelay;
 }
 
 - (void)initializeLevel:(NSArray*)g :(NSArray*)gc :(Player*)p :(CCPhysicsNode*)pn :(CCNode*) _wn;

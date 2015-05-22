@@ -98,7 +98,7 @@
     CGPoint buildingScreenPosition = [self convertToNodeSpace:buildingWorldPosition];
     
     if(buildingScreenPosition.x < - _bg3_1.boundingBox.size.width / 2) {
-        _backgrounds3node.position = ccp(_player.position.x + BACKGROUND3_MULT*100.0f, _backgrounds3node.position.y);
+        _backgrounds3node.position = ccp(_player.position.x + BACKGROUND3_MULT*100.0f, 0.0f);
     }
 
     [self loopSprites:_backgrounds1];
