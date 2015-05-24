@@ -33,6 +33,7 @@
 }
 
 - (void)menu{
+    [[GameManager sharedGameManager] save];
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
 

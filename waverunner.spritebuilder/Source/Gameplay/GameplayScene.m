@@ -18,7 +18,6 @@
 #import "WallJumpIH.h"
 #import "GameManager.h"
 #import "PowerUp.h"
-#import "CCDirector_Private.h"
 
 @implementation GameplayScene
 
@@ -35,7 +34,6 @@
     _coinLabel = [_gameManager coinLabel];
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
-    _coinLabel.position = ccp(0.725f, 0.90f);
     
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
@@ -73,14 +71,6 @@
     [_inputHandler initialize:_player];
     //_timeButton.visible = _shieldButton.visible = false;
     [_powerUpNode setGameplayScene:self];
-    if (!_gameManager.useTutorial) {
-        //[self removeChild:_tutorialNode cleanup:true];
-        _tutorialNode.visible = false;
-    }
-    else{
-        [[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
-        _tutorialNode.visible = true;
-    }
 }
 
 - (void)update:(CCTime)delta{
@@ -131,7 +121,7 @@
         _lg.countGroundsUpdatedStaticOnly = 0;
         [self wallMode];
     }
-    //printf("SPEED: %f\n", [GameManager sharedGameManager].scrollSpeed.x);
+    printf("SPEED: %f\n", [GameManager sharedGameManager].scrollSpeed.x);
 }
 
 -(void) loopSprites:(NSArray*)array{
@@ -150,6 +140,7 @@
 }
 
 - (void)menu{
+    [[GameManager sharedGameManager] save];
     [[GameManager sharedGameManager] setHighscore:_currentScore];
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }
@@ -288,12 +279,4 @@
     
 }
 
-
--(void) _pause{
-    [[[CCDirector sharedDirector] scheduler]setTimeScale:0];
-}
-
--(void) _play{
-    [[[CCDirector sharedDirector] scheduler]setTimeScale:1];
-}
 @end

@@ -55,7 +55,7 @@
 
 - (void) updateDifficulty {
     if(timer > change_difficulty_timer) {
-        //printf("num_col: %d\n", _player.num_obstacles_collision);
+        printf("num_col: %d\n", _player.num_obstacles_collision);
         if(_player.num_obstacles_collision == 0) {
             if(difficulty < 5) {
                 difficulty += 1;
@@ -67,9 +67,9 @@
         }*/
         
         _player.num_obstacles_collision = 0;
-        //printf("difficulty: %d ", difficulty);
+        printf("difficulty: %d ", difficulty);
         change_difficulty_timer = difficulty * DIFFICULTY_TIMER;
-        //printf("new_timer: %f\n", change_difficulty_timer);
+        printf("new_timer: %f\n", change_difficulty_timer);
         timer = 0.0f;
         [self setChances];
     }    

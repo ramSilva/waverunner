@@ -87,13 +87,6 @@
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
-		<key>Resources/main_screen.png</key>
-		<dict>
-			<key>isDirty</key>
-			<true/>
-			<key>scaleFrom</key>
-			<integer>4</integer>
-		</dict>
 		<key>Resources/road.png</key>
 		<dict/>
 		<key>Resources/road_crack copy.png</key>
