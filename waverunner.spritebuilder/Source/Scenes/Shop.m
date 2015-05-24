@@ -17,7 +17,6 @@
     _coinLabel = [_gameManager coinLabel];
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
-    _coinLabel.position = ccp(0.725f, 0.90f);
     
     [self updateCostLabels];
     
