@@ -17,10 +17,19 @@
     [_highscoreLabel removeFromParent];
     [p addChild:_highscoreLabel];
     _highscoreLabel.string = [NSString stringWithFormat:@"High Score: %ld", (long)_gameManager.highscore];
+    [_highscoreLabel setOutlineColor:[CCColor blackColor]];
     
     [_gameManager writeLog];
     [_gameManager loadLog];
     
+    float screen_width = [[UIScreen mainScreen] bounds].size.width;
+    float screen_height = [[UIScreen mainScreen] bounds].size.height;
+    
+    float bg_width = _background.contentSize.width;
+    float bg_height = _background.contentSize.height;
+    
+    _background.scaleX = screen_width / bg_width;
+    _background.scaleY = screen_height / bg_height;
 }
 
 - (void)play{
