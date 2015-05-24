@@ -28,6 +28,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 @synthesize runningMode = _runningMode;
 @synthesize coinMultiplier = _coinMultiplier;
 @synthesize coinMultiplierMax = _coinMultiplierMax;
+@synthesize useTutorial = _useTutorial;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:_highscore forKey:GameManagerHighscoreKey];
@@ -69,6 +70,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     _highscore = 0;
     _coinMultiplier = 1;
     _runningMode = true;
+    //_useTutorial = true;
 }
 
 - (void)deleteDocument{
@@ -109,6 +111,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 
         
         _runningMode = true;
+        //_useTutorial = true;
     }
     return self;
 }
@@ -138,6 +141,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         [_highscoreLabel setFontColor: [CCColor whiteColor]];
         
         _runningMode = true;
+        _useTutorial = true;
         //sharedInstance = self;
     }
     return self;

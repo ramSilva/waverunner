@@ -409,4 +409,5 @@
     _enabledPowerup = (arc4random() % 2);
     printf("Enable powerup number: %d\n", _enabledPowerup);
 }
+
 @end

@@ -22,6 +22,7 @@
     NSInteger _coinMultiplier;
     NSInteger _coinMultiplierMax;
     NSInteger _challengeCounter;
+    bool _useTutorial;
 }
 
 @property (readonly, nonatomic) NSInteger powerUpDurationLevel;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) CCLabelTTF *highscoreLabel;
 @property (readwrite,nonatomic) CGPoint scrollSpeed;
 @property (readwrite,nonatomic) bool runningMode;
+@property (readwrite,nonatomic) bool useTutorial;
 
 
 

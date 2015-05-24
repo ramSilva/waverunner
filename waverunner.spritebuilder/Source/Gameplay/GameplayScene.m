@@ -18,6 +18,7 @@
 #import "WallJumpIH.h"
 #import "GameManager.h"
 #import "PowerUp.h"
+#import "CCDirector_Private.h"
 
 @implementation GameplayScene
 
@@ -71,6 +72,14 @@
     [_inputHandler initialize:_player];
     //_timeButton.visible = _shieldButton.visible = false;
     [_powerUpNode setGameplayScene:self];
+    if (!_gameManager.useTutorial) {
+        //[self removeChild:_tutorialNode cleanup:true];
+        _tutorialNode.visible = false;
+    }
+    else{
+        [[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
+        _tutorialNode.visible = true;
+    }
 }
 
 - (void)update:(CCTime)delta{
@@ -279,4 +288,12 @@
     
 }
 
+
+-(void) _pause{
+    [[[CCDirector sharedDirector] scheduler]setTimeScale:0];
+}
+
+-(void) _play{
+    [[[CCDirector sharedDirector] scheduler]setTimeScale:1];
+}
 @end
