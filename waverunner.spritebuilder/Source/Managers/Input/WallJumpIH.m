@@ -26,7 +26,7 @@
     
     angle = CC_RADIANS_TO_DEGREES(angle) + 180.0f;
     
-    printf("angle: %f\n", angle);
+    //printf("angle: %f\n", angle);
     
     if(_player.jumpingRight){
         if(angle < 90.0f || angle > 270.0f){
@@ -51,7 +51,7 @@
         }
     }
     
-    printf("touch direction: %f, %f\n", diff.x, diff.y);
+    //printf("touch direction: %f, %f\n", diff.x, diff.y);
     CGPoint force = ccpMult(launchDirection, 8000);
     
     [_player wallJump:force];

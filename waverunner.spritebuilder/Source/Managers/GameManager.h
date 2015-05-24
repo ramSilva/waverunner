@@ -4,7 +4,7 @@
 //
 //  Created by Waverunner on 01/04/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
-//
+//	
 
 @interface GameManager : CCNode <NSCoding>{
     NSInteger _powerUpDurationLevel;
@@ -23,6 +23,8 @@
     NSInteger _coinMultiplierMax;
     NSInteger _challengeCounter;
     bool _useTutorial;
+    CGFloat _xAverage;
+    NSInteger _xAverageCount;
 }
 
 @property (readonly, nonatomic) NSInteger powerUpDurationLevel;
@@ -51,6 +53,8 @@
 - (void)updateCoinLabel;
 - (void)deleteDocument;
 - (void)setHighscore:(NSInteger)score;
-
+- (void)updateXAverage:(CGFloat)currentX;
+- (void)writeLog;
+- (void)loadLog;
 
 @end

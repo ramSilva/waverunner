@@ -508,6 +508,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Highlighted</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>labelColor|Highlighted</string>
 						<key>type</key>
 						<string>Color3</string>
@@ -532,6 +540,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Disabled</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>labelOpacity|Disabled</string>
 						<key>type</key>
 						<string>Float</string>
@@ -548,6 +564,14 @@
 							<string></string>
 							<string>Resources/shield_60.png</string>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Selected</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1162,6 +1186,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Highlighted</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>labelColor|Highlighted</string>
 						<key>type</key>
 						<string>Color3</string>
@@ -1186,6 +1218,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Disabled</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>labelOpacity|Disabled</string>
 						<key>type</key>
 						<string>Float</string>
@@ -1202,6 +1242,14 @@
 							<string></string>
 							<string>Resources/slowmotion_v2_60.png</string>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Selected</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>

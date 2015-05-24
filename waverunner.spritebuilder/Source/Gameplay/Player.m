@@ -265,10 +265,11 @@
             }
         }
     }
-    
-    //[self drawTrailRenderer];
 
     if (![GameManager sharedGameManager].runningMode) return;
+    
+    
+    [[GameManager sharedGameManager] updateXAverage:[self.parent convertToWorldSpace:self.position].x];
     
     if (hitTimer>5 ) {
         [self changeRunSpeed:ccp(10, 0)];
@@ -288,7 +289,7 @@
     }
     _lastScrollUpdate += delta;
     
-    //printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
+    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];
@@ -407,7 +408,7 @@
         return;
     }
     _enabledPowerup = (arc4random() % 2);
-    printf("Enable powerup number: %d\n", _enabledPowerup);
+    //printf("Enable powerup number: %d\n", _enabledPowerup);
 }
 
 @end
