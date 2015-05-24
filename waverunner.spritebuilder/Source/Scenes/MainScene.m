@@ -11,6 +11,7 @@
     _coinLabel = [_gameManager coinLabel];
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
+    _coinLabel.position = ccp(0.465f, 0.68f);
     
     p = _highscoreLabel.parent;
     _highscoreLabel = [_gameManager highscoreLabel];
@@ -18,6 +19,7 @@
     [p addChild:_highscoreLabel];
     _highscoreLabel.string = [NSString stringWithFormat:@"High Score: %ld", (long)_gameManager.highscore];
     [_highscoreLabel setOutlineColor:[CCColor blackColor]];
+    _highscoreLabel.anchorPoint = ccp(0.0f, 0.5f);
     
     [_gameManager writeLog];
     [_gameManager loadLog];

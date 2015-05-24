@@ -35,6 +35,7 @@
     _coinLabel = [_gameManager coinLabel];
     [_coinLabel removeFromParent];
     [p addChild:_coinLabel];
+    _coinLabel.position = ccp(0.725f, 0.90f);
     
     _backgrounds1 = @[_bg1_1, _bg1_2, _bg1_3, _bg1_4];
     _backgrounds2 = @[_bg2_1, _bg2_2, _bg2_3, _bg2_4];
