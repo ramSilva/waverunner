@@ -281,10 +281,10 @@
         _runSpeed = [GameManager sharedGameManager].scrollSpeed;
     }
     
-    if (_lastScrollUpdate > 10) {
+    if (_lastScrollUpdate > 15 && _runSpeed.x < 350) {
         _lastScrollUpdate = 0;
-        _runSpeed = ccpAdd(_runSpeed, ccp(10, 0));
-        [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(10, 0));
+        _runSpeed = ccpAdd(_runSpeed, ccp(5, 0));
+        [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(5, 0));
     }
     _lastScrollUpdate += delta;
     
