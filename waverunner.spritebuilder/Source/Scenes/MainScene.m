@@ -4,6 +4,8 @@
 
 - (void)didLoadFromCCB{
     _gameManager = [GameManager sharedGameManager];
+    [_gameManager save];
+    
     [_gameManager updateCoinLabel];
     CCNode* p = _coinLabel.parent;
     _coinLabel = [_gameManager coinLabel];
@@ -15,6 +17,9 @@
     [_highscoreLabel removeFromParent];
     [p addChild:_highscoreLabel];
     _highscoreLabel.string = [NSString stringWithFormat:@"High Score: %ld", (long)_gameManager.highscore];
+    
+    [_gameManager writeLog];
+    [_gameManager loadLog];
     
 }
 

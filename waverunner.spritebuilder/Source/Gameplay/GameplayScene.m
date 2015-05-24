@@ -121,7 +121,7 @@
         _lg.countGroundsUpdatedStaticOnly = 0;
         [self wallMode];
     }
-    printf("SPEED: %f\n", [GameManager sharedGameManager].scrollSpeed.x);
+    //printf("SPEED: %f\n", [GameManager sharedGameManager].scrollSpeed.x);
 }
 
 -(void) loopSprites:(NSArray*)array{
@@ -140,7 +140,6 @@
 }
 
 - (void)menu{
-    [[GameManager sharedGameManager] save];
     [[GameManager sharedGameManager] setHighscore:_currentScore];
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
 }

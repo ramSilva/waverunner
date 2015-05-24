@@ -88,6 +88,8 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _powerUpDurationMax = 10;
         _resistanceMax = 10;
         _coinMultiplierMax = 10;
+        _xAverage = 0.0f;
+        _xAverageCount = 1;
         
          _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -116,6 +118,8 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 - (id)init{
     self = [super init];
     if(self){
+        _xAverageCount = 1;
+        _xAverage = 0.0f;
         _resistanceLevel = 1;
         _powerUpDurationLevel = 1;
         _powerUpDurationMax = 10;
@@ -188,6 +192,35 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 
 - (void)updateHighscoreLabel{
     _highscoreLabel.string = [NSString stringWithFormat:@"Highscore: %ld", (long)_highscore];
+}
+
+- (void)updateXAverage:(CGFloat)currentX{
+    _xAverage = (_xAverage + currentX);
+    _xAverageCount++;
+}
+
+- (void)writeLog{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
+    NSLog(@"%@",filePath);
+    NSString *str = @"hello world";
+    
+    [str writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+}
+
+- (void)loadLog{
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
+    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    NSLog(@"%@",str);
+    
+    [[NSFileManager defaultManager] createFileAtPath:@"/Users/student/Documents/logs/log.txt" contents:nil attributes:nil];
+    [str writeToFile:@"/Users/student/Documents/logs/log.txt" atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (error) //check error flag for file present or not
+        NSLog(@"Error reading file: %@", error.localizedDescription);
 }
 
 
