@@ -82,7 +82,7 @@
 
 - (Obstacle*) selectStaticObstacle {
     Obstacle *obs;
-    int max;;
+    int max;
     int obs_type;
     
     if(super.difficulty < 3) {
