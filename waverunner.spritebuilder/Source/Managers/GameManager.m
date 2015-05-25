@@ -7,7 +7,12 @@
 //
 
 #import "GameManager.h"
+<<<<<<< HEAD
 #import "flurry.h"
+=======
+#import "TutorialManager.h"
+#import "Player.h"
+>>>>>>> FETCH_HEAD
 
 static GameManager *sharedInstance;
 static NSString *const GameManagerHighscoreKey = @"highscore";
@@ -30,6 +35,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 @synthesize coinMultiplier = _coinMultiplier;
 @synthesize coinMultiplierMax = _coinMultiplierMax;
 @synthesize useTutorial = _useTutorial;
+@synthesize player = _player;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:_highscore forKey:GameManagerHighscoreKey];
@@ -76,7 +82,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     _highscore = 0;
     _coinMultiplier = 1;
     _runningMode = true;
-    //_useTutorial = true;
+    _useTutorial = true;
 }
 
 - (void)deleteDocument{
@@ -229,5 +235,15 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     _diePos = pos;
 }
 
+-(void)tutorialTouch{
+    [_tutorialManager runningTouch];
+}
 
+-(void)tutorialLanded{
+    [_tutorialManager touchedGround];
+}
+
+-(void)tutorialDoubleJump{
+    [_tutorialManager doubleJump];
+}
 @end

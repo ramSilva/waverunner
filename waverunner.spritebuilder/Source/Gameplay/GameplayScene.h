@@ -69,9 +69,11 @@ static float const TIMER_WALLJUMP = 20.0f;
 }
 
 @property (readonly, nonatomic) NSInteger currentScore;
+@property (readonly, nonatomic) LevelGenerator *lg;
 
 -(void) resetGameOver;
 -(void) runMode;
+-(void) wallMode;
 -(void) wallModeIH;
 -(void) lastChance:(BOOL)isLastChance;
 -(void) enablePowerButton:(BOOL)value :(NSInteger)powerUpType;

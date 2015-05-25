@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //	
 
+@class TutorialManager;
+@class Player;
+
+
 @interface GameManager : CCNode <NSCoding>{
     NSInteger _powerUpDurationLevel;
     NSInteger _resistanceLevel;
@@ -26,6 +30,8 @@
     CGFloat _xAverage;
     NSInteger _xAverageCount;
     CGPoint _diePos;
+    TutorialManager *_tutorialManager;
+    Player *_player;
 }
 
 @property (readonly, nonatomic) NSInteger powerUpDurationLevel;
@@ -41,6 +47,8 @@
 @property (readwrite,nonatomic) CGPoint scrollSpeed;
 @property (readwrite,nonatomic) bool runningMode;
 @property (readwrite,nonatomic) bool useTutorial;
+@property (readwrite, nonatomic) TutorialManager *tutorialManager;
+@property (readwrite, nonatomic) Player *player;
 
 
 
@@ -56,7 +64,15 @@
 - (void)setHighscore:(NSInteger)score;
 - (void)updateXAverage:(CGFloat)currentX;
 - (void)writeLog;
+<<<<<<< HEAD
 - (void)setDiePos:(CGPoint)pos;
 - (void)resetLogInfo;
+=======
+- (void)loadLog;
+- (void)tutorialTouch;
+- (void)tutorialLanded;
+- (void)tutorialDoubleJump;
+
+>>>>>>> FETCH_HEAD
 
 @end

@@ -7,15 +7,23 @@
 //
 
 @class GameManager;
+@class GameplayScene;
+@class Player;
+@class LevelGenerator;
 
 #import "CCNode.h"
 
 @interface TutorialManager : CCNode{
-    BOOL _useTutorial;
+    BOOL _useTutorial, _part1Tutorial;
     
-    CCNode *_tutorialRequest;
+    CCNode *_tutorialRequest, *_tutorialRunning, *_tutorialDoubleJump;
+    GameManager *_gm;
 }
 
 @property (nonatomic, readwrite) BOOL useTutorial;
+
+-(void)runningTouch;
+-(void)touchedGround;
+-(void)doubleJump;
 
 @end

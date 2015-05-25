@@ -7,6 +7,7 @@
 //
 
 #import "InputHandler.h"
+#import "GameManager.h"
 
 @implementation InputHandler
 
