@@ -17,6 +17,13 @@
     CCLabelTTF *_powerUpDurationCostLabel;
     CCLabelTTF *_resistanceCostLabel;
     CCLabelTTF *_multiplierCostLabel;
+    CCNode *_shop_bg;
+    CCButton *_resistanceButton;
+    CCButton *_powerupsButton;
+    CCButton *_coinmultButton;
+    CCNode *_resCoin;
+    CCNode *_powerupsCoin;
+    CCNode *_coinmultCoin;
 }
 
 -(void)updateCostLabels;
