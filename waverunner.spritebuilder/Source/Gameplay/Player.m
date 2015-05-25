@@ -34,6 +34,7 @@
     _jumpingRight = true;
     _runSpeed = _initialSpeed = ccp(BASE_SPEED, 0.0f);
     GameManager *_gm = [GameManager sharedGameManager];
+    _gm.player = self;
     _gm.scrollSpeed = _runSpeed;
     _jumpHeight = BASE_JUMP;
     self.physicsBody.collisionType = @"player";
@@ -72,12 +73,15 @@
             [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
             [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
             _airborne = TRUE;
+            [[GameManager sharedGameManager] tutorialTouch];
         }
         else if(!_doubleJump && _canDoubleJump){
             [self.animationManager runAnimationsForSequenceNamed:@"DoubleJump"];
             [self.animationManager setPlaybackSpeed:0.9f];
             [self.physicsBody setVelocity:ccp(0.0f, _jumpHeight)];
             _doubleJump = TRUE;
+            [[GameManager sharedGameManager] tutorialDoubleJump];
+
         }
     }
 }
@@ -87,6 +91,7 @@
         if(!_hit){
             [self.animationManager runAnimationsForSequenceNamed:@"Run"];
             [self.animationManager setPlaybackSpeed:SPEED_TO_ANIMATION*_runSpeed.x];
+            [[GameManager sharedGameManager] tutorialLanded];
         }
         _airborne = FALSE;
         _doubleJump = FALSE;

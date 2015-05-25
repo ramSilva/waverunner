@@ -56,11 +56,11 @@
 - (void)land;
 - (void)hit;
 - (void)changeRunSpeed:(CGPoint)changeAmount;
--(void)wallJump:(CGPoint)jumpForce;
--(void)clearChallengeLabel;
+- (void)wallJump:(CGPoint)jumpForce;
+- (void)clearChallengeLabel;
 - (void)setChallengeCount:(NSInteger)quantity;
--(void)incrementChallengeCount;
--(void)updateChallengeLabel;
--(void)activatePowerUp;
+- (void)incrementChallengeCount;
+- (void)updateChallengeLabel;
+- (void)activatePowerUp;
 
 @end

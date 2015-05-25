@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
+@class GameManager;
+
 #import "Player.h"
 
 @interface InputHandler : CCNode {

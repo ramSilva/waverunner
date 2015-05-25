@@ -7,6 +7,7 @@
 //
 
 #import "RunIH.h"
+#import "GameManager.h"
 
 @implementation RunIH
 
@@ -17,7 +18,6 @@
 
 -(void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event{
     [_player jump];
-    
 }
 
 @end

@@ -23,6 +23,7 @@
 @implementation GameplayScene
 
 @synthesize currentScore = _currentScore;
+@synthesize lg = _lg;
 
 - (void)didLoadFromCCB{
     _currentScore = 0;
