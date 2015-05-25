@@ -207,27 +207,27 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 }
 
 - (void)writeLog{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
-    NSLog(@"%@",filePath);
-    NSString *str = @"hello world";
-    
-    [str writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
+//    NSLog(@"%@",filePath);
+//    NSString *str = @"hello world";
+//    
+//    [str writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
 }
 
 - (void)loadLog{
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
-    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-    NSLog(@"%@",str);
-    
-    [[NSFileManager defaultManager] createFileAtPath:@"/Users/student/Documents/logs/log.txt" contents:nil attributes:nil];
-    [str writeToFile:@"/Users/student/Documents/logs/log.txt" atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if (error) //check error flag for file present or not
-        NSLog(@"Error reading file: %@", error.localizedDescription);
+//    NSError *error;
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
+//    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+//    NSLog(@"%@",str);
+//    
+//    [[NSFileManager defaultManager] createFileAtPath:@"/Users/student/Documents/logs/log.txt" contents:nil attributes:nil];
+//    [str writeToFile:@"/Users/student/Documents/logs/log.txt" atomically:YES encoding:NSUTF8StringEncoding error:&error];
+//    if (error) //check error flag for file present or not
+//        NSLog(@"Error reading file: %@", error.localizedDescription);
 }
 
 
