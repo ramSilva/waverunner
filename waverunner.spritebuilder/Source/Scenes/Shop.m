@@ -48,8 +48,8 @@
         _coinmultCoin.visible = false;
     }
     
-    float screen_width = [[UIScreen mainScreen] bounds].size.width;
-    float screen_height = [[UIScreen mainScreen] bounds].size.height;
+    float screen_width = [CCDirector sharedDirector].viewSize.width;
+    float screen_height =[CCDirector sharedDirector].viewSize.height;
     
     float bg_width = _shop_bg.contentSize.width;
     float bg_height = _shop_bg.contentSize.height;
