@@ -7,12 +7,9 @@
 //
 
 #import "GameManager.h"
-<<<<<<< HEAD
 #import "flurry.h"
-=======
 #import "TutorialManager.h"
 #import "Player.h"
->>>>>>> FETCH_HEAD
 
 static GameManager *sharedInstance;
 static NSString *const GameManagerHighscoreKey = @"highscore";

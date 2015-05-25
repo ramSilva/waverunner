@@ -64,15 +64,11 @@
 - (void)setHighscore:(NSInteger)score;
 - (void)updateXAverage:(CGFloat)currentX;
 - (void)writeLog;
-<<<<<<< HEAD
 - (void)setDiePos:(CGPoint)pos;
 - (void)resetLogInfo;
-=======
-- (void)loadLog;
+
 - (void)tutorialTouch;
 - (void)tutorialLanded;
 - (void)tutorialDoubleJump;
-
->>>>>>> FETCH_HEAD
 
 @end

@@ -82,15 +82,11 @@
 		<dict/>
 		<key>Resources/home_icon.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Resources/main_screen.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>4</integer>
 		</dict>
@@ -105,36 +101,26 @@
 		<dict/>
 		<key>Resources/shield.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Resources/shield_60.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Resources/slowmotion.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Resources/slowmotion_v2_60.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Resources/slowmotion_v2_80.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
