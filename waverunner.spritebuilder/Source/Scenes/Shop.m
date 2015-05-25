@@ -61,7 +61,7 @@
 }
 
 -(void)upgradeMultiplier{
-    CCLOG(@	"Entrei no upgrade multiplier");
+    //CCLOG(@	"Entrei no upgrade multiplier");
     GameManager *gm = [GameManager sharedGameManager];
     NSInteger upgradeCost = gm.coinMultiplier*10;
     if([gm coins] >= upgradeCost && [gm coinMultiplier] < [gm coinMultiplierMax]){

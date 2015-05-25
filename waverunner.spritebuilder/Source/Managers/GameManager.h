@@ -25,6 +25,7 @@
     bool _useTutorial;
     CGFloat _xAverage;
     NSInteger _xAverageCount;
+    CGPoint _diePos;
 }
 
 @property (readonly, nonatomic) NSInteger powerUpDurationLevel;
@@ -55,6 +56,7 @@
 - (void)setHighscore:(NSInteger)score;
 - (void)updateXAverage:(CGFloat)currentX;
 - (void)writeLog;
-- (void)loadLog;
+- (void)setDiePos:(CGPoint)pos;
+- (void)resetLogInfo;
 
 @end

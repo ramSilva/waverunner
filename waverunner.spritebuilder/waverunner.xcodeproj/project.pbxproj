@@ -26,6 +26,13 @@
 		740A3EDB1AD2CC8300C96970 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED31AD2CC8300C96970 /* Ground.m */; };
 		740A3EDD1AD2CC8300C96970 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3ED71AD2CC8300C96970 /* Player.m */; };
 		740A3EE01AD2CCB500C96970 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A3EDF1AD2CCB500C96970 /* GameManager.m */; };
+		742B57531B136E6600ACECC6 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B564C1B136E6500ACECC6 /* libFlurry_6.5.0.a */; };
+		742B58481B136EBC00ACECC6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B58471B136EBC00ACECC6 /* SystemConfiguration.framework */; };
+		742B584A1B136ECA00ACECC6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B58491B136ECA00ACECC6 /* Security.framework */; };
+		742B584C1B1370F300ACECC6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B584B1B1370F300ACECC6 /* MediaPlayer.framework */; };
+		742B584E1B13710600ACECC6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B584D1B13710600ACECC6 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		742B58501B13712700ACECC6 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B584F1B13712700ACECC6 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		742B58521B13714300ACECC6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 742B58511B13714300ACECC6 /* libz.dylib */; };
 		744ECBC31B0387BE00A047E9 /* PowerUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 744ECBC21B0387BE00A047E9 /* PowerUp.m */; };
 		74A70F1A1AD57BC300671EC9 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A70F171AD57BC300671EC9 /* MainScene.m */; };
 		74A70F1B1AD57BC300671EC9 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A70F191AD57BC300671EC9 /* Shop.m */; };
@@ -211,6 +218,15 @@
 		740A3ED71AD2CC8300C96970 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		740A3EDE1AD2CCB500C96970 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = Source/Managers/GameManager.h; sourceTree = SOURCE_ROOT; };
 		740A3EDF1AD2CCB500C96970 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = Source/Managers/GameManager.m; sourceTree = SOURCE_ROOT; };
+		742B564A1B136E6500ACECC6 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		742B564B1B136E6500ACECC6 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		742B564C1B136E6500ACECC6 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
+		742B58471B136EBC00ACECC6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		742B58491B136ECA00ACECC6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		742B584B1B1370F300ACECC6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		742B584D1B13710600ACECC6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		742B584F1B13712700ACECC6 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		742B58511B13714300ACECC6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		744ECBC11B0387BE00A047E9 /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerUp.h; path = ../PowerUp.h; sourceTree = "<group>"; };
 		744ECBC21B0387BE00A047E9 /* PowerUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerUp.m; path = ../PowerUp.m; sourceTree = "<group>"; };
 		74A70F161AD57BC300671EC9 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
@@ -314,16 +330,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742B58521B13714300ACECC6 /* libz.dylib in Frameworks */,
+				B77F1B3C17B978D7009739AE /* UIKit.framework in Frameworks */,
+				742B58501B13712700ACECC6 /* AdSupport.framework in Frameworks */,
+				742B58481B136EBC00ACECC6 /* SystemConfiguration.framework in Frameworks */,
+				742B584E1B13710600ACECC6 /* StoreKit.framework in Frameworks */,
+				742B584A1B136ECA00ACECC6 /* Security.framework in Frameworks */,
+				742B584C1B1370F300ACECC6 /* MediaPlayer.framework in Frameworks */,
+				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
+				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
 				7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */,
+				742B57531B136E6600ACECC6 /* libFlurry_6.5.0.a in Frameworks */,
 				8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
 				B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */,
 				B77F1B3617B978D7009739AE /* OpenAL.framework in Frameworks */,
 				B77F1B3817B978D7009739AE /* AudioToolbox.framework in Frameworks */,
 				B77F1B3A17B978D7009739AE /* AVFoundation.framework in Frameworks */,
-				B77F1B3C17B978D7009739AE /* UIKit.framework in Frameworks */,
-				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
-				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
 				B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +444,7 @@
 				740A3ECF1AD2CC8300C96970 /* GameOver.m */,
 				740A3ED01AD2CC8300C96970 /* GameplayScene.h */,
 				740A3ED11AD2CC8300C96970 /* GameplayScene.m */,
+				742B56481B136E6500ACECC6 /* Flurry-iOS-6.5.0 */,
 				7B60B3BD1ADABCF200BA39DC /* Obstacle.h */,
 				7B60B3BE1ADABCF200BA39DC /* Obstacle.m */,
 				740A3ED21AD2CC8300C96970 /* Ground.h */,
@@ -441,6 +465,25 @@
 				740A3ED71AD2CC8300C96970 /* Player.m */,
 			);
 			name = Player;
+			sourceTree = "<group>";
+		};
+		742B56481B136E6500ACECC6 /* Flurry-iOS-6.5.0 */ = {
+			isa = PBXGroup;
+			children = (
+				742B56491B136E6500ACECC6 /* Flurry */,
+			);
+			name = "Flurry-iOS-6.5.0";
+			path = "Source/Flurry iPhone SDK viPhone 6.5.0/Flurry-iOS-6.5.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		742B56491B136E6500ACECC6 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				742B564A1B136E6500ACECC6 /* Flurry.h */,
+				742B564B1B136E6500ACECC6 /* FlurryWatch.h */,
+				742B564C1B136E6500ACECC6 /* libFlurry_6.5.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		74A70F151AD57BC300671EC9 /* Scenes */ = {
@@ -630,6 +673,12 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				742B58511B13714300ACECC6 /* libz.dylib */,
+				742B584F1B13712700ACECC6 /* AdSupport.framework */,
+				742B584D1B13710600ACECC6 /* StoreKit.framework */,
+				742B584B1B1370F300ACECC6 /* MediaPlayer.framework */,
+				742B58491B136ECA00ACECC6 /* Security.framework */,
+				742B58471B136EBC00ACECC6 /* SystemConfiguration.framework */,
 				BC5399D31A44DCC90063F482 /* AndroidKit.framework */,
 				BC5399D41A44DCC90063F482 /* CoreJava.framework */,
 				BC5399D51A44DCC90063F482 /* GLActivityKit.framework */,
@@ -1276,6 +1325,19 @@
 				INFOPLIST_FILE = Source/Resources/Platforms/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					"6.5.0/Flurry-iOS-6.5.0/Flurry",
+					"$(PROJECT_DIR)/Source/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					"6.5.0/Flurry-iOS-6.5.0/FlurryAds",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -1311,6 +1373,19 @@
 				INFOPLIST_FILE = Source/Resources/Platforms/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Source/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					"6.5.0/Flurry-iOS-6.5.0/Flurry",
+					"$(PROJECT_DIR)/Source/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					"6.5.0/Flurry-iOS-6.5.0/FlurryAds",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",

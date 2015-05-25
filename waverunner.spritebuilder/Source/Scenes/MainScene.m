@@ -22,10 +22,10 @@
     _highscoreLabel.anchorPoint = ccp(0.0f, 0.5f);
     
     [_gameManager writeLog];
-    [_gameManager loadLog];
+    [_gameManager resetLogInfo];
     
-    float screen_width = [[UIScreen mainScreen] bounds].size.width;
-    float screen_height = [[UIScreen mainScreen] bounds].size.height;
+    float screen_width = [CCDirector sharedDirector].viewSize.width;
+    float screen_height =[CCDirector sharedDirector].viewSize.height;
     
     float bg_width = _background.contentSize.width;
     float bg_height = _background.contentSize.height;

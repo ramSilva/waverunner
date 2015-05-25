@@ -25,6 +25,7 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "Flurry.h"
 
 @interface AppController : CCAppDelegate
 {

@@ -32,6 +32,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //[Flurry setDebugLogEnabled:YES];
+    // Replace YOUR_API_KEY with the api key in the downloaded package
+    [Flurry startSession:@"J4VG9V8BZNQTNFKTJP9C"];
+    
     // Configure Cocos2d with the options set in SpriteBuilder
     NSString* configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Published-iOS"]; // TODO: add support for Published-Android support
     configPath = [configPath stringByAppendingPathComponent:@"configCocos2d.plist"];

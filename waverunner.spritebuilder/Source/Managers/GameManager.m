@@ -7,6 +7,7 @@
 //
 
 #import "GameManager.h"
+#import "flurry.h"
 
 static GameManager *sharedInstance;
 static NSString *const GameManagerHighscoreKey = @"highscore";
@@ -60,6 +61,11 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     [encodedData writeToFile:[GameManager filePath] atomically:YES];
 }
 
+- (void)resetLogInfo{
+    _xAverage = _xAverageCount = 0.0f;
+    _diePos = ccp(0.0f, 0.0f);
+}
+
 - (void)resetData{
     _resistanceLevel = 1;
     _powerUpDurationLevel = 1;
@@ -90,8 +96,10 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _powerUpDurationMax = 10;
         _resistanceMax = 10;
         _coinMultiplierMax = 10;
+        
         _xAverage = 0.0f;
         _xAverageCount = 1;
+        _diePos = ccp(0.0f, 0.0f);
         
          _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -131,8 +139,10 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _resistanceMax = 10;
         _coins = 0;
         _highscore = 0;
+        
         _coinMultiplier =1;
         _coinMultiplierMax = 10;
+        _diePos = ccp(0.0f, 0.0f);
         
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -207,27 +217,16 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 }
 
 - (void)writeLog{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
-    NSLog(@"%@",filePath);
-    NSString *str = @"hello world";
+    id xAverage = [NSNumber numberWithFloat:_xAverage/_xAverageCount];
+    id diePosX = [NSNumber numberWithFloat:_diePos.x];
+    id diePosY = [NSNumber numberWithFloat:_diePos.y];
     
-    [str writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+    NSDictionary* infoDict = [NSDictionary dictionaryWithObjectsAndKeys: xAverage, @"X average", diePosX, @"x die pos", diePosY, @"y die pos", nil];
+    [Flurry logEvent:@"Log" withParameters: infoDict];
 }
 
-- (void)loadLog{
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"log.txt"];
-    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
-    NSLog(@"%@",str);
-    
-    [[NSFileManager defaultManager] createFileAtPath:@"/Users/student/Documents/logs/log.txt" contents:nil attributes:nil];
-    [str writeToFile:@"/Users/student/Documents/logs/log.txt" atomically:YES encoding:NSUTF8StringEncoding error:&error];
-    if (error) //check error flag for file present or not
-        NSLog(@"Error reading file: %@", error.localizedDescription);
+- (void)setDiePos: (CGPoint)pos{
+    _diePos = pos;
 }
 
 

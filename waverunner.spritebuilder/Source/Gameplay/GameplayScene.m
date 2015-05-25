@@ -19,6 +19,7 @@
 #import "GameManager.h"
 #import "PowerUp.h"
 #import "CCDirector_Private.h"
+#import "flurry.h"
 
 @implementation GameplayScene
 
@@ -277,7 +278,7 @@
         [_powerUpNode.userObject setCompletedAnimationCallbackBlock:^(id sender) {
             CCAnimationManager *animationManager = sender;
             if ([animationManager.lastCompletedSequenceName isEqualToString:@"Random"]) {
-                CCLOG(@"OVERRRRRRRR");
+                //CCLOG(@"OVERRRRRRRR");
                 [_powerUpNode enablePowerButton:value :powerUpType];
             }
         }];

@@ -137,6 +137,8 @@
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
     [[GameManager sharedGameManager] setHighscore:_GS.currentScore];
+    [[GameManager sharedGameManager] setDiePos: [self.parent convertToWorldSpace:self.position]];
+    
     [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"MainScene"]];
     return TRUE;
 }
@@ -145,7 +147,7 @@
     nodeA.visible = NO;
     [[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
     [[GameManager sharedGameManager] updateCoinLabel];
-    CCLOG(@"Coin item caught");
+    //CCLOG(@"Coin item caught");
 
     //[nodeA.parent removeChild:nodeA];
     return TRUE;
@@ -223,7 +225,7 @@
     //[[GameManager sharedGameManager] changeCoins:1*[GameManager sharedGameManager].coinMultiplier];
     //[[GameManager sharedGameManager] updateCoinLabel];
     
-    CCLOG(@"Challenge item caught");
+    //CCLOG(@"Challenge item caught");
     
     return TRUE;
 }
@@ -253,7 +255,7 @@
 -(void)update:(CCTime)delta{
     if (_shieldOn || _slowmotionOn) {
         if (_powerUpTimeCounter >= (POWERUP_TIME_LIMIT * [[CCDirector sharedDirector] scheduler].timeScale)) {
-            CCLOG(@"POWERUP END \n");
+            //CCLOG(@"POWERUP END \n");
             _powerUpTimeCounter = 0;
             [self enablePowerButton:false];
             
@@ -270,32 +272,31 @@
     
     
     [[GameManager sharedGameManager] updateXAverage:[self.parent convertToWorldSpace:self.position].x];
+    int screenwidth = [CCDirector sharedDirector].viewSize.width;
     
     if (hitTimer>5 ) {
         [self changeRunSpeed:ccp(10, 0)];
         hitTimer = 0;
     }
-    if ([self.parent convertToWorldSpace:self.position].x < 300.0f){
+    if ([self.parent convertToWorldSpace:self.position].x < (3*screenwidth)/5.0f){
         hitTimer += delta;
     }
     else if(!_hit){
         _runSpeed = [GameManager sharedGameManager].scrollSpeed;
     }
     
-    if (_lastScrollUpdate > 15 && _runSpeed.x < 350) {
+    if (_lastScrollUpdate > 15 && _runSpeed.x < 500) {
         _lastScrollUpdate = 0;
         _runSpeed = ccpAdd(_runSpeed, ccp(5, 0));
         [GameManager sharedGameManager].scrollSpeed = ccpAdd([GameManager sharedGameManager].scrollSpeed, ccp(5, 0));
     }
     _lastScrollUpdate += delta;
-    
-    printf("player.x: %f\n", [self.parent convertToWorldSpace:self.position].x);
 
     if (_lastChance ) {
         CGPoint _pos = [self.parent convertToWorldSpace:self.position];
         if (_pos.x <= 100) {
             [_GS lastChance:true];
-            CCLOG(@"LAST CHANCE");
+            //CCLOG(@"LAST CHANCE");
             self.position = [self.parent convertToNodeSpace:ccp(100, _pos.y)];
             _lastHit = true;
         }
@@ -369,7 +370,7 @@
 
 -(void)activatePowerUp{
     if (_enabledPowerup == 0) {
-        CCLOG(@"enable slowmotion\n");
+        //CCLOG(@"enable slowmotion\n");
         _shieldOn = FALSE;
         _slowmotionOn = true;
         [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 0.5f];
@@ -377,7 +378,7 @@
         _powerUpTimeCounter = 0;
     }
     else if (_enabledPowerup == 1){
-        CCLOG(@"enable shield\n");
+        //CCLOG(@"enable shield\n");
         _shieldOn = true;
         _slowmotionOn = false;
         _powerUpTimeCounter = 0;
