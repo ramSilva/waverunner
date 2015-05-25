@@ -70,5 +70,6 @@
 - (void)tutorialTouch;
 - (void)tutorialLanded;
 - (void)tutorialDoubleJump;
+- (void)tutorialWallCollision;
 
 @end

@@ -18,7 +18,7 @@
 
 - (void)didLoadFromCCB{
     //[[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
-    _tutorialRunning.visible = _tutorialDoubleJump.visible = false;
+    _tutorialRunning.visible = _tutorialDoubleJump.visible = _tutorialPreWallJump.visible = _tutorialWallJump.visible = false;
     _gm = [GameManager sharedGameManager];
     _gm.tutorialManager = self;
 }
@@ -40,14 +40,16 @@
     [GameManager sharedGameManager].useTutorial = false;
 }
 
--(void)runningTouch{
+-(void)touchDetected{
     if (_part1Tutorial) {
         if(_tutorialRunning.visible){
             _tutorialRunning.visible = false;
             [[[CCDirector sharedDirector] scheduler]setTimeScale:0.5f];
         }
     }
-    
+    else{
+        
+    }
 }
 
 - (void)touchedGroundPart1 {
@@ -69,6 +71,7 @@
             [[[CCDirector sharedDirector] scheduler]setTimeScale:0.5f];
             _part1Tutorial = false;
             [_gm.player.GS wallMode];
+            _tutorialPreWallJump.visible = true;
         }
 }
 
@@ -76,6 +79,12 @@
     if (_part1Tutorial) {
         [self doubleJumpPart1];
     }
+}
+
+-(void)wallCollision{
+    [[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
+    _tutorialWallJump.visible = true;
+    _tutorialPreWallJump.visible = false;
 }
 
 @end

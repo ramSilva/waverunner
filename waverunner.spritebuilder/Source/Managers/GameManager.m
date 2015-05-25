@@ -233,7 +233,7 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 }
 
 -(void)tutorialTouch{
-    [_tutorialManager runningTouch];
+    [_tutorialManager touchDetected];
 }
 
 -(void)tutorialLanded{
@@ -242,5 +242,9 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 
 -(void)tutorialDoubleJump{
     [_tutorialManager doubleJump];
+}
+
+-(void)tutorialWallCollision{
+    [_tutorialManager wallCollision];
 }
 @end

@@ -198,6 +198,8 @@
         _wallJoint = [CCPhysicsJoint connectedPivotJointWithBodyA:nodeA.physicsBody bodyB:nodeB.physicsBody anchorA:nodeA.anchorPointInPoints];
         [self.animationManager runAnimationsForSequenceNamed:@"Wall"];
         _airborne = false;
+        
+        [[GameManager sharedGameManager] tutorialWallCollision];
     }
     
     return true;

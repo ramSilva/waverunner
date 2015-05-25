@@ -16,14 +16,15 @@
 @interface TutorialManager : CCNode{
     BOOL _useTutorial, _part1Tutorial;
     
-    CCNode *_tutorialRequest, *_tutorialRunning, *_tutorialDoubleJump;
+    CCNode *_tutorialRequest, *_tutorialRunning, *_tutorialDoubleJump, *_tutorialPreWallJump, *_tutorialWallJump;
     GameManager *_gm;
 }
 
 @property (nonatomic, readwrite) BOOL useTutorial;
 
--(void)runningTouch;
+-(void)touchDetected;
 -(void)touchedGround;
 -(void)doubleJump;
+-(void)wallCollision;
 
 @end
