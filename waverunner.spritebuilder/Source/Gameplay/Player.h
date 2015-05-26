@@ -41,6 +41,7 @@
     NSMutableArray *_trailRenderer;
 }
 
+@property (nonatomic, readonly) CCTime fixedUpdateTimer;
 @property (nonatomic, readwrite) BOOL airborne;
 @property (nonatomic, readonly) BOOL jumpingRight;
 @property (nonatomic, readwrite) BOOL canDoubleJump;

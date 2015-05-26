@@ -51,7 +51,7 @@
         }
     }
     
-    //printf("touch direction: %f, %f\n", diff.x, diff.y);
+    printf("touch direction: %f, %f, %f\n", angle, launchDirection.x, launchDirection.y);
     CGPoint force = ccpMult(launchDirection, 8000);
     
     [_player wallJump:force];

@@ -14,6 +14,7 @@
 
 @implementation Player
 
+@synthesize fixedUpdateTimer = _fixedUpdateTimer;
 @synthesize airborne = _airborne;
 @synthesize runSpeed = _runSpeed;
 @synthesize jumpingRight = _jumpingRight;
@@ -28,7 +29,7 @@
 - (void)didLoadFromCCB{
     _fixedUpdateTimer =  [[[CCDirector sharedDirector] scheduler] fixedUpdateInterval];
     
-    [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
+   // [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
     [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
     
     _jumpingRight = true;
@@ -243,6 +244,8 @@
     
     if (_airborne) return;
     
+    [[GameManager sharedGameManager] tutorialTouch];
+
     [_wallJoint invalidate];
     _wallJoint = nil;
     [self.physicsBody applyForce:jumpForce];
@@ -256,7 +259,6 @@
         self.flipX = true;
     }
     [self.animationManager runAnimationsForSequenceNamed:@"Jump"];
-    [[GameManager sharedGameManager] tutorialTouch];
 }
 
 -(void)update:(CCTime)delta{
@@ -380,7 +382,7 @@
         //CCLOG(@"enable slowmotion\n");
         _shieldOn = FALSE;
         _slowmotionOn = true;
-        [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 0.5f];
+        //[[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 0.5f];
         [[[CCDirector sharedDirector] scheduler]setTimeScale:0.5f];
         _powerUpTimeCounter = 0;
     }
@@ -409,7 +411,7 @@
     if (!value) {
         _enabledPowerup = -1;
         _shieldOn = _slowmotionOn = false;
-        [[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
+        //[[[CCDirector sharedDirector] scheduler]setFixedUpdateInterval: _fixedUpdateTimer * 1.0f];
         [[[CCDirector sharedDirector] scheduler]setTimeScale:1.0f];
         [self setOpacity:1.0f];
         _shieldField.visible = false;

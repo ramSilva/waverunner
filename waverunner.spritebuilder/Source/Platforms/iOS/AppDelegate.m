@@ -32,6 +32,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Flurry setDebugLogEnabled:true];
     // Replace YOUR_API_KEY with the api key in the downloaded package
     [Flurry startSession:@"J4VG9V8BZNQTNFKTJP9C"];
     

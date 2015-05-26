@@ -16,7 +16,7 @@
 @interface TutorialManager : CCNode{
     BOOL _useTutorial, _part1Tutorial;
     
-    CCNode *_tutorialRequest, *_tutorialRunning, *_tutorialDoubleJump, *_tutorialPreWallJump, *_tutorialWallJump;
+    CCNode *_tutorialRequest, *_tutorialRunning, *_tutorialDoubleJump, *_tutorialPreWallJump, *_tutorialWallJump, *_tutorialSecondWallJump;
     GameManager *_gm;
 }
 
