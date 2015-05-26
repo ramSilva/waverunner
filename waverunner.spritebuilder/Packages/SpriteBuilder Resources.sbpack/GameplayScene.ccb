@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>169</integer>
+	<integer>173</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -3496,10 +3496,10 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>0.89999997615814209</real>
 							<real>288</real>
 							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3813,6 +3813,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -4622,7 +4624,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.90757042169570923</real>
+							<real>0.070000000298023224</real>
 							<real>0.89999997615814209</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -4720,8 +4722,6 @@
 								<string>Tutorial.ccb</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

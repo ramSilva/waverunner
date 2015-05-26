@@ -25,7 +25,7 @@
     [_gameManager resetLogInfo];
     
     float screen_width = [CCDirector sharedDirector].viewSize.width;
-    float screen_height =[CCDirector sharedDirector].viewSize.height;
+    float screen_height = [CCDirector sharedDirector].viewSize.height;
     
     float bg_width = _background.contentSize.width;
     float bg_height = _background.contentSize.height;

@@ -32,6 +32,8 @@
     CGPoint _diePos;
     TutorialManager *_tutorialManager;
     Player *_player;
+    NSInteger _dificulty;
+    NSInteger _score;
 }
 
 @property (readonly, nonatomic) NSInteger powerUpDurationLevel;
@@ -65,6 +67,8 @@
 - (void)updateXAverage:(CGFloat)currentX;
 - (void)writeLog;
 - (void)setDiePos:(CGPoint)pos;
+- (void)setDificultyLevel: (NSInteger)dificulty;
+- (void)setScore: (NSInteger)score;
 - (void)resetLogInfo;
 
 - (void)tutorialTouch;

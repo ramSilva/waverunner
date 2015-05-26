@@ -9,6 +9,7 @@
 @class CCSprite;
 @class GameManager;
 @class GameplayScene;
+@class LevelGenerator;
 
 #define BASE_SPEED 200.0f
 #define BASE_JUMP 400.0f

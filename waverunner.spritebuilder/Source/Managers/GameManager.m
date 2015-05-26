@@ -67,6 +67,8 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
 - (void)resetLogInfo{
     _xAverage = _xAverageCount = 0.0f;
     _diePos = ccp(0.0f, 0.0f);
+    _score = 0;
+    _dificulty = 0;
 }
 
 - (void)resetData{
@@ -103,6 +105,8 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _xAverage = 0.0f;
         _xAverageCount = 1;
         _diePos = ccp(0.0f, 0.0f);
+        _score = 0;
+        _dificulty = 0;
         
          _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -146,6 +150,8 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
         _coinMultiplier =1;
         _coinMultiplierMax = 10;
         _diePos = ccp(0.0f, 0.0f);
+        _score = 0;
+        _dificulty = 0;
         
         _coinLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"x%ld", (long)_coins] fontName:@"Helvetica" fontSize:20.0f];
         [_coinLabel setPositionType:CCPositionTypeNormalized];
@@ -223,13 +229,23 @@ static NSString *const GameManagerCoinMultiplier = @"coinmultiplier";
     id xAverage = [NSNumber numberWithFloat:_xAverage/_xAverageCount];
     id diePosX = [NSNumber numberWithFloat:_diePos.x];
     id diePosY = [NSNumber numberWithFloat:_diePos.y];
+    id dificultyLevel = [NSNumber numberWithInt: _dificulty];
+    id score = [NSNumber numberWithInt: _score];
     
-    NSDictionary* infoDict = [NSDictionary dictionaryWithObjectsAndKeys: xAverage, @"X average", diePosX, @"x die pos", diePosY, @"y die pos", nil];
-    [Flurry logEvent:@"Log" withParameters: infoDict];
+    NSDictionary* infoDict = [NSDictionary dictionaryWithObjectsAndKeys: xAverage, @"X average", diePosX, @"x die pos", diePosY, @"y die pos", dificultyLevel, @"dificulty level", score, @"score", nil];
+    [Flurry logEvent:@"Logs" withParameters: infoDict];
 }
 
 - (void)setDiePos: (CGPoint)pos{
     _diePos = pos;
+}
+
+- (void)setDificultyLevel: (NSInteger)dificulty{
+    _dificulty = dificulty;
+}
+
+- (void)setScore: (NSInteger)score{
+    _score = score;
 }
 
 -(void)tutorialTouch{

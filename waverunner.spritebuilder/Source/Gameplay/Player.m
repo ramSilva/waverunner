@@ -11,6 +11,7 @@
 #import "GameManager.h"
 #import "GameplayScene.h"
 #import "CCDirector_Private.h"
+#import "LevelGenerator.h"
 
 @implementation Player
 
@@ -142,6 +143,8 @@
 }
 
 - (BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair gameOver:(CCNode *)nodeA player:(CCNode *)nodeB{
+    [[GameManager sharedGameManager] setScore: _GS.currentScore];
+    [[GameManager sharedGameManager] setDificultyLevel:_GS.lg.difficulty];
     [[GameManager sharedGameManager] setHighscore:_GS.currentScore];
     [[GameManager sharedGameManager] setDiePos: [self.parent convertToWorldSpace:self.position]];
     
