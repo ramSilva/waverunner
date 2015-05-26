@@ -76,7 +76,7 @@
     //_timeButton.visible = _shieldButton.visible = false;
     [_powerUpNode setGameplayScene:self];
     if (!_gameManager.useTutorial) {
-        //[self removeChild:_tutorialNode cleanup:true];
+        [self removeChild:_tutorialNode cleanup:true];
         _tutorialNode.visible = false;
     }
     else{

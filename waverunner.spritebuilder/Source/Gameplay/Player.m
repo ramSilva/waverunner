@@ -256,7 +256,7 @@
         self.flipX = true;
     }
     [self.animationManager runAnimationsForSequenceNamed:@"Jump"];
-
+    [[GameManager sharedGameManager] tutorialTouch];
 }
 
 -(void)update:(CCTime)delta{

@@ -41,6 +41,8 @@
 }
 
 -(void)touchDetected{
+    if (!_useTutorial)return;
+    
     if (_part1Tutorial) {
         if(_tutorialRunning.visible){
             _tutorialRunning.visible = false;
@@ -48,11 +50,16 @@
         }
     }
     else{
-        
+        if (_tutorialWallJump.visible) {
+            _tutorialWallJump.visible = false;
+            [[[CCDirector sharedDirector] scheduler]setTimeScale:1];
+        }
     }
 }
 
 - (void)touchedGroundPart1 {
+    if (!_useTutorial)return;
+
     if(!_tutorialRunning.visible && !_tutorialRequest.visible){
         _tutorialDoubleJump.visible = true;
         [[[CCDirector sharedDirector] scheduler]setTimeScale:0.1f];
@@ -60,12 +67,16 @@
 }
 
 -(void)touchedGround{
+    if (!_useTutorial)return;
+
     if (_part1Tutorial) {
         [self touchedGroundPart1];
     }
 }
 
 - (void)doubleJumpPart1 {
+    if (!_useTutorial)return;
+
         if(_tutorialDoubleJump.visible){
             _tutorialDoubleJump.visible = false;
             [[[CCDirector sharedDirector] scheduler]setTimeScale:0.5f];
@@ -76,15 +87,22 @@
 }
 
 -(void)doubleJump{
+    if (!_useTutorial)return;
+
     if (_part1Tutorial) {
         [self doubleJumpPart1];
     }
 }
 
 -(void)wallCollision{
-    [[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
-    _tutorialWallJump.visible = true;
-    _tutorialPreWallJump.visible = false;
+    if (!_useTutorial)return;
+
+    if (!_tutorialWallJump.visible) {
+        [[[CCDirector sharedDirector] scheduler]setTimeScale:0.0f];
+        _tutorialWallJump.visible = true;
+        _tutorialPreWallJump.visible = false;
+    }
+    
 }
 
 @end
